@@ -1,0 +1,948 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第2篇:Linux入侵排查 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="第1篇：Window入侵排查.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    [第一章：应急响应]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="第1篇：Window入侵排查.html">
+            
+                <a href="第1篇：Window入侵排查.html">
+            
+                    
+                    第1篇:Window入侵排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="第2篇：Linux入侵排查.html">
+            
+                <a href="第2篇：Linux入侵排查.html">
+            
+                    
+                    第2篇:Linux入侵排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    [第二章:Windows实战篇]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../Windows/第1篇：FTP暴力破解.html">
+            
+                <a href="../Windows/第1篇：FTP暴力破解.html">
+            
+                    
+                    第1篇：FTP暴力破解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../Windows/第2篇：蠕虫病毒.html">
+            
+                <a href="../Windows/第2篇：蠕虫病毒.html">
+            
+                    
+                    第2篇：蠕虫病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../Windows/第3篇：勒索病毒.html">
+            
+                <a href="../Windows/第3篇：勒索病毒.html">
+            
+                    
+                    第3篇：勒索病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../Windows/第4篇：ARP病毒.html">
+            
+                <a href="../Windows/第4篇：ARP病毒.html">
+            
+                    
+                    第4篇：ARP病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../Windows/第5篇：挖矿病毒（一）.html">
+            
+                <a href="../Windows/第5篇：挖矿病毒（一）.html">
+            
+                    
+                    第5篇：挖矿病毒（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../Windows/第6篇：挖矿病毒（二）.html">
+            
+                <a href="../Windows/第6篇：挖矿病毒（二）.html">
+            
+                    
+                    第6篇：挖矿病毒（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    [第三章：Linux实战篇]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../Linux/第1篇：SSH暴力破解.html">
+            
+                <a href="../Linux/第1篇：SSH暴力破解.html">
+            
+                    
+                    第1篇：SSH暴力破解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../Linux/第2篇：捕捉短连接.html">
+            
+                <a href="../Linux/第2篇：捕捉短连接.html">
+            
+                    
+                    第2篇：捕捉短连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../Linux/第3篇：挖矿病毒.html">
+            
+                <a href="../Linux/第3篇：挖矿病毒.html">
+            
+                    
+                    第3篇：挖矿病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../Linux/第4篇：盖茨木马.html">
+            
+                <a href="../Linux/第4篇：盖茨木马.html">
+            
+                    
+                    第4篇：盖茨木马
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../Linux/第5篇：DDOS病毒.html">
+            
+                <a href="../Linux/第5篇：DDOS病毒.html">
+            
+                    
+                    第5篇：DDOS病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    [第四章：Web实战篇]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Web/第1篇：网站被植入Webshell.html">
+            
+                <a href="../Web/第1篇：网站被植入Webshell.html">
+            
+                    
+                    第1篇：网站被植入Webshell
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../Web/第2篇：门罗币恶意挖矿.html">
+            
+                <a href="../Web/第2篇：门罗币恶意挖矿.html">
+            
+                    
+                    第2篇：门罗币恶意挖矿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../Web/第3篇：批量挂黑页.html">
+            
+                <a href="../Web/第3篇：批量挂黑页.html">
+            
+                    
+                    第3篇：批量挂黑页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../Web/第4篇：新闻源网站劫持.html">
+            
+                <a href="../Web/第4篇：新闻源网站劫持.html">
+            
+                    
+                    第4篇：新闻源网站劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../Web/第5篇：移动端劫持.html">
+            
+                <a href="../Web/第5篇：移动端劫持.html">
+            
+                    
+                    第5篇：移动端劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../Web/第6篇：搜索引擎劫持.html">
+            
+                <a href="../Web/第6篇：搜索引擎劫持.html">
+            
+                    
+                    第6篇：搜索引擎劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../Web/第7篇：网站首页被篡改.html">
+            
+                <a href="../Web/第7篇：网站首页被篡改.html">
+            
+                    
+                    第7篇：网站首页被篡改
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../Web/第8篇：管理员账号被篡改.html">
+            
+                <a href="../Web/第8篇：管理员账号被篡改.html">
+            
+                    
+                    第8篇：管理员账号被篡改
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第2篇:Linux入侵排查</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x7B2C;2&#x7BC7;&#xFF1A;linux&#x5165;&#x4FB5;&#x6392;&#x67E5;">&#x7B2C;2&#x7BC7;&#xFF1A;Linux&#x5165;&#x4FB5;&#x6392;&#x67E5;</h2>
+<h3 id="0x00-&#x524D;&#x8A00;">0x00 &#x524D;&#x8A00;</h3>
+<p>&#x200B;    &#x5F53;&#x4F01;&#x4E1A;&#x53D1;&#x751F;&#x9ED1;&#x5BA2;&#x5165;&#x4FB5;&#x3001;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x6216;&#x5176;&#x5B83;&#x5F71;&#x54CD;&#x4E1A;&#x52A1;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x7684;&#x5B89;&#x5168;&#x4E8B;&#x4EF6;&#x65F6;&#xFF0C;&#x6025;&#x9700;&#x7B2C;&#x4E00;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x4F7F;&#x4F01;&#x4E1A;&#x7684;&#x7F51;&#x7EDC;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#x5728;&#x6700;&#x77ED;&#x65F6;&#x95F4;&#x5185;&#x6062;&#x590D;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF0C;&#x8FDB;&#x4E00;&#x6B65;&#x67E5;&#x627E;&#x5165;&#x4FB5;&#x6765;&#x6E90;&#xFF0C;&#x8FD8;&#x539F;&#x5165;&#x4FB5;&#x4E8B;&#x6545;&#x8FC7;&#x7A0B;&#xFF0C;&#x540C;&#x65F6;&#x7ED9;&#x51FA;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x4E0E;&#x9632;&#x8303;&#x63AA;&#x65BD;&#xFF0C;&#x4E3A;&#x4F01;&#x4E1A;&#x633D;&#x56DE;&#x6216;&#x51CF;&#x5C11;&#x7ECF;&#x6D4E;&#x635F;&#x5931;&#x3002;  </p>
+<p>&#x9488;&#x5BF9;&#x5E38;&#x89C1;&#x7684;&#x653B;&#x51FB;&#x4E8B;&#x4EF6;&#xFF0C;&#x7ED3;&#x5408;&#x5DE5;&#x4F5C;&#x4E2D;&#x5E94;&#x6025;&#x54CD;&#x5E94;&#x4E8B;&#x4EF6;&#x5206;&#x6790;&#x548C;&#x89E3;&#x51B3;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x603B;&#x7ED3;&#x4E86;&#x4E00;&#x4E9B;Linux&#x670D;&#x52A1;&#x5668;&#x5165;&#x4FB5;&#x6392;&#x67E5;&#x7684;&#x601D;&#x8DEF;&#x3002;</p>
+<h3 id="0x01-&#x5165;&#x4FB5;&#x6392;&#x67E5;&#x601D;&#x8DEF;">0x01 &#x5165;&#x4FB5;&#x6392;&#x67E5;&#x601D;&#x8DEF;</h3>
+<p>&#x4E00;&#x3001;&#x8D26;&#x53F7;&#x5B89;&#x5168;</p>
+<p><strong>&#x57FA;&#x672C;&#x4F7F;&#x7528;&#xFF1A;</strong></p>
+<pre><code>1&#x3001;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x6587;&#x4EF6;/etc/passwd
+root:x:0:0:root:/root:/bin/bash
+account:password:UID:GID:GECOS:directory:shell
+&#x7528;&#x6237;&#x540D;&#xFF1A;&#x5BC6;&#x7801;&#xFF1A;&#x7528;&#x6237;ID&#xFF1A;&#x7EC4;ID&#xFF1A;&#x7528;&#x6237;&#x8BF4;&#x660E;&#xFF1A;&#x5BB6;&#x76EE;&#x5F55;&#xFF1A;&#x767B;&#x9646;&#x4E4B;&#x540E;shell
+&#x6CE8;&#x610F;&#xFF1A;&#x65E0;&#x5BC6;&#x7801;&#x53EA;&#x5141;&#x8BB8;&#x672C;&#x673A;&#x767B;&#x9646;&#xFF0C;&#x8FDC;&#x7A0B;&#x4E0D;&#x5141;&#x8BB8;&#x767B;&#x9646;
+
+2&#x3001;&#x5F71;&#x5B50;&#x6587;&#x4EF6;/etc/shadow
+root:$6$oGs1PqhL2p3ZetrE$X7o7bzoouHQVSEmSgsYN5UD4.kMHx6qgbTqwNVC5oOAouXvcjQSt.Ft7ql1WpkopY0UV9ajBwUt1DpYxTCVvI/:16809:0:99999:7:::
+&#x7528;&#x6237;&#x540D;&#xFF1A;&#x52A0;&#x5BC6;&#x5BC6;&#x7801;&#xFF1A;&#x5BC6;&#x7801;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x4FEE;&#x6539;&#x65E5;&#x671F;&#xFF1A;&#x4E24;&#x6B21;&#x5BC6;&#x7801;&#x7684;&#x4FEE;&#x6539;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#xFF1A;&#x5BC6;&#x7801;&#x6709;&#x6548;&#x671F;&#xFF1A;&#x5BC6;&#x7801;&#x4FEE;&#x6539;&#x5230;&#x671F;&#x5230;&#x7684;&#x8B66;&#x544A;&#x5929;&#x6570;&#xFF1A;&#x5BC6;&#x7801;&#x8FC7;&#x671F;&#x4E4B;&#x540E;&#x7684;&#x5BBD;&#x9650;&#x5929;&#x6570;&#xFF1A;&#x8D26;&#x53F7;&#x5931;&#x6548;&#x65F6;&#x95F4;&#xFF1A;&#x4FDD;&#x7559;
+</code></pre><pre><code>who     &#x67E5;&#x770B;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#xFF08;tty&#x672C;&#x5730;&#x767B;&#x9646;  pts&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#xFF09;
+w       &#x67E5;&#x770B;&#x7CFB;&#x7EDF;&#x4FE1;&#x606F;&#xFF0C;&#x60F3;&#x77E5;&#x9053;&#x67D0;&#x4E00;&#x65F6;&#x523B;&#x7528;&#x6237;&#x7684;&#x884C;&#x4E3A;
+uptime  &#x67E5;&#x770B;&#x767B;&#x9646;&#x591A;&#x4E45;&#x3001;&#x591A;&#x5C11;&#x7528;&#x6237;&#xFF0C;&#x8D1F;&#x8F7D;
+</code></pre><p><strong>&#x5165;&#x4FB5;&#x6392;&#x67E5;&#xFF1A;</strong></p>
+<pre><code>1&#x3001;&#x67E5;&#x8BE2;&#x7279;&#x6743;&#x7528;&#x6237;&#x7279;&#x6743;&#x7528;&#x6237;(uid &#x4E3A;0)
+[root@localhost ~]# awk -F: &apos;$3==0{print $1}&apos; /etc/passwd
+2&#x3001;&#x67E5;&#x8BE2;&#x53EF;&#x4EE5;&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x7684;&#x5E10;&#x53F7;&#x4FE1;&#x606F;
+[root@localhost ~]# awk &apos;/\$1|\$6/{print $1}&apos; /etc/shadow
+3&#x3001;&#x9664;root&#x5E10;&#x53F7;&#x5916;&#xFF0C;&#x5176;&#x4ED6;&#x5E10;&#x53F7;&#x662F;&#x5426;&#x5B58;&#x5728;sudo&#x6743;&#x9650;&#x3002;&#x5982;&#x975E;&#x7BA1;&#x7406;&#x9700;&#x8981;&#xFF0C;&#x666E;&#x901A;&#x5E10;&#x53F7;&#x5E94;&#x5220;&#x9664;sudo&#x6743;&#x9650;
+[root@localhost ~]# more /etc/sudoers | grep -v &quot;^#\|^$&quot; | grep &quot;ALL=(ALL)&quot;
+4&#x3001;&#x7981;&#x7528;&#x6216;&#x5220;&#x9664;&#x591A;&#x4F59;&#x53CA;&#x53EF;&#x7591;&#x7684;&#x5E10;&#x53F7;
+    usermod -L user    &#x7981;&#x7528;&#x5E10;&#x53F7;&#xFF0C;&#x5E10;&#x53F7;&#x65E0;&#x6CD5;&#x767B;&#x5F55;&#xFF0C;/etc/shadow&#x7B2C;&#x4E8C;&#x680F;&#x4E3A;!&#x5F00;&#x5934;
+    userdel user       &#x5220;&#x9664;user&#x7528;&#x6237;
+    userdel -r user    &#x5C06;&#x5220;&#x9664;user&#x7528;&#x6237;&#xFF0C;&#x5E76;&#x4E14;&#x5C06;/home&#x76EE;&#x5F55;&#x4E0B;&#x7684;user&#x76EE;&#x5F55;&#x4E00;&#x5E76;&#x5220;&#x9664;
+</code></pre><p>&#x4E8C;&#x3001;&#x5386;&#x53F2;&#x547D;&#x4EE4;</p>
+<p><strong>&#x57FA;&#x672C;&#x4F7F;&#x7528;&#xFF1A;</strong></p>
+<pre><code>&#x901A;&#x8FC7;.bash_history&#x67E5;&#x770B;&#x5E10;&#x53F7;&#x6267;&#x884C;&#x8FC7;&#x7684;&#x7CFB;&#x7EDF;&#x547D;&#x4EE4;
+1&#x3001;root&#x7684;&#x5386;&#x53F2;&#x547D;&#x4EE4;
+histroy
+2&#x3001;&#x6253;&#x5F00;/home&#x5404;&#x5E10;&#x53F7;&#x76EE;&#x5F55;&#x4E0B;&#x7684;.bash_history&#xFF0C;&#x67E5;&#x770B;&#x666E;&#x901A;&#x5E10;&#x53F7;&#x7684;&#x5386;&#x53F2;&#x547D;&#x4EE4;
+
+&#x4E3A;&#x5386;&#x53F2;&#x7684;&#x547D;&#x4EE4;&#x589E;&#x52A0;&#x767B;&#x5F55;&#x7684;IP&#x5730;&#x5740;&#x3001;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x65F6;&#x95F4;&#x7B49;&#x4FE1;&#x606F;&#xFF1A;
+1&#xFF09;&#x4FDD;&#x5B58;1&#x4E07;&#x6761;&#x547D;&#x4EE4;
+sed -i &apos;s/^HISTSIZE=1000/HISTSIZE=10000/g&apos; /etc/profile
+2&#xFF09;&#x5728;/etc/profile&#x7684;&#x6587;&#x4EF6;&#x5C3E;&#x90E8;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x884C;&#x6570;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF1A;
+######jiagu history xianshi#########
+USER_IP=`who -u am i 2&gt;/dev/null | awk &apos;{print $NF}&apos; | sed -e &apos;s/[()]//g&apos;`
+if [ &quot;$USER_IP&quot; = &quot;&quot; ]
+then
+USER_IP=`hostname`
+fi
+export HISTTIMEFORMAT=&quot;%F %T $USER_IP `whoami` &quot;
+shopt -s histappend
+export PROMPT_COMMAND=&quot;history -a&quot;
+######### jiagu history xianshi ##########
+3&#xFF09;source /etc/profile&#x8BA9;&#x914D;&#x7F6E;&#x751F;&#x6548;
+
+&#x751F;&#x6210;&#x6548;&#x679C;&#xFF1A; 1  2018-07-10 19:45:39 192.168.204.1 root source /etc/profile
+
+3&#x3001;&#x5386;&#x53F2;&#x64CD;&#x4F5C;&#x547D;&#x4EE4;&#x7684;&#x6E05;&#x9664;&#xFF1A;history -c
+&#x4F46;&#x6B64;&#x547D;&#x4EE4;&#x5E76;&#x4E0D;&#x4F1A;&#x6E05;&#x9664;&#x4FDD;&#x5B58;&#x5728;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x8BB0;&#x5F55;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5220;&#x9664;.bash_profile&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x8BB0;&#x5F55;&#x3002;
+</code></pre><p><strong>&#x5165;&#x4FB5;&#x6392;&#x67E5;&#xFF1A;</strong></p>
+<pre><code>&#x8FDB;&#x5165;&#x7528;&#x6237;&#x76EE;&#x5F55;&#x4E0B;
+cat .bash_history &gt;&gt; history.txt
+</code></pre><p>&#x4E09;&#x3001;&#x7AEF;&#x53E3;</p>
+<p>&#x4F7F;&#x7528;netstat &#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x547D;&#x4EE4;&#xFF0C;&#x5206;&#x6790;&#x53EF;&#x7591;&#x7AEF;&#x53E3;&#x3001;IP&#x3001;PID</p>
+<pre><code>netstat -antlp|more
+
+&#x67E5;&#x770B;&#x4E0B;pid&#x6240;&#x5BF9;&#x5E94;&#x7684;&#x8FDB;&#x7A0B;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF0C;
+&#x8FD0;&#x884C;ls -l /proc/$PID/exe&#x6216;file /proc/$PID/exe&#xFF08;$PID &#x4E3A;&#x5BF9;&#x5E94;&#x7684;pid &#x53F7;&#xFF09;
+</code></pre><p>&#x56DB;&#x3001;&#x8FDB;&#x7A0B;</p>
+<p>&#x4F7F;&#x7528;ps&#x547D;&#x4EE4;&#xFF0C;&#x5206;&#x6790;&#x8FDB;&#x7A0B;</p>
+<pre><code>ps aux | grep pid
+</code></pre><p>&#x4E94;&#x3001;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x9879;</p>
+<p><strong>&#x57FA;&#x672C;&#x4F7F;&#x7528;&#xFF1A;</strong></p>
+<p>&#x7CFB;&#x7EDF;&#x8FD0;&#x884C;&#x7EA7;&#x522B;&#x793A;&#x610F;&#x56FE;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x8FD0;&#x884C;&#x7EA7;&#x522B;</th>
+<th style="text-align:center">&#x542B;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">&#x5173;&#x673A;</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">&#x5355;&#x7528;&#x6237;&#x6A21;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x8C61;&#x4E3A;windows&#x7684;&#x5B89;&#x5168;&#x6A21;&#x5F0F;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x7CFB;&#x7EDF;&#x4FEE;&#x590D;</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">&#x4E0D;&#x5B8C;&#x5168;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x6A21;&#x5F0F;&#xFF0C;&#x4E0D;&#x542B;NFS&#x670D;&#x52A1;</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">&#x5B8C;&#x5168;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x6A21;&#x5F0F;&#xFF0C;&#x5C31;&#x662F;&#x6807;&#x51C6;&#x5B57;&#x7B26;&#x754C;&#x9762;</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">&#x7CFB;&#x7EDF;&#x4FDD;&#x7559;</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">&#x56FE;&#x5F62;&#x6A21;&#x5F0F;</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">&#x91CD;&#x542F;&#x52A8;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x67E5;&#x770B;&#x8FD0;&#x884C;&#x7EA7;&#x522B;&#x547D;&#x4EE4;
+    runlevel   </p>
+<p>&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x7EA7;&#x522B;</p>
+<pre><code>vi  /etc/inittab
+id=3&#xFF1A;initdefault  &#x7CFB;&#x7EDF;&#x5F00;&#x673A;&#x540E;&#x76F4;&#x63A5;&#x8FDB;&#x5165;&#x54EA;&#x4E2A;&#x8FD0;&#x884C;&#x7EA7;&#x522B;
+</code></pre><p>&#x5F00;&#x673A;&#x542F;&#x52A8;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<pre><code>/etc/rc.local
+/etc/rc.d/rc[0~6].d
+</code></pre><p>&#x4F8B;&#x5B50;:&#x5F53;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x81EA;&#x5DF1;&#x7684;&#x811A;&#x672C;&#x65F6;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5C06;&#x53EF;&#x6267;&#x884C;&#x811A;&#x672C;&#x4E22;&#x5728;/etc/init.d&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x7136;&#x540E;&#x5728;/etc/rc.d/rc*.d&#x4E2D;&#x5EFA;&#x7ACB;&#x8F6F;&#x94FE;&#x63A5;&#x5373;&#x53EF;</p>
+<pre><code>root@localhost ~]# ln -s /etc/init.d/sshd /etc/rc.d/rc3.d/S100ssh
+</code></pre><p>&#x6B64;&#x5904;sshd&#x662F;&#x5177;&#x4F53;&#x670D;&#x52A1;&#x7684;&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;S100ssh&#x662F;&#x5176;&#x8F6F;&#x94FE;&#x63A5;&#xFF0C;S&#x5F00;&#x5934;&#x4EE3;&#x8868;&#x52A0;&#x8F7D;&#x65F6;&#x81EA;&#x542F;&#x52A8;&#xFF1B;&#x5982;&#x679C;&#x662F;K&#x5F00;&#x5934;&#x7684;&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x4EE3;&#x8868;&#x8FD0;&#x884C;&#x7EA7;&#x522B;&#x52A0;&#x8F7D;&#x65F6;&#x9700;&#x8981;&#x5173;&#x95ED;&#x7684;&#x3002;</p>
+<p><strong>&#x5165;&#x4FB5;&#x6392;&#x67E5;&#xFF1A;</strong></p>
+<p>&#x542F;&#x52A8;&#x9879;&#x6587;&#x4EF6;&#xFF1A;
+    more /etc/rc.local
+    /etc/rc.d/rc[0~6].d
+    ls -l /etc/rc.d/rc3.d/
+&#x516D;&#x3001;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;</p>
+<p><strong>&#x57FA;&#x672C;&#x4F7F;&#x7528;</strong></p>
+<p>1&#x3001;&#x5229;&#x7528;crontab&#x521B;&#x5EFA;&#x8BA1;&#x5212;&#x4EFB;&#x52A1;</p>
+<ul>
+<li>&#x57FA;&#x672C;&#x547D;&#x4EE4;</li>
+</ul>
+<p>crontab -l   &#x5217;&#x51FA;&#x67D0;&#x4E2A;&#x7528;&#x6237;cron&#x670D;&#x52A1;&#x7684;&#x8BE6;&#x7EC6;&#x5185;&#x5BB9;</p>
+<p>Tips&#xFF1A;&#x9ED8;&#x8BA4;&#x7F16;&#x5199;&#x7684;crontab&#x6587;&#x4EF6;&#x4F1A;&#x4FDD;&#x5B58;&#x5728; (/var/spool/cron/&#x7528;&#x6237;&#x540D; &#x4F8B;&#x5982;: /var/spool/cron/root</p>
+<p>crontab -r   &#x5220;&#x9664;&#x6BCF;&#x4E2A;&#x7528;&#x6237;cront&#x4EFB;&#x52A1;(&#x8C28;&#x614E;&#xFF1A;&#x5220;&#x9664;&#x6240;&#x6709;&#x7684;&#x8BA1;&#x5212;&#x4EFB;&#x52A1;)</p>
+<p>crontab -e   &#x4F7F;&#x7528;&#x7F16;&#x8F91;&#x5668;&#x7F16;&#x8F91;&#x5F53;&#x524D;&#x7684;crontab&#x6587;&#x4EF6; </p>
+<p>&#x5982;&#xFF1A;<em>/1 </em> <em> </em> * echo &quot;hello world&quot; &gt;&gt; /tmp/test.txt &#x6BCF;&#x5206;&#x949F;&#x5199;&#x5165;&#x6587;&#x4EF6;</p>
+<p>2&#x3001;&#x5229;&#x7528;anacron&#x5B9E;&#x73B0;&#x5F02;&#x6B65;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;</p>
+<ul>
+<li>&#x4F7F;&#x7528;&#x6848;&#x4F8B;</li>
+</ul>
+<p>&#x6BCF;&#x5929;&#x8FD0;&#x884C; /home/backup.sh&#x811A;&#x672C;&#xFF1A;
+    vi /etc/anacrontab 
+    @daily    10    example.daily   /bin/bash /home/backup.sh</p>
+<p>&#x5F53;&#x673A;&#x5668;&#x5728; backup.sh &#x671F;&#x671B;&#x88AB;&#x8FD0;&#x884C;&#x65F6;&#x662F;&#x5173;&#x673A;&#x7684;&#xFF0C;anacron&#x4F1A;&#x5728;&#x673A;&#x5668;&#x5F00;&#x673A;&#x5341;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x8FD0;&#x884C;&#x5B83;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x518D;&#x7B49;&#x5F85; 7&#x5929;&#x3002;</p>
+<p><strong>&#x5165;&#x4FB5;&#x6392;&#x67E5;</strong></p>
+<p>&#x91CD;&#x70B9;&#x5173;&#x6CE8;&#x4EE5;&#x4E0B;&#x76EE;&#x5F55;&#x4E2D;&#x662F;&#x5426;&#x5B58;&#x5728;&#x6076;&#x610F;&#x811A;&#x672C;</p>
+<pre><code>/var/spool/cron/* 
+/etc/crontab
+/etc/cron.d/*
+/etc/cron.daily/* 
+/etc/cron.hourly/* 
+/etc/cron.monthly/*
+/etc/cron.weekly/
+/etc/anacrontab
+/var/spool/anacron/*
+</code></pre><p>&#x5C0F;&#x6280;&#x5DE7;&#xFF1A;</p>
+<pre><code> more /etc/cron.daily/*  &#x67E5;&#x770B;&#x76EE;&#x5F55;&#x4E0B;&#x6240;&#x6709;&#x6587;&#x4EF6;
+</code></pre><p>&#x4E03;&#x3001;&#x670D;&#x52A1;</p>
+<p><strong>&#x670D;&#x52A1;&#x81EA;&#x542F;&#x52A8;</strong></p>
+<p>&#x7B2C;&#x4E00;&#x79CD;&#x4FEE;&#x6539;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>chkconfig [--level &#x8FD0;&#x884C;&#x7EA7;&#x522B;] [&#x72EC;&#x7ACB;&#x670D;&#x52A1;&#x540D;] [on|off]
+chkconfig &#x2013;level  2345 httpd on  &#x5F00;&#x542F;&#x81EA;&#x542F;&#x52A8;
+chkconfig httpd on &#xFF08;&#x9ED8;&#x8BA4;level&#x662F;2345&#xFF09;
+</code></pre><p>&#x7B2C;&#x4E8C;&#x79CD;&#x4FEE;&#x6539;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>&#x4FEE;&#x6539;/etc/re.d/rc.local &#x6587;&#x4EF6;  
+&#x52A0;&#x5165; /etc/init.d/httpd start
+</code></pre><p>&#x7B2C;&#x4E09;&#x79CD;&#x4FEE;&#x6539;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<p>&#x4F7F;&#x7528;ntsysv&#x547D;&#x4EE4;&#x7BA1;&#x7406;&#x81EA;&#x542F;&#x52A8;&#xFF0C;&#x53EF;&#x4EE5;&#x7BA1;&#x7406;&#x72EC;&#x7ACB;&#x670D;&#x52A1;&#x548C;xinetd&#x670D;&#x52A1;&#x3002;</p>
+<p><strong>&#x5165;&#x4FB5;&#x6392;&#x67E5;</strong></p>
+<p>1&#x3001;&#x67E5;&#x8BE2;&#x5DF2;&#x5B89;&#x88C5;&#x7684;&#x670D;&#x52A1;&#xFF1A;</p>
+<p>RPM&#x5305;&#x5B89;&#x88C5;&#x7684;&#x670D;&#x52A1;</p>
+<pre><code>chkconfig  --list  &#x67E5;&#x770B;&#x670D;&#x52A1;&#x81EA;&#x542F;&#x52A8;&#x72B6;&#x6001;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6240;&#x6709;&#x7684;RPM&#x5305;&#x5B89;&#x88C5;&#x7684;&#x670D;&#x52A1;
+ps aux | grep crond &#x67E5;&#x770B;&#x5F53;&#x524D;&#x670D;&#x52A1;
+
+&#x7CFB;&#x7EDF;&#x5728;3&#x4E0E;5&#x7EA7;&#x522B;&#x4E0B;&#x7684;&#x542F;&#x52A8;&#x9879; 
+&#x4E2D;&#x6587;&#x73AF;&#x5883;
+chkconfig --list | grep &quot;3:&#x542F;&#x7528;\|5:&#x542F;&#x7528;&quot;
+&#x82F1;&#x6587;&#x73AF;&#x5883;
+chkconfig --list | grep &quot;3:on\|5:on&quot;
+</code></pre><p>&#x6E90;&#x7801;&#x5305;&#x5B89;&#x88C5;&#x7684;&#x670D;&#x52A1;</p>
+<pre><code>&#x67E5;&#x770B;&#x670D;&#x52A1;&#x5B89;&#x88C5;&#x4F4D;&#x7F6E; &#xFF0C;&#x4E00;&#x822C;&#x662F;&#x5728;/user/local/
+service httpd start
+&#x641C;&#x7D22;/etc/rc.d/init.d/  &#x67E5;&#x770B;&#x662F;&#x5426;&#x5B58;&#x5728;
+</code></pre><p>&#x516B;&#x3001;&#x7CFB;&#x7EDF;&#x65E5;&#x5FD7;</p>
+<p>&#x65E5;&#x5FD7;&#x9ED8;&#x8BA4;&#x5B58;&#x653E;&#x4F4D;&#x7F6E;&#xFF1A;/var/log/</p>
+<p>&#x67E5;&#x770B;&#x65E5;&#x5FD7;&#x914D;&#x7F6E;&#x60C5;&#x51B5;&#xFF1A;more /etc/rsyslog.conf</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x65E5;&#x5FD7;&#x6587;&#x4EF6;</th>
+<th style="text-align:center">&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/var/log/cron</td>
+<td style="text-align:center">&#x8BB0;&#x5F55;&#x4E86;&#x7CFB;&#x7EDF;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#x76F8;&#x5173;&#x7684;&#x65E5;&#x5FD7;</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/cups</td>
+<td style="text-align:center">&#x8BB0;&#x5F55;&#x6253;&#x5370;&#x4FE1;&#x606F;&#x7684;&#x65E5;&#x5FD7;</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/dmesg</td>
+<td style="text-align:center">&#x8BB0;&#x5F55;&#x4E86;&#x7CFB;&#x7EDF;&#x5728;&#x5F00;&#x673A;&#x65F6;&#x5185;&#x6838;&#x81EA;&#x68C0;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;dmesg&#x547D;&#x4EE4;&#x76F4;&#x63A5;&#x67E5;&#x770B;&#x5185;&#x6838;&#x81EA;&#x68C0;&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/mailog</td>
+<td style="text-align:center">&#x8BB0;&#x5F55;&#x90AE;&#x4EF6;&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/message</td>
+<td style="text-align:center">&#x8BB0;&#x5F55;&#x7CFB;&#x7EDF;&#x91CD;&#x8981;&#x4FE1;&#x606F;&#x7684;&#x65E5;&#x5FD7;&#x3002;&#x8FD9;&#x4E2A;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x4E2D;&#x4F1A;&#x8BB0;&#x5F55;Linux&#x7CFB;&#x7EDF;&#x7684;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x91CD;&#x8981;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x9996;&#x5148;&#x8981;&#x68C0;&#x67E5;&#x7684;&#x5C31;&#x5E94;&#x8BE5;&#x662F;&#x8FD9;&#x4E2A;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/btmp</td>
+<td style="text-align:center">&#x8BB0;&#x5F55;&#x9519;&#x8BEF;&#x767B;&#x5F55;&#x65E5;&#x5FD7;&#xFF0C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x662F;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;vi&#x67E5;&#x770B;&#xFF0C;&#x800C;&#x8981;&#x4F7F;&#x7528;lastb&#x547D;&#x4EE4;&#x67E5;&#x770B;</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/lastlog</td>
+<td style="text-align:center">&#x8BB0;&#x5F55;&#x7CFB;&#x7EDF;&#x4E2D;&#x6240;&#x6709;&#x7528;&#x6237;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x767B;&#x5F55;&#x65F6;&#x95F4;&#x7684;&#x65E5;&#x5FD7;&#xFF0C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x662F;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;vi&#xFF0C;&#x800C;&#x8981;&#x4F7F;&#x7528;lastlog&#x547D;&#x4EE4;&#x67E5;&#x770B;</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/wtmp</td>
+<td style="text-align:center">&#x6C38;&#x4E45;&#x8BB0;&#x5F55;&#x6240;&#x6709;&#x7528;&#x6237;&#x7684;&#x767B;&#x5F55;&#x3001;&#x6CE8;&#x9500;&#x4FE1;&#x606F;&#xFF0C;&#x540C;&#x65F6;&#x8BB0;&#x5F55;&#x7CFB;&#x7EDF;&#x7684;&#x542F;&#x52A8;&#x3001;&#x91CD;&#x542F;&#x3001;&#x5173;&#x673A;&#x4E8B;&#x4EF6;&#x3002;&#x540C;&#x6837;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;vi&#xFF0C;&#x800C;&#x9700;&#x8981;&#x4F7F;&#x7528;last&#x547D;&#x4EE4;&#x6765;&#x67E5;&#x770B;</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/utmp</td>
+<td style="text-align:center">&#x8BB0;&#x5F55;&#x5F53;&#x524D;&#x5DF2;&#x7ECF;&#x767B;&#x5F55;&#x7684;&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4F1A;&#x968F;&#x7740;&#x7528;&#x6237;&#x7684;&#x767B;&#x5F55;&#x548C;&#x6CE8;&#x9500;&#x4E0D;&#x65AD;&#x53D8;&#x5316;&#xFF0C;&#x53EA;&#x8BB0;&#x5F55;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7528;&#x6237;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x540C;&#x6837;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;vi&#xFF0C;&#x800C;&#x8981;&#x4F7F;&#x7528;w,who,users&#x7B49;&#x547D;&#x4EE4;&#x6765;&#x67E5;&#x8BE2;</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/secure</td>
+<td style="text-align:center">&#x8BB0;&#x5F55;&#x9A8C;&#x8BC1;&#x548C;&#x6388;&#x6743;&#x65B9;&#x9762;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x53EA;&#x8981;&#x6D89;&#x53CA;&#x8D26;&#x53F7;&#x548C;&#x5BC6;&#x7801;&#x7684;&#x7A0B;&#x5E8F;&#x90FD;&#x4F1A;&#x8BB0;&#x5F55;&#xFF0C;&#x6BD4;&#x5982;SSH&#x767B;&#x5F55;&#xFF0C;su&#x5207;&#x6362;&#x7528;&#x6237;&#xFF0C;sudo&#x6388;&#x6743;&#xFF0C;&#x751A;&#x81F3;&#x6DFB;&#x52A0;&#x7528;&#x6237;&#x548C;&#x4FEE;&#x6539;&#x7528;&#x6237;&#x5BC6;&#x7801;&#x90FD;&#x4F1A;&#x8BB0;&#x5F55;&#x5728;&#x8FD9;&#x4E2A;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x4E2D;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x65E5;&#x5FD7;&#x5206;&#x6790;&#x6280;&#x5DE7;&#xFF1A;</p>
+<pre><code>
+1&#x3001;&#x5B9A;&#x4F4D;&#x6709;&#x591A;&#x5C11;IP&#x5728;&#x7206;&#x7834;&#x4E3B;&#x673A;&#x7684;root&#x5E10;&#x53F7;&#xFF1A;    
+grep &quot;Failed password for root&quot; /var/log/secure | awk &apos;{print $11}&apos; | sort | uniq -c | sort -nr | more
+
+&#x5B9A;&#x4F4D;&#x6709;&#x54EA;&#x4E9B;IP&#x5728;&#x7206;&#x7834;&#xFF1A;
+grep &quot;Failed password&quot; /var/log/secure|grep -E -o &quot;(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)&quot;|uniq -c
+
+&#x7206;&#x7834;&#x7528;&#x6237;&#x540D;&#x5B57;&#x5178;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;
+ grep &quot;Failed password&quot; /var/log/secure|perl -e &apos;while($_=&lt;&gt;){ /for(.*?) from/; print &quot;$1\n&quot;;}&apos;|uniq -c|sort -nr
+
+2&#x3001;&#x767B;&#x5F55;&#x6210;&#x529F;&#x7684;IP&#x6709;&#x54EA;&#x4E9B;&#xFF1A;     
+grep &quot;Accepted &quot; /var/log/secure | awk &apos;{print $11}&apos; | sort | uniq -c | sort -nr | more
+
+&#x767B;&#x5F55;&#x6210;&#x529F;&#x7684;&#x65E5;&#x671F;&#x3001;&#x7528;&#x6237;&#x540D;&#x3001;IP&#xFF1A;
+grep &quot;Accepted &quot; /var/log/secure | awk &apos;{print $1,$2,$3,$9,$11}&apos; 
+
+3&#x3001;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x7528;&#x6237;kali&#x65E5;&#x5FD7;&#xFF1A;
+Jul 10 00:12:15 localhost useradd[2382]: new group: name=kali, GID=1001
+Jul 10 00:12:15 localhost useradd[2382]: new user: name=kali, UID=1001, GID=1001, home=/home/kali
+, shell=/bin/bash
+Jul 10 00:12:58 localhost passwd: pam_unix(passwd:chauthtok): password changed for kali
+#grep &quot;useradd&quot; /var/log/secure 
+
+4&#x3001;&#x5220;&#x9664;&#x7528;&#x6237;kali&#x65E5;&#x5FD7;&#xFF1A;
+Jul 10 00:14:17 localhost userdel[2393]: delete user &apos;kali&apos;
+Jul 10 00:14:17 localhost userdel[2393]: removed group &apos;kali&apos; owned by &apos;kali&apos;
+Jul 10 00:14:17 localhost userdel[2393]: removed shadow group &apos;kali&apos; owned by &apos;kali&apos;
+# grep &quot;userdel&quot; /var/log/secure
+
+5&#x3001;su&#x5207;&#x6362;&#x7528;&#x6237;&#xFF1A;
+Jul 10 00:38:13 localhost su: pam_unix(su-l:session): session opened for user good by root(uid=0)
+
+sudo&#x6388;&#x6743;&#x6267;&#x884C;:
+sudo -l
+Jul 10 00:43:09 localhost sudo:    good : TTY=pts/4 ; PWD=/home/good ; USER=root ; COMMAND=/sbin/shutdown -r now
+</code></pre><h3 id="0x02-&#x5DE5;&#x5177;&#x7BC7;">0x02 &#x5DE5;&#x5177;&#x7BC7;</h3>
+<p>&#x4E00;&#x3001;Rootkit&#x67E5;&#x6740;</p>
+<ul>
+<li><p>chkrootkit  </p>
+<p>&#x7F51;&#x5740;&#xFF1A;<a href="http://www.chkrootkit.org" target="_blank">http://www.chkrootkit.org</a> </p>
+<pre><code>&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;
+wget ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz
+tar zxvf chkrootkit.tar.gz
+cd chkrootkit-0.52
+make sense
+#&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#x6CA1;&#x6709;&#x62A5;&#x9519;&#x7684;&#x8BDD;&#x6267;&#x884C;&#x68C0;&#x67E5;
+./chkrootkit
+</code></pre></li>
+<li><p>rkhunter</p>
+<p>&#x7F51;&#x5740;&#xFF1A;<a href="http://rkhunter.sourceforge.net" target="_blank">http://rkhunter.sourceforge.net</a></p>
+<pre><code>&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;
+Wget https://nchc.dl.sourceforge.net/project/rkhunter/rkhunter/1.4.4/rkhunter-1.4.4.tar.gz
+tar -zxvf rkhunter-1.4.4.tar.gz
+cd rkhunter-1.4.4
+./installer.sh --install
+rkhunter -c
+</code></pre><p>&#x4E8C;&#x3001;&#x75C5;&#x6BD2;&#x67E5;&#x6740;</p>
+</li>
+<li><p>Clamav</p>
+<p>ClamAV&#x7684;&#x5B98;&#x65B9;&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#x4E3A;&#xFF1A;<a href="http://www.clamav.net/download.html" target="_blank">http://www.clamav.net/download.html</a> </p>
+<p>&#x5B89;&#x88C5;&#x65B9;&#x5F0F;&#x4E00;&#xFF1A; </p>
+<pre><code>1&#x3001;&#x5B89;&#x88C5;zlib&#xFF1A;
+wget http://nchc.dl.sourceforge.net/project/libpng/zlib/1.2.7/zlib-1.2.7.tar.gz 
+tar -zxvf  zlib-1.2.7.tar.gz
+cd zlib-1.2.7
+#&#x5B89;&#x88C5;&#x4E00;&#x4E0B;gcc&#x7F16;&#x8BD1;&#x73AF;&#x5883;&#xFF1A; yum install gcc
+CFLAGS=&quot;-O3 -fPIC&quot; ./configure --prefix= /usr/local/zlib/
+make &amp;&amp; make install
+
+2&#x3001;&#x6DFB;&#x52A0;&#x7528;&#x6237;&#x7EC4;clamav&#x548C;&#x7EC4;&#x6210;&#x5458;clamav&#xFF1A;
+groupadd clamav
+useradd -g clamav -s /bin/false -c &quot;Clam AntiVirus&quot; clamav
+
+3&#x3001;&#x5B89;&#x88C5;Clamav
+tar &#x2013;zxvf clamav-0.97.6.tar.gz
+cd clamav-0.97.6
+./configure --prefix=/opt/clamav --disable-clamav -with-zlib=/usr/local/zlib
+make
+make install
+
+4&#x3001;&#x914D;&#x7F6E;Clamav
+mkdir /opt/clamav/logs
+mkdir /opt/clamav/updata
+touch /opt/clamav/logs/freshclam.log
+touch /opt/clamav/logs/clamd.log
+cd /opt/clamav/logs
+chown clamav:clamav clamd.log
+chown clamav:clamav freshclam.log
+
+5&#x3001;ClamAV &#x4F7F;&#x7528;&#xFF1A;
+ /opt/clamav/bin/freshclam &#x5347;&#x7EA7;&#x75C5;&#x6BD2;&#x5E93;
+./clamscan &#x2013;h &#x67E5;&#x770B;&#x76F8;&#x5E94;&#x7684;&#x5E2E;&#x52A9;&#x4FE1;&#x606F;
+./clamscan -r /home  &#x626B;&#x63CF;&#x6240;&#x6709;&#x7528;&#x6237;&#x7684;&#x4E3B;&#x76EE;&#x5F55;&#x5C31;&#x4F7F;&#x7528;
+./clamscan -r --bell -i /bin  &#x626B;&#x63CF;bin&#x76EE;&#x5F55;&#x5E76;&#x4E14;&#x663E;&#x793A;&#x6709;&#x95EE;&#x9898;&#x7684;&#x6587;&#x4EF6;&#x7684;&#x626B;&#x63CF;&#x7ED3;&#x679C;
+</code></pre><p>&#x5B89;&#x88C5;&#x65B9;&#x5F0F;&#x4E8C;&#xFF1A; </p>
+<pre><code>#&#x5B89;&#x88C5;
+yum install -y clamav
+#&#x66F4;&#x65B0;&#x75C5;&#x6BD2;&#x5E93;
+freshclam
+#&#x626B;&#x63CF;&#x65B9;&#x6CD5;
+clamscan -r /etc --max-dir-recursion=5 -l /root/etcclamav.log
+clamscan -r /bin --max-dir-recursion=5 -l /root/binclamav.log
+clamscan -r /usr --max-dir-recursion=5 -l /root/usrclamav.log
+#&#x626B;&#x63CF;&#x5E76;&#x6740;&#x6BD2;
+clamscan -r  --remove  /usr/bin/bsd-port
+clamscan -r  --remove  /usr/bin/
+clamscan -r --remove  /usr/local/zabbix/sbin
+#&#x67E5;&#x770B;&#x65E5;&#x5FD7;&#x53D1;&#x73B0;
+cat /root/usrclamav.log |grep FOUND
+</code></pre></li>
+</ul>
+<p>&#x4E09;&#x3001;webshell&#x67E5;&#x6740;</p>
+<p>linux&#x7248;&#xFF1A;</p>
+<pre><code>&#x6CB3;&#x9A6C;webshell&#x67E5;&#x6740;&#xFF1A;http://www.shellpub.com
+&#x6DF1;&#x4FE1;&#x670D;Webshell&#x7F51;&#x7AD9;&#x540E;&#x95E8;&#x68C0;&#x6D4B;&#x5DE5;&#x5177;&#xFF1A;http://edr.sangfor.com.cn/backdoor_detection.html
+</code></pre><p>&#x56DB;&#x3001;RPM check&#x68C0;&#x67E5;</p>
+<p>&#x200B;    &#x7CFB;&#x7EDF;&#x5B8C;&#x6574;&#x6027;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;rpm&#x81EA;&#x5E26;&#x7684;-Va&#x6765;&#x6821;&#x9A8C;&#x68C0;&#x67E5;&#x6240;&#x6709;&#x7684;rpm&#x8F6F;&#x4EF6;&#x5305;&#xFF0C;&#x67E5;&#x770B;&#x54EA;&#x4E9B;&#x547D;&#x4EE4;&#x662F;&#x5426;&#x88AB;&#x66FF;&#x6362;&#x4E86;&#xFF1A;</p>
+<pre><code>./rpm -Va &gt; rpm.log
+</code></pre><p>&#x5982;&#x679C;&#x4E00;&#x5207;&#x5747;&#x6821;&#x9A8C;&#x6B63;&#x5E38;&#x5C06;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x4EFB;&#x4F55;&#x8F93;&#x51FA;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x5C31;&#x4F1A;&#x663E;&#x793A;&#x51FA;&#x6765;&#xFF0C;&#x8F93;&#x51FA;&#x683C;&#x5F0F;&#x662F;8&#x4F4D;&#x957F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6BCF;&#x4E2A;&#x5B57;&#x7B26;&#x90FD;&#x7528;&#x4EE5;&#x8868;&#x793A;&#x6587;&#x4EF6;&#x4E0E;RPM&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x4E00;&#x79CD;&#x5C5E;&#x6027;&#x7684;&#x6BD4;&#x8F83;&#x7ED3;&#x679C; &#xFF0C;&#x5982;&#x679C;&#x662F;. (&#x70B9;) &#x5219;&#x8868;&#x793A;&#x6D4B;&#x8BD5;&#x901A;&#x8FC7;&#x3002;</p>
+<pre><code>&#x9A8C;&#x8BC1;&#x5185;&#x5BB9;&#x4E2D;&#x7684;8&#x4E2A;&#x4FE1;&#x606F;&#x7684;&#x5177;&#x4F53;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;
+        S         &#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x662F;&#x5426;&#x6539;&#x53D8;
+        M         &#x6587;&#x4EF6;&#x7684;&#x7C7B;&#x578B;&#x6216;&#x6587;&#x4EF6;&#x7684;&#x6743;&#x9650;&#xFF08;rwx&#xFF09;&#x662F;&#x5426;&#x88AB;&#x6539;&#x53D8;
+        5         &#x6587;&#x4EF6;MD5&#x6821;&#x9A8C;&#x662F;&#x5426;&#x6539;&#x53D8;&#xFF08;&#x53EF;&#x4EE5;&#x770B;&#x6210;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x662F;&#x5426;&#x6539;&#x53D8;&#xFF09;
+        D         &#x8BBE;&#x5907;&#x4E2D;&#xFF0C;&#x4ECE;&#x4EE3;&#x7801;&#x662F;&#x5426;&#x6539;&#x53D8;
+        L         &#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x662F;&#x5426;&#x6539;&#x53D8;
+        U         &#x6587;&#x4EF6;&#x7684;&#x5C5E;&#x4E3B;&#xFF08;&#x6240;&#x6709;&#x8005;&#xFF09;&#x662F;&#x5426;&#x6539;&#x53D8;
+        G         &#x6587;&#x4EF6;&#x7684;&#x5C5E;&#x7EC4;&#x662F;&#x5426;&#x6539;&#x53D8;
+        T         &#x6587;&#x4EF6;&#x7684;&#x4FEE;&#x6539;&#x65F6;&#x95F4;&#x662F;&#x5426;&#x6539;&#x53D8;
+</code></pre><p>&#x5982;&#x679C;&#x547D;&#x4EE4;&#x88AB;&#x66FF;&#x6362;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x539F;&#x56DE;&#x6765;&#xFF1A;</p>
+<pre><code>&#x6587;&#x4EF6;&#x63D0;&#x53D6;&#x8FD8;&#x539F;&#x6848;&#x4F8B;&#xFF1A;
+rpm  -qf /bin/ls  &#x67E5;&#x8BE2;ls&#x547D;&#x4EE4;&#x5C5E;&#x4E8E;&#x54EA;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;
+mv  /bin/ls /tmp  &#x5148;&#x628A;ls&#x8F6C;&#x79FB;&#x5230;tmp&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x9020;&#x6210;ls&#x547D;&#x4EE4;&#x4E22;&#x5931;&#x7684;&#x5047;&#x8C61;
+rpm2cpio /mnt/cdrom/Packages/coreutils-8.4-19.el6.i686.rpm | cpio -idv ./bin/ls &#x63D0;&#x53D6;rpm&#x5305;&#x4E2D;ls&#x547D;&#x4EE4;&#x5230;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x7684;/bin/ls&#x4E0B;
+cp /root/bin/ls  /bin/ &#x628A;ls&#x547D;&#x4EE4;&#x590D;&#x5236;&#x5230;/bin/&#x76EE;&#x5F55; &#x4FEE;&#x590D;&#x6587;&#x4EF6;&#x4E22;&#x5931;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="第1篇：Window入侵排查.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第1篇:Window入侵排查">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第2篇:Linux入侵排查","level":"1.2.2","depth":2,"next":{"title":"[第二章:Windows实战篇]","level":"1.3","depth":1,"ref":"","articles":[{"title":"第1篇：FTP暴力破解","level":"1.3.1","depth":2,"path":"Windows/第1篇：FTP暴力破解.md","ref":"Windows/第1篇：FTP暴力破解.md","articles":[]},{"title":"第2篇：蠕虫病毒","level":"1.3.2","depth":2,"path":"Windows/第2篇：蠕虫病毒.md","ref":"Windows/第2篇：蠕虫病毒.md","articles":[]},{"title":"第3篇：勒索病毒","level":"1.3.3","depth":2,"path":"Windows/第3篇：勒索病毒.md","ref":"Windows/第3篇：勒索病毒.md","articles":[]},{"title":"第4篇：ARP病毒","level":"1.3.4","depth":2,"path":"Windows/第4篇：ARP病毒.md","ref":"Windows/第4篇：ARP病毒.md","articles":[]},{"title":"第5篇：挖矿病毒（一）","level":"1.3.5","depth":2,"path":"Windows/第5篇：挖矿病毒（一）.md","ref":"Windows/第5篇：挖矿病毒（一）.md","articles":[]},{"title":"第6篇：挖矿病毒（二）","level":"1.3.6","depth":2,"path":"Windows/第6篇：挖矿病毒（二）.md","ref":"Windows/第6篇：挖矿病毒（二）.md","articles":[]}]},"previous":{"title":"第1篇:Window入侵排查","level":"1.2.1","depth":2,"path":"Summary/第1篇：Window入侵排查.md","ref":"Summary/第1篇：Window入侵排查.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Summary/第2篇：Linux入侵排查.md","mtime":"2019-05-14T13:03:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-18T04:46:53.102Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

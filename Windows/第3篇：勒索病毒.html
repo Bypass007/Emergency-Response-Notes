@@ -1,0 +1,608 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第3篇：勒索病毒 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="第4篇：ARP病毒.html" />
+    
+    
+    <link rel="prev" href="第2篇：蠕虫病毒.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    [第一章：应急响应]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Summary/第1篇：Window入侵排查.html">
+            
+                <a href="../Summary/第1篇：Window入侵排查.html">
+            
+                    
+                    第1篇:Window入侵排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../Summary/第2篇：Linux入侵排查.html">
+            
+                <a href="../Summary/第2篇：Linux入侵排查.html">
+            
+                    
+                    第2篇:Linux入侵排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    [第二章:Windows实战篇]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="第1篇：FTP暴力破解.html">
+            
+                <a href="第1篇：FTP暴力破解.html">
+            
+                    
+                    第1篇：FTP暴力破解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="第2篇：蠕虫病毒.html">
+            
+                <a href="第2篇：蠕虫病毒.html">
+            
+                    
+                    第2篇：蠕虫病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.3" data-path="第3篇：勒索病毒.html">
+            
+                <a href="第3篇：勒索病毒.html">
+            
+                    
+                    第3篇：勒索病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="第4篇：ARP病毒.html">
+            
+                <a href="第4篇：ARP病毒.html">
+            
+                    
+                    第4篇：ARP病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="第5篇：挖矿病毒（一）.html">
+            
+                <a href="第5篇：挖矿病毒（一）.html">
+            
+                    
+                    第5篇：挖矿病毒（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="第6篇：挖矿病毒（二）.html">
+            
+                <a href="第6篇：挖矿病毒（二）.html">
+            
+                    
+                    第6篇：挖矿病毒（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    [第三章：Linux实战篇]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../Linux/第1篇：SSH暴力破解.html">
+            
+                <a href="../Linux/第1篇：SSH暴力破解.html">
+            
+                    
+                    第1篇：SSH暴力破解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../Linux/第2篇：捕捉短连接.html">
+            
+                <a href="../Linux/第2篇：捕捉短连接.html">
+            
+                    
+                    第2篇：捕捉短连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../Linux/第3篇：挖矿病毒.html">
+            
+                <a href="../Linux/第3篇：挖矿病毒.html">
+            
+                    
+                    第3篇：挖矿病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../Linux/第4篇：盖茨木马.html">
+            
+                <a href="../Linux/第4篇：盖茨木马.html">
+            
+                    
+                    第4篇：盖茨木马
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../Linux/第5篇：DDOS病毒.html">
+            
+                <a href="../Linux/第5篇：DDOS病毒.html">
+            
+                    
+                    第5篇：DDOS病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    [第四章：Web实战篇]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Web/第1篇：网站被植入Webshell.html">
+            
+                <a href="../Web/第1篇：网站被植入Webshell.html">
+            
+                    
+                    第1篇：网站被植入Webshell
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../Web/第2篇：门罗币恶意挖矿.html">
+            
+                <a href="../Web/第2篇：门罗币恶意挖矿.html">
+            
+                    
+                    第2篇：门罗币恶意挖矿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../Web/第3篇：批量挂黑页.html">
+            
+                <a href="../Web/第3篇：批量挂黑页.html">
+            
+                    
+                    第3篇：批量挂黑页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../Web/第4篇：新闻源网站劫持.html">
+            
+                <a href="../Web/第4篇：新闻源网站劫持.html">
+            
+                    
+                    第4篇：新闻源网站劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../Web/第5篇：移动端劫持.html">
+            
+                <a href="../Web/第5篇：移动端劫持.html">
+            
+                    
+                    第5篇：移动端劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../Web/第6篇：搜索引擎劫持.html">
+            
+                <a href="../Web/第6篇：搜索引擎劫持.html">
+            
+                    
+                    第6篇：搜索引擎劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../Web/第7篇：网站首页被篡改.html">
+            
+                <a href="../Web/第7篇：网站首页被篡改.html">
+            
+                    
+                    第7篇：网站首页被篡改
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../Web/第8篇：管理员账号被篡改.html">
+            
+                <a href="../Web/第8篇：管理员账号被篡改.html">
+            
+                    
+                    第8篇：管理员账号被篡改
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第3篇：勒索病毒</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x7B2C;3&#x7BC7;&#xFF1A;&#x52D2;&#x7D22;&#x75C5;&#x6BD2;">&#x7B2C;3&#x7BC7;&#xFF1A;&#x52D2;&#x7D22;&#x75C5;&#x6BD2;</h2>
+<h3 id="0x00-&#x524D;&#x8A00;">0x00 &#x524D;&#x8A00;</h3>
+<p>&#x200B;    &#x52D2;&#x7D22;&#x75C5;&#x6BD2;&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x65B0;&#x578B;&#x7535;&#x8111;&#x75C5;&#x6BD2;&#xFF0C;&#x4E3B;&#x8981;&#x4EE5;&#x90AE;&#x4EF6;&#x3001;&#x7A0B;&#x5E8F;&#x6728;&#x9A6C;&#x3001;&#x7F51;&#x9875;&#x6302;&#x9A6C;&#x7684;&#x5F62;&#x5F0F;&#x8FDB;&#x884C;&#x4F20;&#x64AD;&#x3002;&#x8BE5;&#x75C5;&#x6BD2;&#x6027;&#x8D28;&#x6076;&#x52A3;&#x3001;&#x5371;&#x5BB3;&#x6781;&#x5927;&#xFF0C;&#x4E00;&#x65E6;&#x611F;&#x67D3;&#x5C06;&#x7ED9;&#x7528;&#x6237;&#x5E26;&#x6765;&#x65E0;&#x6CD5;&#x4F30;&#x91CF;&#x7684;&#x635F;&#x5931;&#x3002;&#x8FD9;&#x79CD;&#x75C5;&#x6BD2;&#x5229;&#x7528;&#x5404;&#x79CD;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#x5BF9;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#xFF0C;&#x88AB;&#x611F;&#x67D3;&#x8005;&#x4E00;&#x822C;&#x65E0;&#x6CD5;&#x89E3;&#x5BC6;&#xFF0C;&#x5FC5;&#x987B;&#x62FF;&#x5230;&#x89E3;&#x5BC6;&#x7684;&#x79C1;&#x94A5;&#x624D;&#x6709;&#x53EF;&#x80FD;&#x7834;&#x89E3;&#x3002;&#x81EA;WannaCry&#x52D2;&#x7D22;&#x75C5;&#x6BD2;&#x5728;&#x5168;&#x7403;&#x7206;&#x53D1;&#x4E4B;&#x540E;&#xFF0C;&#x5404;&#x79CD;&#x53D8;&#x79CD;&#x53CA;&#x65B0;&#x578B;&#x52D2;&#x7D22;&#x75C5;&#x6BD2;&#x5C42;&#x51FA;&#x4E0D;&#x7A77;&#x3002;</p>
+<h3 id="0x01-&#x5E94;&#x6025;&#x573A;&#x666F;">0x01 &#x5E94;&#x6025;&#x573A;&#x666F;</h3>
+<p>&#x200B;    &#x67D0;&#x5929;&#x65E9;&#x4E0A;&#xFF0C;&#x7F51;&#x7AD9;&#x7BA1;&#x7406;&#x5458;&#x6253;&#x5F00;OA&#x7CFB;&#x7EDF;&#xFF0C;&#x9996;&#x9875;&#x8BBF;&#x95EE;&#x5F02;&#x5E38;&#xFF0C;&#x663E;&#x793A;&#x4E71;&#x7801;&#xFF1A;</p>
+<p><img src="image/win-7-1.png" alt=""></p>
+<h3 id="0x02-&#x4E8B;&#x4EF6;&#x5206;&#x6790;">0x02 &#x4E8B;&#x4EF6;&#x5206;&#x6790;</h3>
+<p>&#x200B;    &#x767B;&#x5F55;&#x7F51;&#x7AD9;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x6392;&#x67E5;&#xFF0C;&#x5728;&#x7AD9;&#x70B9;&#x76EE;&#x5F55;&#x4E0B;&#x53D1;&#x73B0;&#x6240;&#x6709;&#x7684;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x53CA;&#x9644;&#x4EF6;&#x90FD;&#x88AB;&#x52A0;&#x5BC6;&#x4E3A;.sage&#x7ED3;&#x5C3E;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x6BCF;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x90FD;&#x6709;&#x4E00;&#x4E2A;!HELP_SOS.hta&#x6587;&#x4EF6;&#xFF0C;&#x6253;&#x5305;&#x4E86;&#x90E8;&#x5206;&#x6837;&#x672C;&#xFF1A;</p>
+<p><img src="image/win-7-2.png" alt=""></p>
+<p>&#x6253;&#x5F00;!HELP_SOS.hta&#x6587;&#x4EF6;&#xFF0C;&#x663E;&#x793A;&#x5982;&#x4E0B;&#xFF1A; </p>
+<p><img src="image/win-7-3.png" alt=""></p>
+<p>&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x57FA;&#x672C;&#x53EF;&#x4EE5;&#x786E;&#x8BA4;&#x662F;&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x4E86;&#x52D2;&#x7D22;&#x75C5;&#x6BD2;&#xFF0C;&#x4E0A;&#x4F20;&#x6837;&#x672C;&#x5230;360&#x52D2;&#x7D22;&#x75C5;&#x6BD2;&#x7F51;&#x7AD9;&#xFF08;<a href="http://lesuobingdu.360.cn&#xFF09;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF1A;&#x786E;&#x8BA4;web&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x4E86;sage&#x52D2;&#x7D22;&#x75C5;&#x6BD2;&#xFF0C;&#x76EE;&#x524D;&#x6682;&#x65F6;&#x65E0;&#x6CD5;&#x89E3;&#x5BC6;&#x3002;" target="_blank">http://lesuobingdu.360.cn&#xFF09;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF1A;&#x786E;&#x8BA4;web&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x4E86;sage&#x52D2;&#x7D22;&#x75C5;&#x6BD2;&#xFF0C;&#x76EE;&#x524D;&#x6682;&#x65F6;&#x65E0;&#x6CD5;&#x89E3;&#x5BC6;&#x3002;</a></p>
+<p><img src="image/win-7-4.png" alt=""></p>
+<p>&#x7EDD;&#x5927;&#x591A;&#x6570;&#x52D2;&#x7D22;&#x75C5;&#x6BD2;&#xFF0C;&#x662F;&#x65E0;&#x6CD5;&#x89E3;&#x5BC6;&#x7684;&#xFF0C;&#x4E00;&#x65E6;&#x88AB;&#x52A0;&#x5BC6;&#xFF0C;&#x5373;&#x4F7F;&#x652F;&#x4ED8;&#x4E5F;&#x4E0D;&#x4E00;&#x5B9A;&#x80FD;&#x591F;&#x83B7;&#x5F97;&#x89E3;&#x5BC6;&#x5BC6;&#x94A5;&#x3002;&#x5728;&#x5E73;&#x65F6;&#x8FD0;&#x7EF4;&#x4E2D;&#x5E94;&#x79EF;&#x6781;&#x505A;&#x597D;&#x5907;&#x4EFD;&#x5DE5;&#x4F5C;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x4E0E;&#x6E90;&#x7801;&#x5206;&#x79BB;&#xFF08;&#x7C7B;&#x4F3C;OA&#x7CFB;&#x7EDF;&#x9644;&#x4EF6;&#x8D44;&#x6E90;&#x4E5F;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x4E5F;&#x8981;&#x5907;&#x4EFD;&#xFF09;&#x3002; </p>
+<p>&#x9047;&#x5230;&#x4E86;&#xFF0C;&#x522B;&#x6025;&#xFF0C;&#x8BD5;&#x4E00;&#x8BD5;&#x52D2;&#x7D22;&#x75C5;&#x6BD2;&#x89E3;&#x5BC6;&#x5DE5;&#x5177;&#xFF1A;</p>
+<pre><code>&#x201C;&#x62D2;&#x7EDD;&#x52D2;&#x7D22;&#x8F6F;&#x4EF6;&#x201D;&#x7F51;&#x7AD9;
+https://www.nomoreransom.org/zh/index.html
+360&#x5B89;&#x5168;&#x536B;&#x58EB;&#x52D2;&#x7D22;&#x75C5;&#x6BD2;&#x4E13;&#x9898;
+http://lesuobingdu.360.cn
+</code></pre><h3 id="0x04-&#x9632;&#x8303;&#x63AA;&#x65BD;">0x04 &#x9632;&#x8303;&#x63AA;&#x65BD;</h3>
+<p>&#x200B;    &#x4E00;&#x65E6;&#x4E2D;&#x4E86;&#x52D2;&#x7D22;&#x75C5;&#x6BD2;&#xFF0C;&#x6587;&#x4EF6;&#x4F1A;&#x88AB;&#x9501;&#x6B7B;&#xFF0C;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x6B63;&#x5E38;&#x8BBF;&#x95EE;&#x4E86;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x7ED9;&#x4F60;&#x5E26;&#x6765;&#x6781;&#x5927;&#x7684;&#x56F0;&#x607C;&#x3002;&#x4E3A;&#x4E86;&#x9632;&#x8303;&#x8FD9;&#x6837;&#x7684;&#x4E8B;&#x60C5;&#x51FA;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x7535;&#x8111;&#x4E0A;&#x8981;&#x5148;&#x505A;&#x597D;&#x4E00;&#x4E9B;&#x63AA;&#x65BD;&#xFF1A;</p>
+<pre><code>1&#x3001;&#x5B89;&#x88C5;&#x6740;&#x6BD2;&#x8F6F;&#x4EF6;&#xFF0C;&#x4FDD;&#x6301;&#x76D1;&#x63A7;&#x5F00;&#x542F;&#xFF0C;&#x5B9A;&#x671F;&#x5168;&#x76D8;&#x626B;&#x63CF;
+2&#x3001;&#x53CA;&#x65F6;&#x66F4;&#x65B0; Windows&#x5B89;&#x5168;&#x8865;&#x4E01;&#xFF0C;&#x5F00;&#x542F;&#x9632;&#x706B;&#x5899;&#x4E34;&#x65F6;&#x5173;&#x95ED;&#x7AEF;&#x53E3;&#xFF0C;&#x5982;445&#x3001;135&#x3001;137&#x3001;138&#x3001;139&#x3001;3389&#x7B49;&#x7AEF;&#x53E3;
+3&#x3001;&#x53CA;&#x65F6;&#x66F4;&#x65B0;web&#x6F0F;&#x6D1E;&#x8865;&#x4E01;&#xFF0C;&#x5347;&#x7EA7;web&#x7EC4;&#x4EF6;
+4&#x3001;&#x5907;&#x4EFD;&#x3002;&#x91CD;&#x8981;&#x7684;&#x8D44;&#x6599;&#x4E00;&#x5B9A;&#x8981;&#x5907;&#x4EFD;&#xFF0C;&#x8C28;&#x9632;&#x8D44;&#x6599;&#x4E22;&#x5931;
+5&#x3001;&#x5F3A;&#x5316;&#x7F51;&#x7EDC;&#x5B89;&#x5168;&#x610F;&#x8BC6;&#xFF0C;&#x964C;&#x751F;&#x94FE;&#x63A5;&#x4E0D;&#x70B9;&#x51FB;&#xFF0C;&#x964C;&#x751F;&#x6587;&#x4EF6;&#x4E0D;&#x8981;&#x4E0B;&#x8F7D;&#xFF0C;&#x964C;&#x751F;&#x90AE;&#x4EF6;&#x4E0D;&#x8981;&#x6253;&#x5F00;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="第2篇：蠕虫病毒.html" class="navigation navigation-prev " aria-label="Previous page: 第2篇：蠕虫病毒">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="第4篇：ARP病毒.html" class="navigation navigation-next " aria-label="Next page: 第4篇：ARP病毒">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第3篇：勒索病毒","level":"1.3.3","depth":2,"next":{"title":"第4篇：ARP病毒","level":"1.3.4","depth":2,"path":"Windows/第4篇：ARP病毒.md","ref":"Windows/第4篇：ARP病毒.md","articles":[]},"previous":{"title":"第2篇：蠕虫病毒","level":"1.3.2","depth":2,"path":"Windows/第2篇：蠕虫病毒.md","ref":"Windows/第2篇：蠕虫病毒.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Windows/第3篇：勒索病毒.md","mtime":"2019-05-14T13:09:04.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-18T04:46:53.102Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
