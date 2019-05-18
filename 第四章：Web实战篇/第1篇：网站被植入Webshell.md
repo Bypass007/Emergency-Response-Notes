@@ -6,7 +6,7 @@
 
 网站管理员在站点目录下发现存在webshell，于是开始了对入侵过程展开了分析。
 
-![](.\image\1-1.png)
+![](./image/1-1.png)
 
 Webshell查杀工具：
 
@@ -26,27 +26,27 @@ hm scan  /www
 
 通过发现的webshell文件创建时间点，去翻看相关日期的访问日志。
 
-![](.\image\1-2.png)
+![](./image/1-2.png)
 
 #### 2、Web 日志分析
 
 经过日志分析，在文件创建的时间节点并未发现可疑的上传，但发现存在可疑的webservice接口
 
-![](.\image\1-3.png)
+![](./image/1-3.png)
 
 #### 3、漏洞分析
 
 访问webservice接口，发现变量：buffer、distinctpach、newfilename可以在客户端自定义
 
-![](.\image\1-4.png)
+![](./image/1-4.png)
 
 #### 4、漏洞复现
 
 尝试对漏洞进行复现，可成功上传webshell，控制网站服务器
 
-![](.\image\1-5.png)
+![](./image/1-5.png)
 
-![](.\image\1-6.png)
+![](./image/1-6.png)
 
 #### 5、漏洞修复
 
