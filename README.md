@@ -12,7 +12,7 @@ GitBook 地址：https://bypass007.github.io/Emergency-Response-Notes/
 
 我将持续更新这份笔记，希望能帮到有需要的人。
 
-如果你看到好的案例，欢迎通过issue提交。
+如果你看到好的案例，欢迎通过issue提交，欢迎Star予以支持。
 
 ### 项目目录
 
