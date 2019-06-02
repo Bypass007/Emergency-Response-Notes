@@ -2,13 +2,13 @@
 
 ### 0x00 前言
 
-​	当企业发生黑客入侵、系统崩溃或其它影响业务正常运行的安全事件时，急需第一时间进行处理，使企业的网络信息系统在最短时间内恢复正常工作，进一步查找入侵来源，还原入侵事故过程，同时给出解决方案与防范措施，为企业挽回或减少经济损失。  
+当企业发生黑客入侵、系统崩溃或其它影响业务正常运行的安全事件时，急需第一时间进行处理，使企业的网络信息系统在最短时间内恢复正常工作，进一步查找入侵来源，还原入侵事故过程，同时给出解决方案与防范措施，为企业挽回或减少经济损失。  
 
 针对常见的攻击事件，结合工作中应急响应事件分析和解决的方法，总结了一些Linux服务器入侵排查的思路。
 
 ### 0x01 入侵排查思路
 
-一、账号安全
+#### 1.1 账号安全
 
 **基本使用：**
 
@@ -45,7 +45,7 @@ uptime  查看登陆多久、多少用户，负载
 	userdel -r user    将删除user用户，并且将/home目录下的user目录一并删除
 ~~~
 
-二、历史命令
+#### 1.2 历史命令
 
 **基本使用：**
 
@@ -84,7 +84,7 @@ export PROMPT_COMMAND="history -a"
 cat .bash_history >> history.txt
 ~~~
 
-三、端口
+#### 1.3 检查异常端口
 
 使用netstat 网络连接命令，分析可疑端口、IP、PID
 
@@ -95,7 +95,7 @@ netstat -antlp|more
 运行ls -l /proc/$PID/exe或file /proc/$PID/exe（$PID 为对应的pid 号）
 ~~~
 
-四、进程
+#### 1.4 检查异常进程
 
 使用ps命令，分析进程
 
@@ -103,7 +103,7 @@ netstat -antlp|more
 ps aux | grep pid 
 ~~~
 
-五、开机启动项
+#### 1.5 检查开机启动项
 
 **基本使用：**
 
@@ -143,7 +143,8 @@ ps aux | grep pid
 	more /etc/rc.local
 	/etc/rc.d/rc[0~6].d
 	ls -l /etc/rc.d/rc3.d/
-六、定时任务
+
+#### 1.6 检查定时任务
 
 **基本使用**
 
@@ -190,7 +191,7 @@ crontab -e   使用编辑器编辑当前的crontab文件
 
 	 more /etc/cron.daily/*  查看目录下所有文件
 
-七、服务
+#### 1.7 检查服务
 
 **服务自启动**
 
@@ -231,7 +232,17 @@ RPM包安装的服务
 	service httpd start
 	搜索/etc/rc.d/init.d/  查看是否存在
 
-八、系统日志
+#### 1.8 检查异常文件
+
+1、查看敏感目录，如/tmp目录下的文件，同时注意隐藏文件夹，以“..”为名的文件夹具有隐藏属性
+
+2、得到发现WEBSHELL、远控木马的创建时间，如何找出同一时间范围内创建的文件？
+
+​	可以使用find命令来查找，如 find /opt -iname "*" -atime 1 -type f  找出 /opt 下一天前访问过的文件
+
+3、针对可疑文件可以使用stat进行创建修改时间。
+
+#### 1.9 检查系统日志
 
 日志默认存放位置：/var/log/
 
@@ -292,7 +303,7 @@ Jul 10 00:43:09 localhost sudo:    good : TTY=pts/4 ; PWD=/home/good ; USER=root
 
 ### 0x02 工具篇
 
-一、Rootkit查杀
+#### 2.1 Rootkit查杀
 
 * chkrootkit  
 
@@ -321,7 +332,7 @@ Jul 10 00:43:09 localhost sudo:    good : TTY=pts/4 ; PWD=/home/good ; USER=root
   rkhunter -c
   ~~~
 
- 二、病毒查杀
+#### 2.2 病毒查杀
 
 * Clamav
 
@@ -384,7 +395,7 @@ Jul 10 00:43:09 localhost sudo:    good : TTY=pts/4 ; PWD=/home/good ; USER=root
   cat /root/usrclamav.log |grep FOUND
   ~~~
 
-三、webshell查杀
+#### 2.3 webshell查杀
 
 linux版：
 
@@ -393,7 +404,7 @@ linux版：
 深信服Webshell网站后门检测工具：http://edr.sangfor.com.cn/backdoor_detection.html
 ~~~
 
-四、RPM check检查
+#### 2.4 RPM check检查
 
 ​	系统完整性可以通过rpm自带的-Va来校验检查所有的rpm软件包，查看哪些命令是否被替换了：
 
@@ -425,7 +436,17 @@ rpm2cpio /mnt/cdrom/Packages/coreutils-8.4-19.el6.i686.rpm | cpio -idv ./bin/ls 
 cp /root/bin/ls  /bin/ 把ls命令复制到/bin/目录 修复文件丢失
 ~~~
 
+#### 2.5 linux安全检查脚本
+
+Github项目地址：
+
+https://github.com/grayddq/GScan
+
+https://github.com/ppabc/security_check
+
+https://github.com/T0xst/linux
 
 
 
+**尽信书不如无书，工具只是辅助，别太过于依赖，关键在于你如何解决问题的思路。**
 

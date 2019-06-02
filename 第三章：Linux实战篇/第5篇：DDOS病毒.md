@@ -11,7 +11,7 @@
 
 在root目录下发现存活检测脚本
 
-![](./image/linux-14-1.png)
+![](.\image\linux-14-1.png)
 
 解决步骤：
 
