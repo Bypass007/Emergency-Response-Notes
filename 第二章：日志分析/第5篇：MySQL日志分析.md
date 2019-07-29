@@ -1,8 +1,6 @@
 ## 第5篇:MySQL日志分析
 
-常见的数据库攻击包括弱口令、SQL注入、提升权限、窃取备份等。
-
-对数据库的日志进行分析，可以发现攻击行为，追溯攻击源，进而还原攻击场景。
+常见的数据库攻击包括弱口令、SQL注入、提升权限、窃取备份等。对数据库日志进行分析，可以发现攻击行为，进一步还原攻击场景及追溯攻击源。
 
 ### 0x01 Mysql日志分析
 
@@ -17,12 +15,31 @@ SET GLOBAL general_log = 'On';
 #SET GLOBAL general_log_file = '/var/lib/mysql/mysql.log';
 ~~~
 
+比如，当我访问 /test.php?id=1，此时我们得到这样的日志：
+
+~~~
+190604 14:46:14       14 Connect    root@localhost on 
+           14 Init DB    test
+           14 Query    SELECT * FROM admin WHERE id = 1
+           14 Quit  `
+~~~
+我们按列来解析一下：
+~~~
+第一列:Time，时间列，前面一个是日期,后面一个是小时和分钟，有一些不显示的原因是因为这些sql语句几乎是同时执行的,所以就不另外记录时间了。
+第二列:Id，就是show processlist出来的第一列的线程ID,对于长连接和一些比较耗时的sql语句,你可以精确找出究竟是那一条那一个线程在运行。
+第三列:Command，操作类型，比如Connect就是连接数据库，Query就是查询数据库(增删查改都显示为查询)，可以特定过虑一些操作。
+第四列:Argument，详细信息，例如 Connect    root@localhost on 意思就是连接数据库，如此类推,接下面的连上数据库之后,做了什么查询的操作。
+~~~
+
+### 0x02 登录成功/失败
+
 我们来做个简单的测试吧，使用我以前自己开发的弱口令工具来扫一下，字典设置比较小，2个用户，4个密码，共8组。
 
 ![](./image/log-5-1.png)
 
 MySQL中的log记录是这样子：
 
+~~~
 Time                 Id        Command         Argument
 
 190601 22:03:20	   98 Connect	root@192.168.204.1 on 
@@ -42,19 +59,11 @@ Time                 Id        Command         Argument
 		  102 Connect	mysql@192.168.204.1 on 
 		  102 Connect	Access denied for user 'mysql'@'192.168.204.1' (using password: YES)
 		  100 Quit	`
-
-我们来按列来解析:
-
-~~~
-第一列:Time，时间列，前面一个是日期,后面一个是小时和分钟，有一些不显示的原因是因为这些sql语句几乎是同时执行的,所以就不另外记录时间了。
-第二列:Id，就是show processlist出来的第一列的线程ID,对于长连接和一些比较耗时的sql语句,你可以精确找出究竟是那一条那一个线程在运行。
-第三列:Command，操作类型，比如Connect就是连接数据库，Query就是查询数据库(增删查改都显示为查询)，可以特定过虑一些操作。
-第四列:Argument，详细信息，例如 Connect   root@192.168.204.1 on test  意思就是root@192.168.204.1连上test库，如此类推,接下面的连上数据库之后,做了什么查询的操作。
 ~~~
 
-你知道在这个口令猜解过程中，哪个是成功的，哪个是失败的吗？
+你知道在这个口令猜解过程中，哪个是成功的吗？
 
-一个口令猜解成功的记录是这样子的：
+利用爆破工具，一个口令猜解成功的记录是这样子的：
 
 ~~~
 190601 22:03:20     100 Connect	root@192.168.204.1 on 
@@ -64,22 +73,27 @@ Time                 Id        Command         Argument
 
 但是，如果你是用其他方式，可能会有一点点不一样的哦。
 
-~~~
 Navicat for MySQL登录：
+
+~~~
 190601 22:14:07	  106 Connect	root@192.168.204.1 on 
 		         106 Query	SET NAMES utf8
 		         106 Query	SHOW VARIABLES LIKE 'lower_case_%'
 		         106 Query	SHOW VARIABLES LIKE 'profiling'
 		         106 Query	SHOW DATABASES
+~~~
 
 命令行登录：
+
+~~~
 190601 22:17:25	  111 Connect	root@localhost on 
 		         111 Query	select @@version_comment limit 1
 190601 22:17:56	  111 Quit
-
 ~~~
 
-通过这样的方式，我们可以简单判断出用户是通过连接数据库的方式。
+这个差别在于，不同的数据库连接工具，它在连接数据库初始化的过程中是不同的。通过这样的差别，我们可以简单判断出用户是通过连接数据库的方式。
+
+另外，不管你是爆破工具、Navicat for MySQL、还是命令行，登录失败都是一样的记录。
 
 登录失败的记录：
 
@@ -87,8 +101,6 @@ Navicat for MySQL登录：
 102 Connect	mysql@192.168.204.1 on 
 102 Connect	Access denied for user 'mysql'@'192.168.204.1' (using password: YES)
 ~~~
-
-当然啦，不管你是爆破工具、Navicat for MySQL、还是命令行，登录失败都是一样的记录。
 
 利用shell命令进行简单的分析：
 
@@ -106,7 +118,11 @@ grep  "Access denied" mysql.log |cut -d "'" -f2|uniq -c|sort -nr
 
 ~~~
 
-### 0x02  SQL注入入侵痕迹
+在日志分析中，特别需要注意一些敏感的操作行为，比如删表、备库，读写文件等。关键词：drop table、drop function、lock tables、unlock tables、load_file() 、into outfile、into dumpfile。
+
+敏感数据库表：SELECT * from mysql.user、SELECT * from mysql.func
+
+### 0x03  SQL注入入侵痕迹
 
 在利用SQL注入漏洞的过程中，我们会尝试利用sqlmap的--os-shell参数取得shell，如操作不慎，可能留下一些sqlmap创建的临时表和自定义函数。我们先来看一下sqlmap os-shell参数的用法以及原理：
 
@@ -147,3 +163,4 @@ c:/windows/system32/wbem/mof/
 `select * from mysql.func`
 
 3、结合web日志分析。
+
