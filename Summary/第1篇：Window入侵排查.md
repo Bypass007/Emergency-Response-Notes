@@ -46,8 +46,6 @@ web入侵：网页挂马、主页篡改、Webshell
 
 ![](./image/sum-1-2.png)
 
-
-
 #### 1.2 检查异常端口、进程
 
 1、检查端口连接情况，是否有远程连接、可疑连接。
@@ -95,8 +93,6 @@ web入侵：网页挂马、主页篡改、Webshell
 ​	e、查看Windows服务所对应的端口：
 ​		%system%/system32/drivers/etc/services（一般%system%就是C:\Windows）
 
-
-
 #### 1.3 检查启动项、计划任务、服务
 
 1、检查服务器是否有异常的启动项。
@@ -117,8 +113,6 @@ web入侵：网页挂马、主页篡改、Webshell
 
 ![](./image/sum-1-4.png)
 
-
-
 2、检查计划任务
 
 * 检查方法：
@@ -126,8 +120,6 @@ web入侵：网页挂马、主页篡改、Webshell
   a、单击【开始】>【设置】>【控制面板】>【任务计划】，查看计划任务属性，便可以发现木马文件的路径。
 
   b、单击【开始】>【运行】；输入 cmd，然后输入at，检查计算机与网络上的其它计算机之间的会话或计划任务，如有，则确认是否为正常连接。
-
-
 
 3、服务自启动
 
@@ -196,7 +188,6 @@ WEB访问日志
 
   ​		         Linux下，使用Shell命令组合查询分析
 
-  
 
 ### 0x02 工具篇
 
@@ -216,8 +207,6 @@ OTL：https://www.bleepingcomputer.com/download/otl/
 
 SysInspector：http://download.eset.com.cn/download/detail/?product=sysinspector
 
-
-
 #### 2.2 病毒查杀
 
 卡巴斯基：http://devbuilds.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe   （推荐理由：绿色版、最新病毒库）
@@ -227,8 +216,6 @@ SysInspector：http://download.eset.com.cn/download/detail/?product=sysinspector
 火绒安全软件：https://www.huorong.cn
 
 360杀毒：http://sd.360.cn/download_center.html
-
-
 
 #### 2.3 病毒动态
 
@@ -242,8 +229,6 @@ CVERC-国家计算机病毒应急处理中心：http://www.cverc.org.cn
 
 腾讯电脑管家：http://bbs.guanjia.qq.com/forum-2-1.html
 
-
-
 #### 2.4 在线病毒扫描网站
 
 http://www.virscan.org         //多引擎在线病毒扫描网 v1.02，当前支持 41 款杀毒引擎     
@@ -253,8 +238,6 @@ https://habo.qq.com             //腾讯哈勃分析系统
 https://virusscan.jotti.org      //Jotti恶意软件扫描系统
 
 http://www.scanvir.com        //针对计算机病毒、手机病毒、可疑文件等进行检测分析
-
-
 
 #### 2.5 webshell查杀
 

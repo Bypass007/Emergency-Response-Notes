@@ -1,0 +1,924 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第7篇：常见WebShell管理工具 · 应急响应实战笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Bypass">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Windows/" />
+    
+    
+    <link rel="prev" href="第6篇：三大渗透测试框架权限维持技术.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"Bypass007","repo":"Emergency-Response-Notes","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Summary/">
+            
+                <a href="../Summary/">
+            
+                    
+                    第一章：应急响应
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Summary/第1篇：Window入侵排查.html">
+            
+                <a href="../Summary/第1篇：Window入侵排查.html">
+            
+                    
+                    第1篇：Window入侵排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../Summary/第2篇：Linux入侵排查.html">
+            
+                <a href="../Summary/第2篇：Linux入侵排查.html">
+            
+                    
+                    第2篇：Linux入侵排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../Summary/第3篇：常见的Webshell查杀工具.html">
+            
+                <a href="../Summary/第3篇：常见的Webshell查杀工具.html">
+            
+                    
+                    第3篇：常见的Webshell查杀工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../Summary/第4篇：如何发现隐藏的Webshell后门.html">
+            
+                <a href="../Summary/第4篇：如何发现隐藏的Webshell后门.html">
+            
+                    
+                    第4篇：如何发现隐藏的Webshell后门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../Summary/第5篇：勒索病毒自救指南.html">
+            
+                <a href="../Summary/第5篇：勒索病毒自救指南.html">
+            
+                    
+                    第5篇：勒索病毒自救指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../LogAnalysis/">
+            
+                <a href="../LogAnalysis/">
+            
+                    
+                    第二章：日志分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../LogAnalysis/第1篇：Window日志分析.html">
+            
+                <a href="../LogAnalysis/第1篇：Window日志分析.html">
+            
+                    
+                    第1篇:Window日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../LogAnalysis/第2篇：Linux日志分析.html">
+            
+                <a href="../LogAnalysis/第2篇：Linux日志分析.html">
+            
+                    
+                    第2篇:Linux日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../LogAnalysis/第3篇：Web日志分析.html">
+            
+                <a href="../LogAnalysis/第3篇：Web日志分析.html">
+            
+                    
+                    第3篇:Web日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../LogAnalysis/第4篇：MSSQL日志分析.html">
+            
+                <a href="../LogAnalysis/第4篇：MSSQL日志分析.html">
+            
+                    
+                    第4篇:MSSQL日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../LogAnalysis/第5篇：MySQL日志分析.html">
+            
+                <a href="../LogAnalysis/第5篇：MySQL日志分析.html">
+            
+                    
+                    第5篇:MySQL日志分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第三章：权限维持篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="第1篇：Windows权限维持--隐藏篇.html">
+            
+                <a href="第1篇：Windows权限维持--隐藏篇.html">
+            
+                    
+                    第1篇：Windows权限维持--隐藏篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="第2篇：Windows权限维持--后门篇.html">
+            
+                <a href="第2篇：Windows权限维持--后门篇.html">
+            
+                    
+                    第2篇：Windows权限维持--后门篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="第3篇：Linux权限维持--隐藏篇.html">
+            
+                <a href="第3篇：Linux权限维持--隐藏篇.html">
+            
+                    
+                    第3篇：Linux权限维持--隐藏篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="第4篇：Linux权限维持--后门篇.html">
+            
+                <a href="第4篇：Linux权限维持--后门篇.html">
+            
+                    
+                    第4篇：Linux权限维持--后门篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="第5篇：Windows命令行文件下载方式汇总.html">
+            
+                <a href="第5篇：Windows命令行文件下载方式汇总.html">
+            
+                    
+                    第5篇：Windows命令行文件下载方式汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="第6篇：三大渗透测试框架权限维持技术.html">
+            
+                <a href="第6篇：三大渗透测试框架权限维持技术.html">
+            
+                    
+                    第6篇：三大渗透测试框架权限维持技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.7" data-path="第7篇：常见WebShell管理工具.html">
+            
+                <a href="第7篇：常见WebShell管理工具.html">
+            
+                    
+                    第7篇：常见WebShell管理工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../Windows/">
+            
+                <a href="../Windows/">
+            
+                    
+                    第四章：Windows实战篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Windows/第1篇：FTP暴力破解.html">
+            
+                <a href="../Windows/第1篇：FTP暴力破解.html">
+            
+                    
+                    第1篇：FTP暴力破解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../Windows/第2篇：蠕虫病毒.html">
+            
+                <a href="../Windows/第2篇：蠕虫病毒.html">
+            
+                    
+                    第2篇：蠕虫病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../Windows/第3篇：勒索病毒.html">
+            
+                <a href="../Windows/第3篇：勒索病毒.html">
+            
+                    
+                    第3篇：勒索病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../Windows/第4篇：ARP病毒.html">
+            
+                <a href="../Windows/第4篇：ARP病毒.html">
+            
+                    
+                    第4篇：ARP病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../Windows/第5篇：挖矿病毒（一）.html">
+            
+                <a href="../Windows/第5篇：挖矿病毒（一）.html">
+            
+                    
+                    第5篇：挖矿病毒（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../Windows/第6篇：挖矿病毒（二）.html">
+            
+                <a href="../Windows/第6篇：挖矿病毒（二）.html">
+            
+                    
+                    第6篇：挖矿病毒（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../Linux/">
+            
+                <a href="../Linux/">
+            
+                    
+                    第五章：Linux实战篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../Linux/第1篇：SSH暴力破解.html">
+            
+                <a href="../Linux/第1篇：SSH暴力破解.html">
+            
+                    
+                    第1篇：SSH暴力破解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../Linux/第2篇：捕捉短连接.html">
+            
+                <a href="../Linux/第2篇：捕捉短连接.html">
+            
+                    
+                    第2篇：捕捉短连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../Linux/第3篇：挖矿病毒.html">
+            
+                <a href="../Linux/第3篇：挖矿病毒.html">
+            
+                    
+                    第3篇：挖矿病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../Linux/第4篇：盖茨木马.html">
+            
+                <a href="../Linux/第4篇：盖茨木马.html">
+            
+                    
+                    第4篇：盖茨木马
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../Linux/第5篇：DDOS病毒.html">
+            
+                <a href="../Linux/第5篇：DDOS病毒.html">
+            
+                    
+                    第5篇：DDOS病毒
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Web/">
+            
+                <a href="../Web/">
+            
+                    
+                    第六章：Web实战篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../Web/第1篇：网站被植入Webshell.html">
+            
+                <a href="../Web/第1篇：网站被植入Webshell.html">
+            
+                    
+                    第1篇：网站被植入Webshell
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../Web/第2篇：门罗币恶意挖矿.html">
+            
+                <a href="../Web/第2篇：门罗币恶意挖矿.html">
+            
+                    
+                    第2篇：门罗币恶意挖矿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../Web/第3篇：批量挂黑页.html">
+            
+                <a href="../Web/第3篇：批量挂黑页.html">
+            
+                    
+                    第3篇：批量挂黑页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../Web/第4篇：新闻源网站劫持.html">
+            
+                <a href="../Web/第4篇：新闻源网站劫持.html">
+            
+                    
+                    第4篇：新闻源网站劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../Web/第5篇：移动端劫持.html">
+            
+                <a href="../Web/第5篇：移动端劫持.html">
+            
+                    
+                    第5篇：移动端劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../Web/第6篇：搜索引擎劫持.html">
+            
+                <a href="../Web/第6篇：搜索引擎劫持.html">
+            
+                    
+                    第6篇：搜索引擎劫持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../Web/第7篇：网站首页被篡改.html">
+            
+                <a href="../Web/第7篇：网站首页被篡改.html">
+            
+                    
+                    第7篇：网站首页被篡改
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../Web/第8篇：管理员账号被篡改.html">
+            
+                <a href="../Web/第8篇：管理员账号被篡改.html">
+            
+                    
+                    第8篇：管理员账号被篡改
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../Web/第9篇：编辑器入侵事件.html">
+            
+                <a href="../Web/第9篇：编辑器入侵事件.html">
+            
+                    
+                    第9篇：编辑器入侵事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第7篇：常见WebShell管理工具</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x7B2C;7&#x7BC7;&#xFF1A;&#x5E38;&#x89C1;webshell&#x7BA1;&#x7406;&#x5DE5;&#x5177;">&#x7B2C;7&#x7BC7;&#xFF1A;&#x5E38;&#x89C1;WebShell&#x7BA1;&#x7406;&#x5DE5;&#x5177;</h2>
+<p>&#x653B;&#x51FB;&#x8005;&#x5728;&#x5165;&#x4FB5;&#x7F51;&#x7AD9;&#x65F6;&#xFF0C;&#x901A;&#x5E38;&#x8981;&#x901A;&#x8FC7;&#x5404;&#x79CD;&#x65B9;&#x5F0F;&#x5199;&#x5165;Webshell&#xFF0C;&#x4ECE;&#x800C;&#x83B7;&#x5F97;&#x670D;&#x52A1;&#x5668;&#x7684;&#x63A7;&#x5236;&#x6743;&#x9650;&#xFF0C;&#x6BD4;&#x5982;&#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x547D;&#x4EE4;&#x3001;&#x8BFB;&#x53D6;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3001;&#x7A83;&#x53D6;&#x7528;&#x6237;&#x6570;&#x636E;&#xFF0C;&#x7BE1;&#x6539;&#x7F51;&#x7AD9;&#x9875;&#x9762;&#x7B49;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x5341;&#x6B3E;&#x5E38;&#x7528;&#x7684;Webshell&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF0C;&#x4EE5;&#x4F9B;&#x4F60;&#x9009;&#x62E9;&#xFF0C;&#x4F60;&#x4F1A;&#x9009;&#x62E9;&#x54EA;&#x4E00;&#x4E2A;&#xFF1F;</p>
+<hr>
+<p><strong>1&#x3001;&#x4E2D;&#x56FD;&#x83DC;&#x5200;(Chopper)</strong></p>
+<p>&#x4E2D;&#x56FD;&#x83DC;&#x5200;&#x662F;&#x4E00;&#x6B3E;&#x4E13;&#x4E1A;&#x7684;&#x7F51;&#x7AD9;&#x7BA1;&#x7406;&#x8F6F;&#x4EF6;&#xFF0C;&#x7528;&#x9014;&#x5E7F;&#x6CDB;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x4FBF;&#xFF0C;&#x5C0F;&#x5DE7;&#x5B9E;&#x7528;&#x3002;&#x53EA;&#x8981;&#x652F;&#x6301;&#x52A8;&#x6001;&#x811A;&#x672C;&#x7684;&#x7F51;&#x7AD9;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x4E2D;&#x56FD;&#x83DC;&#x5200;&#x6765;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF01;&#x5728;&#x975E;&#x7B80;&#x4F53;&#x4E2D;&#x6587;&#x73AF;&#x5883;&#x4E0B;&#x4F7F;&#x7528;&#xFF0C;&#x81EA;&#x52A8;&#x5207;&#x6362;&#x5230;&#x82F1;&#x6587;&#x754C;&#x9762;&#x3002;UNICODE&#x65B9;&#x5F0F;&#x7F16;&#x8BD1;&#xFF0C;&#x652F;&#x6301;&#x591A;&#x56FD;&#x8BED;&#x8A00;&#x8F93;&#x5165;&#x663E;&#x793A;&#x3002;</p>
+<p><img src="image/privilege-6-1.png" alt=""></p>
+<p><strong>2&#x3001;&#x8681;&#x5251;(AntSword)</strong></p>
+<p>AntSword&#x662F;&#x4E00;&#x4E2A;&#x5F00;&#x653E;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x8DE8;&#x5E73;&#x53F0;&#x7684;&#x7F51;&#x7AD9;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF0C;&#x65E8;&#x5728;&#x6EE1;&#x8DB3;&#x6E17;&#x900F;&#x6D4B;&#x8BD5;&#x4EBA;&#x5458;&#x4EE5;&#x53CA;&#x5177;&#x6709;&#x6743;&#x9650;&#x548C;/&#x6216;&#x6388;&#x6743;&#x7684;&#x5B89;&#x5168;&#x7814;&#x7A76;&#x4EBA;&#x5458;&#x4EE5;&#x53CA;&#x7F51;&#x7AD9;&#x7BA1;&#x7406;&#x5458;&#x7684;&#x9700;&#x6C42;&#x3002;</p>
+<p>github&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/AntSwordProject/antSword" target="_blank">https://github.com/AntSwordProject/antSword</a></p>
+<p><img src="image/privilege-6-2.png" alt=""></p>
+<p><strong>3&#x3001;C&#x5200;(Cknife)</strong></p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x6B3E;&#x8DE8;&#x5E73;&#x53F0;&#x7684;&#x57FA;&#x4E8E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x4E2D;&#x56FD;&#x83DC;&#x5200;&#xFF0C;&#x628A;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x7ED9;&#x4E88;&#x7528;&#x6237;&#x6765;&#x5B9A;&#x4E49;&#x3002;</p>
+<p>github&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/Chora10/Cknife" target="_blank">https://github.com/Chora10/Cknife</a></p>
+<p><img src="image/privilege-6-3.png" alt=""></p>
+<p><strong>4&#x3001;&#x51B0;&#x874E;(Behinder)</strong></p>
+<p>&#x51B0;&#x874E;&#x201D;&#x662F;&#x4E00;&#x6B3E;&#x52A8;&#x6001;&#x4E8C;&#x8FDB;&#x5236;&#x52A0;&#x5BC6;&#x7F51;&#x7AD9;&#x7BA1;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x3002;</p>
+<p>github&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/rebeyond/Behinder" target="_blank">https://github.com/rebeyond/Behinder</a></p>
+<p><img src="image/privilege-6-4.png" alt=""></p>
+<p><strong>5&#x3001;Xise</strong></p>
+<p>XISE WebShell&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x3002;</p>
+<p><img src="image/privilege-6-5.png" alt=""></p>
+<p><strong>6&#x3001;Altman</strong></p>
+<p>Altman3&#x662F;&#x4E00;&#x6B3E;&#x6E17;&#x900F;&#x6D4B;&#x8BD5;&#x8F6F;&#x4EF6;&#xFF0C;&#x57FA;&#x4E8E;.Net4.0&#x5F00;&#x53D1;&#xFF0C;&#x4F9D;&#x6258;Eto.Form&#x53EF;&#x4EE5;&#x5B8C;&#x7F8E;&#x8FD0;&#x884C;&#x5728;Windows&#x3001;Linux&#x3001;Mac&#x7B49;&#x591A;&#x4E2A;&#x5E73;&#x53F0;&#x3002;</p>
+<p>github&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/keepwn/Altman" target="_blank">https://github.com/keepwn/Altman</a></p>
+<p><img src="image/privilege-6-6.png" alt=""></p>
+<p><strong>7&#x3001;Weevely</strong></p>
+<p>Weevely&#x662F;&#x4E00;&#x79CD;Python&#x7F16;&#x5199;&#x7684;webshell&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF0C;&#x8DE8;&#x5E73;&#x53F0;&#xFF0C;&#x53EA;&#x652F;&#x6301;PHP&#x3002;</p>
+<p>github&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/epinna/weevely3" target="_blank">https://github.com/epinna/weevely3</a></p>
+<p>&#x7528;&#x6CD5;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code>weevely generate &lt;password&gt; &lt;path&gt;
+weevely &lt;URL&gt; &lt;password&gt; [cmd]
+</code></pre><p>&#x540C;&#x65F6;&#xFF0C;&#x5728;Kali 2.0 &#x7248;&#x672C;&#x4E0B;&#xFF0C;&#x96C6;&#x6210;&#x4E86;&#x4E09;&#x6B3E;Web&#x540E;&#x95E8;&#x5DE5;&#x5177;&#xFF1A;WebaCoo&#x3001;weevely&#x3001;PHP Meterpreter&#x3002;</p>
+<p><img src="image/privilege-6-7.png" alt=""></p>
+<p><strong>8&#x3001;QuasiBot</strong></p>
+<p>QuasiBot&#x662F;&#x4E00;&#x6B3E;php&#x7F16;&#x5199;&#x7684;webshell&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;webshell&#x8FDB;&#x884C;&#x8FDC;&#x7A0B;&#x6279;&#x91CF;&#x7BA1;&#x7406;&#x3002;</p>
+<p>github&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/Smaash/quasibot" target="_blank">https://github.com/Smaash/quasibot</a></p>
+<p><img src="image/privilege-6-8.png" alt=""></p>
+<p><strong>9&#x3001;Webshell-Sniper</strong></p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x6B3E;&#x57FA;&#x4E8E;&#x7EC8;&#x7AEF;&#x7684;webshell&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF0C;&#x4EC5;&#x652F;&#x6301;&#x5728;&#x7C7B;Unix&#x7CFB;&#x7EDF;&#x4E0A;&#x8FD0;&#x884C;&#x3002;</p>
+<p>github&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/WangYihang/Webshell-Sniper" target="_blank">https://github.com/WangYihang/Webshell-Sniper</a></p>
+<p>&#x7528;&#x6CD5;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code>Usage : 
+        python webshell-sniper.py [URL] [METHOD] [AUTH]
+Example : 
+        python webshell-sniper.py http://127.0.0.1/c.php POST c
+</code></pre><p><img src="image/privilege-6-9.png" alt=""></p>
+<p><strong>10&#x3001;WebshellManager</strong></p>
+<p>&#x4E00;&#x6B3E;&#x7528;PHP+Mysql&#x5199;&#x7684;&#x4E00;&#x53E5;&#x8BDD;WEB&#x7AEF;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF0C;&#x76EE;&#x524D;&#x4EC5;&#x652F;&#x6301;&#x5BF9;PHP&#x7684;&#x4E00;&#x53E5;&#x8BDD;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>github&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/boy-hack/WebshellManager" target="_blank">https://github.com/boy-hack/WebshellManager</a></p>
+<p><img src="image/privilege-6-10.png" alt=""></p>
+<p>&#x6211;&#x5728;&#x77E5;&#x8BC6;&#x661F;&#x7403;&#x53D1;&#x8D77;&#x4E86;&#x4E00;&#x4E2A;&#x5C0F;&#x8BA8;&#x8BBA;&#xFF0C;&#x4E5F;&#x6536;&#x96C6;&#x5230;&#x4E86;&#x4E00;&#x4E9B;webshell&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF0C;&#x5982; hatchet&#x3001;K8&#x98DE;&#x5200;&#x3001;lanker&#xFF0C;&#x6B22;&#x8FCE;&#x8865;&#x5145;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="第6篇：三大渗透测试框架权限维持技术.html" class="navigation navigation-prev " aria-label="Previous page: 第6篇：三大渗透测试框架权限维持技术">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Windows/" class="navigation navigation-next " aria-label="Next page: 第四章：Windows实战篇">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第7篇：常见WebShell管理工具","level":"1.4.7","depth":2,"next":{"title":"第四章：Windows实战篇","level":"1.5","depth":1,"path":"Windows/README.md","ref":"Windows/README.md","articles":[{"title":"第1篇：FTP暴力破解","level":"1.5.1","depth":2,"path":"Windows/第1篇：FTP暴力破解.md","ref":"Windows/第1篇：FTP暴力破解.md","articles":[]},{"title":"第2篇：蠕虫病毒","level":"1.5.2","depth":2,"path":"Windows/第2篇：蠕虫病毒.md","ref":"Windows/第2篇：蠕虫病毒.md","articles":[]},{"title":"第3篇：勒索病毒","level":"1.5.3","depth":2,"path":"Windows/第3篇：勒索病毒.md","ref":"Windows/第3篇：勒索病毒.md","articles":[]},{"title":"第4篇：ARP病毒","level":"1.5.4","depth":2,"path":"Windows/第4篇：ARP病毒.md","ref":"Windows/第4篇：ARP病毒.md","articles":[]},{"title":"第5篇：挖矿病毒（一）","level":"1.5.5","depth":2,"path":"Windows/第5篇：挖矿病毒（一）.md","ref":"Windows/第5篇：挖矿病毒（一）.md","articles":[]},{"title":"第6篇：挖矿病毒（二）","level":"1.5.6","depth":2,"path":"Windows/第6篇：挖矿病毒（二）.md","ref":"Windows/第6篇：挖矿病毒（二）.md","articles":[]}]},"previous":{"title":"第6篇：三大渗透测试框架权限维持技术","level":"1.4.6","depth":2,"path":"privilege/第6篇：三大渗透测试框架权限维持技术.md","ref":"privilege/第6篇：三大渗透测试框架权限维持技术.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","back-to-top-button","splitter","chapter-fold","github","github-buttons","sharing-plus","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/Bypass007/"},"livereload":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"github-buttons":{"buttons":[{"user":"Bypass007","repo":"Emergency-Response-Notes","type":"star","size":"small","count":true}]},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","facebook","twitter","google"],"douban":false,"facebook":false,"weibo":true,"whatsapp":false,"line":false,"google":false,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Bypass","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"应急响应实战笔记","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null}},"gitbook":"*","description":"应急响应实战笔记,一个安全工程师的自我修养。","extension":null},"file":{"path":"privilege/第7篇：常见WebShell管理工具.md","mtime":"2020-06-13T13:42:23.135Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-13T18:17:20.376Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
