@@ -149,21 +149,22 @@ HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Runonce
   ```
 Window 2003版本 C:\Documents and Settings
   Window 2008R2及以后版本 C:\Users\
-```
+  ```
   
-b、单击【开始】>【运行】，输入 `%UserProfile%\Recent`，分析最近打开分析可疑文件。
+  b、单击【开始】>【运行】，输入 `%UserProfile%\Recent`，分析最近打开分析可疑文件。
   
-c、在服务器各个目录，可根据文件夹内文件列表时间进行排序，查找可疑文件。
+  c、在服务器各个目录，可根据文件夹内文件列表时间进行排序，查找可疑文件。
   
-d、回收站、浏览器下载目录、浏览器历史记录
+  d、回收站、浏览器下载目录、浏览器历史记录
   
   e、修改时间在创建时间之前的为可疑文件
 
 3、发现并得到 WebShell、远控木马的创建时间，如何找出同一时间范围内创建的文件？
 
-​	a、利用 [Registry Workshop](http://www.torchsoft.com/en/rw_information.html) 注册表编辑器的搜索功能，可以找到最后写入时间区间的文件。
+a、利用 [Registry Workshop](http://www.torchsoft.com/en/rw_information.html) 注册表编辑器的搜索功能，可以找到最后写入时间区间的文件。
+b、利用计算机自带文件搜索功能，指定修改时间进行搜索。
 
-​	b、利用计算机自带文件搜索功能，指定修改时间进行搜索。
+
 
 #### 1.5 自动化查杀
 
@@ -174,6 +175,7 @@ d、回收站、浏览器下载目录、浏览器历史记录
 * webshell查杀
 
   * 检查方法：选择具体站点路径进行webshell查杀，建议使用两款 WebShell 查杀工具同时查杀，可相互补充规则库的不足。
+
 
 
 #### 1.6 日志分析
@@ -187,6 +189,8 @@ d、回收站、浏览器下载目录、浏览器历史记录
   b、Win+R 打开运行，输入 "eventvwr.msc"，回车运行，打开"事件查看器"。
 
   C、导出应用程序日志、安全日志、系统日志，利用 [Log Parser](https://www.microsoft.com/en-us/download/details.aspx?id=24659) 进行分析。
+
+  
 
 Web 访问日志
 
@@ -250,7 +254,7 @@ Virscan：http://www.virscan.org
 
 腾讯哈勃分析系统：https://habo.qq.com
 
-Jotti恶意软件扫描系统：https://virusscan.jotti.org
+Jotti 恶意软件扫描系统：https://virusscan.jotti.org
 
 
 
@@ -258,7 +262,4 @@ Jotti恶意软件扫描系统：https://virusscan.jotti.org
 
 D盾_Web查杀：http://www.d99net.net/index.asp
 
-河马webshell查杀：http://www.shellpub.com
-
-Safe3：http://www.uusec.com/webshell.zip
-
+河马 WebShell 查杀：http://www.shellpub.com
