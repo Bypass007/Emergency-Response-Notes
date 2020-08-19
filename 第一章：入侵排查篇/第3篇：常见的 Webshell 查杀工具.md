@@ -1,28 +1,32 @@
+# µÚ3Æª£º³£¼ûµÄ Webshell ²éÉ±¹¤¾ß
+
+### Ç°ÑÔ
+
 µ±ÍøÕ¾·þÎñÆ÷±»ÈëÇÖÊ±£¬ÎÒÃÇÐèÒªÒ»¿îWebshell¼ì²â¹¤¾ß£¬À´°ïÖúÎÒÃÇ·¢ÏÖwebshell£¬½øÒ»²½ÅÅ²éÏµÍ³¿ÉÄÜ´æÔÚµÄ°²È«Â©¶´¡£
 
-±¾ÎÄÍÆ¼öÁË10¿îWebshll¼ì²â¹¤¾ß£¬ÓÃÓÚÍøÕ¾ÈëÇÖÅÅ²é¡£µ±È»£¬Ä¿Ç°ÊÐ³¡ÉÏµÄºÜ¶àÖ÷»ú°²È«²úÆ·Ò²¶¼Ìá¹©ÕâÖÖWebShell¼ì²âÄÜÁ¦£¬±ÈÈç°¢ÀïÔÆ¡¢ÇàÌÙÔÆ¡¢safedogµÈ£¬±¾ÎÄÔÝ²»ÌÖÂÛ¡£
+±¾ÎÄÍÆ¼öÁË10¿î WebShll ¼ì²â¹¤¾ß£¬ÓÃÓÚÍøÕ¾ÈëÇÖÅÅ²é¡£µ±È»£¬Ä¿Ç°ÊÐ³¡ÉÏµÄºÜ¶àÖ÷»ú°²È«²úÆ·Ò²¶¼Ìá¹©ÕâÖÖ WebShell ¼ì²âÄÜÁ¦£¬±ÈÈç°¢ÀïÔÆ¡¢ÇàÌÙÔÆ¡¢safedog µÈ£¬±¾ÎÄÔÝ²»ÌÖÂÛ¡£
 
 ------
 
 **1¡¢D¶Ü_Web²éÉ±**
 
-°¢D³öÆ·£¬Ê¹ÓÃ×ÔÐÐÑÐ·¢²»·ÖÀ©Õ¹ÃûµÄ´úÂë·ÖÎöÒýÇæ£¬ÄÜ·ÖÎö¸üÎªÒþ²ØµÄWebShellºóÃÅÐÐÎª¡£
+°¢D³öÆ·£¬Ê¹ÓÃ×ÔÐÐÑÐ·¢²»·ÖÀ©Õ¹ÃûµÄ´úÂë·ÖÎöÒýÇæ£¬ÄÜ·ÖÎö¸üÎªÒþ²ØµÄ WebShell ºóÃÅÐÐÎª¡£
 
-¼æÈÝÐÔ£ºÖ»Ìá¹©Windows°æ±¾¡£
+¼æÈÝÐÔ£ºÖ»Ìá¹© Windows °æ±¾¡£
 
-¹¤¾ßÏÂÔØµØÖ·£ºhttp://www.d99net.net/down/WebShellKill_V2.0.9.zip
+¹¤¾ßÏÂÔØµØÖ·£ºhttp://www.d99net.net
 
 ![](./image/20200407-1.png)
 
 
 
-**2¡¢°Ù¶ÈWEBDIR+**
+**2¡¢°Ù¶È WEBDIR+**
 
-ÏÂÒ»´úWebShell¼ì²âÒýÇæ£¬²ÉÓÃÏÈ½øµÄ¶¯Ì¬¼à²â¼¼Êõ£¬½áºÏ¶àÖÖÒýÇæÁã¹æÔò²éÉ±¡£
+ÏÂÒ»´ú WebShell ¼ì²âÒýÇæ£¬²ÉÓÃÏÈ½øµÄ¶¯Ì¬¼à²â¼¼Êõ£¬½áºÏ¶àÖÖÒýÇæÁã¹æÔò²éÉ±¡£
 
-¼æÈÝÐÔ£ºÌá¹©ÔÚÏß²éÉ±Ä¾Âí£¬Ãâ·Ñ¿ª·ÅAPIÖ§³ÖÅúÁ¿¼ì²â¡£
+¼æÈÝÐÔ£ºÌá¹©ÔÚÏß²éÉ±Ä¾Âí£¬Ãâ·Ñ¿ª·Å API Ö§³ÖÅúÁ¿¼ì²â¡£
 
-ÔÚÏß²éÉ±µØÖ·£ºhttps://scanner.baidu.com/
+ÔÚÏß²éÉ±µØÖ·£ºhttps://scanner.baidu.com
 
 ![](./image/20200407-2.png)
 
@@ -30,11 +34,11 @@
 
 **3¡¢ºÓÂí**
 
-×¨×¢webshell²éÉ±ÑÐ¾¿£¬ÓµÓÐº£Á¿webshellÑù±¾ºÍ×ÔÖ÷²éÉ±¼¼Êõ£¬²ÉÓÃ´«Í³ÌØÕ÷+ÔÆ¶Ë´óÊý¾ÝË«ÒýÇæµÄ²éÉ±¼¼Êõ¡£²éÉ±ËÙ¶È¿ì¡¢¾«¶È¸ß¡¢Îó±¨µÍ¡£
+×¨×¢ WebShell ²éÉ±ÑÐ¾¿£¬ÓµÓÐº£Á¿ WebShell Ñù±¾ºÍ×ÔÖ÷²éÉ±¼¼Êõ£¬²ÉÓÃ´«Í³ÌØÕ÷+ÔÆ¶Ë´óÊý¾ÝË«ÒýÇæµÄ²éÉ±¼¼Êõ¡£²éÉ±ËÙ¶È¿ì¡¢¾«¶È¸ß¡¢Îó±¨µÍ¡£
 
-¼æÈÝÐÔ£ºÖ§³ÖWindows¡¢linux£¬Ö§³ÖÔÚÏß²éÉ±¡£
+¼æÈÝÐÔ£ºÖ§³Ö Windows¡¢Linux£¬Ö§³ÖÔÚÏß²éÉ±¡£
 
-¹Ù·½ÍøÕ¾£ºhttps://www.shellpub.com/
+¹Ù·½ÍøÕ¾£ºhttps://www.shellpub.com
 
 ![](./image/20200407-3.png)
 
@@ -42,11 +46,11 @@
 
 **4¡¢Web Shell Detector**
 
-Webshell Detector¾ßÓÐ¡° Webshell¡±Ç©ÃûÊý¾Ý¿â£¬¿É°ïÖúÊ¶±ð¸ß´ï99£¥µÄ¡° Webshell¡±¡£
+Web Shell Detector ¾ßÓÐ WebShell Ç©ÃûÊý¾Ý¿â£¬¿É°ïÖúÊ¶±ð¸ß´ï 99£¥ µÄ WebShell¡£
 
-¼æÈÝÐÔ£ºÌá¹©php/python½Å±¾£¬¿É¿çÆ½Ì¨£¬ÔÚÏß¼ì²â¡£
+¼æÈÝÐÔ£ºÌá¹© PHP¡¢Python ½Å±¾£¬¿É¿çÆ½Ì¨£¬ÔÚÏß¼ì²â¡£
 
-¹Ù·½ÍøÕ¾£ºhttp://www.shelldetector.com/
+¹Ù·½ÍøÕ¾£ºhttp://www.shelldetector.com
 
 githubÏîÄ¿µØÖ·£ºhttps://github.com/emposha/PHP-Shell-Detector
 
@@ -58,11 +62,11 @@ githubÏîÄ¿µØÖ·£ºhttps://github.com/emposha/PHP-Shell-Detector
 
 Ò»¸ö¿ÉÖ´ÐÐµÄÃüÁîÐÐ°æ±¾ Webshell ¼ì²â¹¤¾ß¡£Ä¿Ç°£¬ÏîÄ¿ÒÑÍ£Ö¹¸üÐÂ¡£
 
-¼æÈÝÐÔ£¬Ìá¹©linux°æ±¾£¬Windows ÔÝ²»Ö§³Ö¡£
+¼æÈÝÐÔ£ºÌá¹© Linux°æ±¾£¬Windows ÔÝ²»Ö§³Ö¡£
 
-ÔÚÏß²éÉ±demo£º<https://webshellchop.chaitin.cn/>
+ÔÚÏß²éÉ± demo£º<https://webshellchop.chaitin.cn>
 
-githubÏîÄ¿µØÖ·£ºhttps://github.com/chaitin/cloudwalker
+GitHub ÏîÄ¿µØÖ·£ºhttps://github.com/chaitin/cloudwalker
 
 ![](./image/20200407-5.png)
 
@@ -70,9 +74,9 @@ githubÏîÄ¿µØÖ·£ºhttps://github.com/chaitin/cloudwalker
 
 **6¡¢Sangfor WebShellKill**
 
-Sangfor WebShellKill(ÍøÕ¾ºóÃÅ¼ì²â¹¤¾ß)ÊÇÒ»¿îwebºóÃÅ×¨É±¹¤¾ß£¬²»½öÖ§³ÖwebshellµÄÉ¨Ãè£¬Í¬Ê±»¹Ö§³Ö°µÁ´µÄÉ¨Ãè¡£ÊÇÒ»¿îÈÚºÏÁË¶àÖØ¼ì²âÒýÇæµÄ²éÉ±¹¤¾ß¡£ÄÜ¸ü¾«×¼µØ¼ì²â³öWEBÍøÕ¾ÒÑÖªºÍÎ´ÖªµÄºóÃÅÎÄ¼þ¡£
+Sangfor WebShellKill (ÍøÕ¾ºóÃÅ¼ì²â¹¤¾ß)ÊÇÒ»¿î Web ºóÃÅ×¨É±¹¤¾ß£¬²»½öÖ§³Ö WebShell µÄÉ¨Ãè£¬Í¬Ê±»¹Ö§³Ö°µÁ´µÄÉ¨Ãè¡£ÊÇÒ»¿îÈÚºÏÁË¶àÖØ¼ì²âÒýÇæµÄ²éÉ±¹¤¾ß¡£ÄÜ¸ü¾«×¼µØ¼ì²â³öWEBÍøÕ¾ÒÑÖªºÍÎ´ÖªµÄºóÃÅÎÄ¼þ¡£
 
-¼æÈÝÐÔ£ºÖ§³ÖWindows¡¢linux
+¼æÈÝÐÔ£ºÖ§³Ö Windows¡¢linux
 
 ¹¤¾ßÏÂÔØµØÖ·£ºhttp://edr.sangfor.com.cn/backdoor_detection.html£¨ÒÑÍ£Ö¹·ÃÎÊ£©
 
@@ -80,11 +84,11 @@ Sangfor WebShellKill(ÍøÕ¾ºóÃÅ¼ì²â¹¤¾ß)ÊÇÒ»¿îwebºóÃÅ×¨É±¹¤¾ß£¬²»½öÖ§³ÖwebshellµÄÉ
 
 
 
-**7¡¢Éî¶ÈÑ§Ï°Ä£ÐÍ¼ì²âPHP Webshell**
+**7¡¢Éî¶ÈÑ§Ï°Ä£ÐÍ¼ì²â PHP Webshell**
 
-Ò»¸öÉî¶ÈÑ§Ï°PHP webshell²éÉ±ÒýÇædemo£¬Ìá¹©ÔÚÏßÑù±¾¼ì²â¡£
+Ò»¸öÉî¶ÈÑ§Ï° PHP WebShell ²éÉ±ÒýÇæ demo£¬Ìá¹©ÔÚÏßÑù±¾¼ì²â¡£
 
-ÔÚÏß²éÉ±µØÖ·£ºhttp://webshell.cdxy.me/
+ÔÚÏß²éÉ±µØÖ·£ºhttp://webshell.cdxy.me
 
 ![](./image/20200407-7.png)
 
@@ -94,9 +98,9 @@ Sangfor WebShellKill(ÍøÕ¾ºóÃÅ¼ì²â¹¤¾ß)ÊÇÒ»¿îwebºóÃÅ×¨É±¹¤¾ß£¬²»½öÖ§³ÖwebshellµÄÉ
 
 PHP-malware-finder ÊÇÒ»¿îÓÅÐãµÄ¼ì²âwebshellºÍ¶ñÒâÈí¼þ»ìÏý´úÂëµÄ¹¤¾ß
 
-¼æÈÝÐÔ£ºÌá¹©linux°æ±¾£¬Windows ÔÝ²»Ö§³Ö¡£
+¼æÈÝÐÔ£ºÌá¹©Linux °æ±¾£¬Windows ÔÝ²»Ö§³Ö¡£
 
-githubÏîÄ¿µØÖ·£ºhttps://github.com/jvoisin/php-malware-finder
+GitHub ÏîÄ¿µØÖ·£ºhttps://github.com/jvoisin/php-malware-finder
 
 
 ![](./image/20200407-8.png)
@@ -105,17 +109,17 @@ githubÏîÄ¿µØÖ·£ºhttps://github.com/jvoisin/php-malware-finder
 
 **9¡¢findWebshell**
 
-Õâ¸öÏîÄ¿ÊÇÒ»¿î»ùÓÚpython¿ª·¢µÄwebshell¼ì²é¹¤¾ß£¬¿ÉÒÔ¸ù¾ÝÌØÕ÷ÂëÆ¥Åä¼ì²éÈÎÒâÀàÐÍµÄwebshellºóÃÅ¡£
+Õâ¸öÏîÄ¿ÊÇÒ»¿î»ùÓÚ Python ¿ª·¢µÄ WebShell ¼ì²é¹¤¾ß£¬¿ÉÒÔ¸ù¾ÝÌØÕ÷ÂëÆ¥Åä¼ì²éÈÎÒâÀàÐÍµÄ WebShell ºóÃÅ¡£
 
-githubÏîÄ¿µØÖ·£º<https://github.com/he1m4n6a/findWebshell>
+GitHub ÏîÄ¿µØÖ·£º<https://github.com/he1m4n6a/findWebshell>
 
 ![](./image/20200407-9.png)
 
 
 
-**10¡¢ÔÚÏßwebshell²éÉ±¹¤¾ß**
+**10¡¢ÔÚÏß WebShell ²éÉ±¹¤¾ß**
 
-ÔÚÏß²éÉ±µØÖ·£ºhttp://tools.bugscaner.com/killwebshell/
+ÔÚÏß²éÉ±µØÖ·£ºhttp://tools.bugscaner.com/killwebshell
 
 ![](./image/20200407-10.png)
 

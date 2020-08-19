@@ -54,7 +54,7 @@ uptime  查看登陆多久、多少用户，负载状态
 ~~~
 1、root 用户的历史命令
 histroy
-2、打开/home各帐号目录下的 .bash_history，查看普通帐号执行的历史命令。
+2、打开 /home 各帐号目录下的 .bash_history，查看普通帐号执行的历史命令。
 为历史的命令增加登录的 IP 地址、执行命令时间等信息：
 1）保存1万条命令
 sed -i 's/^HISTSIZE=1000/HISTSIZE=10000/g' /etc/profile
