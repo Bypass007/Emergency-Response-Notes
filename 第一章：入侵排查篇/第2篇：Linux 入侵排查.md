@@ -1,10 +1,10 @@
-## 第2篇：Linux入侵排查
+## 第2篇：Linux 入侵排查
 
 ### 0x00 前言
 
 当企业发生黑客入侵、系统崩溃或其它影响业务正常运行的安全事件时，急需第一时间进行处理，使企业的网络信息系统在最短时间内恢复正常工作，进一步查找入侵来源，还原入侵事故过程，同时给出解决方案与防范措施，为企业挽回或减少经济损失。  
 
-针对常见的攻击事件，结合工作中应急响应事件分析和解决的方法，总结了一些Linux服务器入侵排查的思路。
+针对常见的攻击事件，结合工作中应急响应事件分析和解决的方法，总结了一些 Linux 服务器入侵排查的思路。
 
 ### 0x01 入侵排查思路
 
@@ -13,21 +13,21 @@
 **基本使用：**
 
 ~~~
-1、用户信息文件/etc/passwd
+1、用户信息文件 /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 account:password:UID:GID:GECOS:directory:shell
-用户名：密码：用户ID：组ID：用户说明：家目录：登陆之后shell
+用户名：密码：用户ID：组ID：用户说明：家目录：登陆之后的 shell
 注意：无密码只允许本机登陆，远程不允许登陆
 
-2、影子文件/etc/shadow
+2、影子文件 /etc/shadow
 root:$6$oGs1PqhL2p3ZetrE$X7o7bzoouHQVSEmSgsYN5UD4.kMHx6qgbTqwNVC5oOAouXvcjQSt.Ft7ql1WpkopY0UV9ajBwUt1DpYxTCVvI/:16809:0:99999:7:::
 用户名：加密密码：密码最后一次修改日期：两次密码的修改时间间隔：密码有效期：密码修改到期到的警告天数：密码过期之后的宽限天数：账号失效时间：保留
 ~~~
 
 ~~~
-who     查看当前登录用户（tty本地登陆  pts远程登录）
+who     查看当前登录用户（tty 本地登陆  pts 远程登录）
 w       查看系统信息，想知道某一时刻用户的行为
-uptime  查看登陆多久、多少用户，负载
+uptime  查看登陆多久、多少用户，负载状态
 ~~~
 
 **入侵排查：**
@@ -40,22 +40,22 @@ uptime  查看登陆多久、多少用户，负载
 3、除root帐号外，其他帐号是否存在sudo权限。如非管理需要，普通帐号应删除sudo权限
 [root@localhost ~]# more /etc/sudoers | grep -v "^#\|^$" | grep "ALL=(ALL)"
 4、禁用或删除多余及可疑的帐号
-    usermod -L user    禁用帐号，帐号无法登录，/etc/shadow第二栏为!开头
-	userdel user       删除user用户
-	userdel -r user    将删除user用户，并且将/home目录下的user目录一并删除
+    usermod -L user    禁用帐号，帐号无法登录，/etc/shadow 第二栏为 ! 开头
+	userdel user       删除 user 用户
+	userdel -r user    将删除 user 用户，并且将 /home 目录下的 user 目录一并删除
 ~~~
 
 #### 1.2 历史命令
 
 **基本使用：**
 
-~~~
-通过.bash_history查看帐号执行过的系统命令
-1、root的历史命令
-histroy
-2、打开/home各帐号目录下的.bash_history，查看普通帐号的历史命令
+通过 .bash_history 文件查看帐号执行过的系统命令
 
-为历史的命令增加登录的IP地址、执行命令时间等信息：
+~~~
+1、root 用户的历史命令
+histroy
+2、打开 /home 各帐号目录下的 .bash_history，查看普通帐号执行的历史命令。
+为历史的命令增加登录的 IP 地址、执行命令时间等信息：
 1）保存1万条命令
 sed -i 's/^HISTSIZE=1000/HISTSIZE=10000/g' /etc/profile
 2）在/etc/profile的文件尾部添加如下行数配置信息：
@@ -69,35 +69,33 @@ export HISTTIMEFORMAT="%F %T $USER_IP `whoami` "
 shopt -s histappend
 export PROMPT_COMMAND="history -a"
 ######### jiagu history xianshi ##########
-3）source /etc/profile让配置生效
-
+3）source /etc/profile 让配置生效
 生成效果： 1  2018-07-10 19:45:39 192.168.204.1 root source /etc/profile
-
 3、历史操作命令的清除：history -c
-但此命令并不会清除保存在文件中的记录，因此需要手动删除.bash_profile文件中的记录。
+但此命令并不会清除保存在文件中的记录，因此需要手动删除 .bash_profile 文件中的记录。
 ~~~
 
 **入侵排查：**
 
 ~~~
-进入用户目录下
+进入用户目录下，导出历史命令。
 cat .bash_history >> history.txt
 ~~~
 
 #### 1.3 检查异常端口
 
-使用netstat 网络连接命令，分析可疑端口、IP、PID
+使用 netstat 网络连接命令，分析可疑端口、IP、PID
 
 ~~~
-netstat -antlp|more
+netstat -antlp | more
 
-查看下pid所对应的进程文件路径，
-运行ls -l /proc/$PID/exe或file /proc/$PID/exe（$PID 为对应的pid 号）
+查看下 pid 所对应的进程文件路径，
+运行 ls -l /proc/$PID/exe 或 file /proc/$PID/exe（$PID 为对应的 pid 号）
 ~~~
 
 #### 1.4 检查异常进程
 
-使用ps命令，分析进程
+使用 ps 命令，分析进程
 
 ~~~
 ps aux | grep pid 
@@ -119,20 +117,21 @@ ps aux | grep pid
 | 5  | 图形模式 |
 | 6  | 重启动 |
 
-查看运行级别命令
-	runlevel   
+查看运行级别命令 `runlevel`
 
 系统默认允许级别
 
 	vi  /etc/inittab
-	id=3：initdefault  系统开机后直接进入哪个运行级别
+	id=3：initdefault  #系统开机后直接进入哪个运行级别
 
 开机启动配置文件
 
 	/etc/rc.local
 	/etc/rc.d/rc[0~6].d
 
-例子:当我们需要开机启动自己的脚本时，只需要将可执行脚本丢在/etc/init.d目录下，然后在/etc/rc.d/rc*.d中建立软链接即可
+例子：当我们需要开机启动自己的脚本时，只需要将可执行脚本丢在 /etc/init.d 目录下，然后在 /etc/rc.d/rc*.d 文件中建立软链接即可。
+
+注：此中的 * 代表 0,1,2,3,4,5,6 这七个等级
 
 	root@localhost ~]# ln -s /etc/init.d/sshd /etc/rc.d/rc3.d/S100ssh
 此处sshd是具体服务的脚本文件，S100ssh是其软链接，S开头代表加载时自启动；如果是K开头的脚本文件，代表运行级别加载时需要关闭的。
@@ -140,38 +139,43 @@ ps aux | grep pid
 **入侵排查：**
 
 启动项文件：
-	more /etc/rc.local
-	/etc/rc.d/rc[0~6].d
-	ls -l /etc/rc.d/rc3.d/
+
+```
+more /etc/rc.local
+/etc/rc.d/rc[0~6].d
+ls -l /etc/rc.d/rc3.d/
+```
 
 #### 1.6 检查定时任务
 
 **基本使用**
 
-1、利用crontab创建计划任务
+1、利用 crontab 创建计划任务
 
 * 基本命令
 
-crontab -l   列出某个用户cron服务的详细内容
+  ```
+  crontab -l   列出某个用户cron服务的详细内容
+  
+  Tips：默认编写的crontab文件会保存在 (/var/spool/cron/用户名 例如: /var/spool/cron/root
+  
+  crontab -r   删除每个用户cront任务(谨慎：删除所有的计划任务)
+  
+  crontab -e   使用编辑器编辑当前的crontab文件 
+  
+  如：*/1 * * * * echo "hello world" >> /tmp/test.txt 每分钟写入文件
+  ```
 
-Tips：默认编写的crontab文件会保存在 (/var/spool/cron/用户名 例如: /var/spool/cron/root
-
-crontab -r   删除每个用户cront任务(谨慎：删除所有的计划任务)
-
-crontab -e   使用编辑器编辑当前的crontab文件 
-
-如：*/1 * * * * echo "hello world" >> /tmp/test.txt 每分钟写入文件
-
-
-2、利用anacron实现异步定时任务调度
+2、利用 anacron 命令实现异步定时任务调度
 
 * 使用案例
 
-每天运行 /home/backup.sh脚本：
-	vi /etc/anacrontab 
-	@daily    10    example.daily   /bin/bash /home/backup.sh
-
-当机器在 backup.sh 期望被运行时是关机的，anacron会在机器开机十分钟之后运行它，而不用再等待 7天。
+  ```
+  每天运行 /home/backup.sh 脚本：
+  vi /etc/anacrontab 
+  @daily    10    example.daily   /bin/bash /home/backup.sh
+  当机器在 backup.sh 期望被运行时是关机的，anacron会在机器开机十分钟之后运行它，而不用再等待 7天。
+  ```
 
 **入侵排查**
 
@@ -189,7 +193,7 @@ crontab -e   使用编辑器编辑当前的crontab文件
 
 小技巧：
 
-	 more /etc/cron.daily/*  查看目录下所有文件
+	more /etc/cron.daily/*  查看目录下所有文件
 
 #### 1.7 检查服务
 
@@ -203,18 +207,18 @@ crontab -e   使用编辑器编辑当前的crontab文件
 
 第二种修改方法：
 
-	修改/etc/re.d/rc.local 文件  
+	修改 /etc/re.d/rc.local 文件  
 	加入 /etc/init.d/httpd start
 
 第三种修改方法：
 
-使用ntsysv命令管理自启动，可以管理独立服务和xinetd服务。
+使用 ntsysv 命令管理自启动，可以管理独立服务和 xinetd 服务。
 
 **入侵排查**
 
 1、查询已安装的服务：
 
-RPM包安装的服务
+RPM 包安装的服务
 
 	chkconfig  --list  查看服务自启动状态，可以看到所有的RPM包安装的服务
 	ps aux | grep crond 查看当前服务
@@ -238,9 +242,9 @@ RPM包安装的服务
 
 2、得到发现WEBSHELL、远控木马的创建时间，如何找出同一时间范围内创建的文件？
 
-​	可以使用find命令来查找，如 find /opt -iname "*" -atime 1 -type f  找出 /opt 下一天前访问过的文件
+​	可以使用find命令来查找，如  find /opt -iname "*" -atime 1 -type f 找出 /opt 下一天前访问过的文件
 
-3、针对可疑文件可以使用stat进行创建修改时间。
+3、针对可疑文件可以使用 stat 进行创建修改时间。
 
 #### 1.9 检查系统日志
 
@@ -272,7 +276,7 @@ grep "Failed password for root" /var/log/secure | awk '{print $11}' | sort | uni
 grep "Failed password" /var/log/secure|grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"|uniq -c
 
 爆破用户名字典是什么？
- grep "Failed password" /var/log/secure|perl -e 'while($_=<>){ /for(.*?) from/; print "$1\n";}'|uniq -c|sort -nr
+grep "Failed password" /var/log/secure|perl -e 'while($_=<>){ /for(.*?) from/; print "$1\n";}'|uniq -c|sort -nr
  
 2、登录成功的IP有哪些： 	
 grep "Accepted " /var/log/secure | awk '{print $11}' | sort | uniq -c | sort -nr | more
@@ -336,12 +340,12 @@ Jul 10 00:43:09 localhost sudo:    good : TTY=pts/4 ; PWD=/home/good ; USER=root
 
 * Clamav
 
-  ClamAV的官方下载地址为：<http://www.clamav.net/download.html> 
+  网址：<http://www.clamav.net/download.html> 
 
   安装方式一： 
 
   ~~~
-  1、安装zlib：
+  1、安装 zlib：
   wget http://nchc.dl.sourceforge.net/project/libpng/zlib/1.2.7/zlib-1.2.7.tar.gz 
   tar -zxvf  zlib-1.2.7.tar.gz
   cd zlib-1.2.7
@@ -349,18 +353,18 @@ Jul 10 00:43:09 localhost sudo:    good : TTY=pts/4 ; PWD=/home/good ; USER=root
   CFLAGS="-O3 -fPIC" ./configure --prefix= /usr/local/zlib/
   make && make install
   
-  2、添加用户组clamav和组成员clamav：
+  2、添加用户组 clamav 和组成员 clamav：
   groupadd clamav
   useradd -g clamav -s /bin/false -c "Clam AntiVirus" clamav
   
-  3、安装Clamav
+  3、安装 Clamav
   tar –zxvf clamav-0.97.6.tar.gz
   cd clamav-0.97.6
   ./configure --prefix=/opt/clamav --disable-clamav -with-zlib=/usr/local/zlib
   make
   make install
   
-  4、配置Clamav
+  4、配置 Clamav
   mkdir /opt/clamav/logs
   mkdir /opt/clamav/updata
   touch /opt/clamav/logs/freshclam.log
@@ -397,16 +401,15 @@ Jul 10 00:43:09 localhost sudo:    good : TTY=pts/4 ; PWD=/home/good ; USER=root
 
 #### 2.3 webshell查杀
 
-linux版：
+Linux 版：
 
 ~~~
-河马webshell查杀：http://www.shellpub.com
-深信服Webshell网站后门检测工具：http://edr.sangfor.com.cn/backdoor_detection.html
+河马 WebShell 查杀：http://www.shellpub.com
 ~~~
 
-#### 2.4 RPM check检查
+#### 2.4 RPM check 检查
 
-​	系统完整性可以通过rpm自带的-Va来校验检查所有的rpm软件包，查看哪些命令是否被替换了：
+系统完整性可以通过rpm自带的-Va来校验检查所有的rpm软件包，查看哪些命令是否被替换了：
 
 ~~~
 ./rpm -Va > rpm.log
@@ -430,15 +433,15 @@ linux版：
 
 ~~~
 文件提取还原案例：
-rpm  -qf /bin/ls  查询ls命令属于哪个软件包
-mv  /bin/ls /tmp  先把ls转移到tmp目录下，造成ls命令丢失的假象
-rpm2cpio /mnt/cdrom/Packages/coreutils-8.4-19.el6.i686.rpm | cpio -idv ./bin/ls 提取rpm包中ls命令到当前目录的/bin/ls下
-cp /root/bin/ls  /bin/ 把ls命令复制到/bin/目录 修复文件丢失
+rpm  -qf /bin/ls  查询 ls 命令属于哪个软件包
+mv  /bin/ls /tmp  先把 ls 转移到 tmp 目录下，造成 ls 命令丢失的假象
+rpm2cpio /mnt/cdrom/Packages/coreutils-8.4-19.el6.i686.rpm | cpio -idv ./bin/ls 提取 rpm 包中 ls 命令到当前目录的 /bin/ls 下
+cp /root/bin/ls  /bin/ 把 ls 命令复制到 /bin/ 目录 修复文件丢失
 ~~~
 
-#### 2.5 linux安全检查脚本
+#### 2.5 Linux安全检查脚本
 
-Github项目地址：
+Github 项目地址：
 
 https://github.com/grayddq/GScan
 
