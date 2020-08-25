@@ -1,14 +1,14 @@
-## 第2篇:Linux日志分析
+## 第2篇：Linux 日志分析
 
 ### 0x00 前言
 
-Linux系统拥有非常灵活和强大的日志功能，可以保存几乎所有的操作记录，并可以从中检索出我们需要的信息。 本文简介一下Linux系统日志及日志分析技巧。
+Linux 系统拥有非常灵活和强大的日志功能，可以保存几乎所有的操作记录，并可以从中检索出我们需要的信息。 本文简介一下 Linux 系统日志及日志分析技巧。
 
 ### 0x01 日志简介
 
-日志默认存放位置：/var/log/
+日志默认存放位置：`/var/log/`
 
-查看日志配置情况：more /etc/rsyslog.conf
+查看日志配置情况：`more /etc/rsyslog.conf`
 
 |   日志文件    |             说明             |
 | :-----------: | :--------------------------: |
@@ -24,68 +24,67 @@ Linux系统拥有非常灵活和强大的日志功能，可以保存几乎所有
 | /var/log/secure |      记录验证和授权方面的信息，只要涉及账号和密码的程序都会记录，比如SSH登录，su切换用户，sudo授权，甚至添加用户和修改用户密码都会记录在这个日志文件中      |
 
 比较重要的几个日志：
-	登录失败记录：/var/log/btmp     //lastb
-	最后一次登录：/var/log/lastlog  //lastlog
-	登录成功记录: /var/log/wtmp     //last
-	登录日志记录：/var/log/secure   
-
-​	目前登录用户信息：/var/run/utmp  //w、who、users
-
-​	历史命令记录：history
-​	仅清理当前用户： history -c
+	登录失败记录：`/var/log/btmp     #lastb命令`
+	最后一次登录：`/var/log/lastlog  #lastlog命令`
+	登录成功记录：`/var/log/wtmp    #last命令`
+	登录日志记录：`/var/log/secures     `
+	目前登录用户信息：`/var/run/utmp  #w、who、users命令`
+	历史命令记录：`history`
+	仅清理当前用户： `history -c`
 
 
 ### 0x02 日志分析技巧
 
-#### A、常用的shell命令
+#### A、常用的 Shell 命令
 
-Linux下常用的shell命令如：find、grep 、egrep、awk、sed
+Linux 下常用的 Shell 命令如：find、grep 、egrep、awk、sed
 
 小技巧：
 
-1、grep显示前后几行信息:
+1、grep 显示前后几行信息:
 
 ```
-
-​	标准unix/linux下的grep通过下面參数控制上下文：
-​	grep -C 5 foo file 显示file文件里匹配foo字串那行以及上下5行
-​	grep -B 5 foo file 显示foo及前5行
-​	grep -A 5 foo file 显示foo及后5行
-​	查看grep版本号的方法是
-​	grep -V
+标准unix/linux下的grep通过下面參数控制上下文：
+grep -C 5 foo file #显示 file 文件里匹配 foo 字串那行以及上下5行
+grep -B 5 foo file #显示 foo 及前 5 行
+grep -A 5 foo file 显示 foo 及后 5 行
+grep -V #查看 grep 的版本号
 ```
 
 2、grep 查找含有某字符串的所有文件
 
 ```
-	grep -rn "hello,world!" 
-	* : 表示当前目录所有文件，也可以是某个文件名
-	-r 是递归查找
-	-n 是显示行号
-	-R 查找所有文件包含子目录
-	-i 忽略大小写
+grep -rn "hello,world!" 
+* : 表示当前目录所有文件，也可以是某个文件名
+-r 是递归查找
+-n 是显示行号
+-R 查找所有文件包含子目录
+-i 忽略大小写
 ```
 
 3、如何显示一个文件的某几行：
 
 ```
-	cat input_file | tail -n +1000 | head -n 2000
-	#从第1000行开始，显示2000行。即显示1000~2999行
+#从第 1000 行开始，显示 2000 行。即显示 1000~2999 行
+cat input_file | tail -n +1000 | head -n 2000
 ```
 
+4、find 命令
 
-4、find /etc -name init 
+	#在目录 /etc 中查找文件 init
+	find /etc -name init
 
-	//在目录/etc中查找文件init
+5、只是显示 `/etc/passwd` 的账户
 
-5、只是显示/etc/passwd的账户
+	cat /etc/passwd |awk  -F ':'  '{print $1}' 
+	#awk -F指定域分隔符为':'，将记录按指定的域分隔符划分域，填充域，
+	$0则表示所有域,$1表示第一个域,
+	$n表示第n个域。
 
-	`cat /etc/passwd |awk  -F ':'  '{print $1}'`  
-	//awk -F指定域分隔符为':'，将记录按指定的域分隔符划分域，填充域，​$0则表示所有域,$1表示第一个域,​$n表示第n个域。
+6、sed 命令
 
-6、sed -i '153,$d' .bash_history
-
-	删除历史操作记录，只保留前153行
+	sed -i '153,$d' .bash_history
+	删除历史操作记录，只保留前 153 行
 
 #### B、日志分析技巧
 
@@ -134,10 +133,9 @@ Jul 10 00:43:09 localhost sudo:    good : TTY=pts/4 ; PWD=/home/good ; USER=root
 软件安装升级卸载日志：
 
 ~~~yum install gcc
-yum install gcc
+yum install gcc -y
 
 [root@bogon ~]# more /var/log/yum.log
-
 Jul 10 00:18:23 Updated: cpp-4.8.5-28.el7_5.1.x86_64
 Jul 10 00:18:24 Updated: libgcc-4.8.5-28.el7_5.1.x86_64
 Jul 10 00:18:24 Updated: libgomp-4.8.5-28.el7_5.1.x86_64
