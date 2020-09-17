@@ -1,5 +1,4 @@
 
-
 关键词：Windows系统后门、权限维持
 
 在获取服务器权限后，通常会用一些后门技术来维持服务器权限，服务器一旦被植入后门，攻击者便如入无人之境。本文将对常见的window服务端自启动后门技术进行解析，知己知彼方能杜绝后门。
@@ -130,55 +129,4 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SessionManager\ExcludeFromKn
 **0x09 结束语**
 
 未知攻焉知防，本文分享了几种Window下的自动启权限维持技术。管理员在平时运维过程应当保持警惕，掌握一定的入侵排查技巧，及时进行系统补丁更新，定期对服务器安全检查，才能有效地预防后门。
-
-
-
-
-
-参考文章：
-
-~~~
-常见的几种Windows后门持久化方式：https://www.freebuf.com/vuls/195906.html
-
-
-
-windows常见后门隐藏和权限维持方法
-
-https://blog.csdn.net/qq_33020901/article/details/89504902
-
-~~~
-
-http://xnianq.cn/2018/07/23/windows%E5%90%8E%E9%97%A8%E7%A7%8D%E6%A4%8D%E6%96%B9%E5%BC%8F%E6%94%B6%E9%9B%86/
-
-基于Python的隐秘Windows后门，使用Github作为命令和控制服务器
-
-<https://github.com/maldevel/canisrufus>
-
-注册表位置参考
-
-~~~
-http://www.360doc.com/content/12/0217/15/1309227_187374989.shtml
-https://www.secpulse.com/archives/103301.html
-~~~
-
-
-
-WMI后门参考
-
-~~~
-http://www.hackdig.com/11/hack-40748.htm
-https://blog.csdn.net/qq_17204441/article/details/91863383
-
-~~~
-
-无文件WMI和PowerShell后门
-
-~~~
-Windows 下的权限维持：https://www.anquanke.com/post/id/171528
-
-Windows下的权限维持（二）https://www.anquanke.com/post/id/172851
-
-~~~
-
-
 

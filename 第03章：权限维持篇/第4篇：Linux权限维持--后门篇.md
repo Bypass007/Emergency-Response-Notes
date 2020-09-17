@@ -300,38 +300,3 @@ Mafix是一款常用的轻量应用级别Rootkits，是通过伪造ssh协议漏�
 
 排查技巧：查看端口是否异常，RPM check查看命令是否被替换。
 
-
-
-
-
-
-
-参考链接：
-
-LINUX的两种后门总结(suid shell与inetd)
-
-<https://www.cnblogs.com/milantgh/p/3601812.html>
-
-linux后门总结
-
-<https://www.cnblogs.com/zaqzzz/p/12099463.html>
-
-<https://www.secpulse.com/archives/100484.html>
-
-linux各种一句话反弹shell总结
-
-<https://yq.aliyun.com/articles/519250?type=2>
-
-Linux OpenSSH后门的添加与防范
-
-<https://yq.aliyun.com/articles/69350>
-
-Linux后门整理合集
-
-<https://www.cnblogs.com/maplered/p/9224617.html>
-
-<https://www.cnblogs.com/zlgxzswjy/p/6209571.html>
-
-linux 后门
-
-https://kevien.github.io/2019/02/16/linux%E5%B8%B8%E8%A7%81backdoor%E5%8F%8A%E6%8E%92%E6%9F%A5%E6%8A%80%E6%9C%AF/

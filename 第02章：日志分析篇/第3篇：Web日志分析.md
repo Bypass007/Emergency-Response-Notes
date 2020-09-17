@@ -178,10 +178,3 @@ IP, URL 抽取：
 # tail -f /www/logs/access.2019-02-23.log | grep '/test.html' | awk '{print $1" "$7}'			
 ```
 
- 参考链接：
-
-> https://www.jb51.net/article/53954.htm
->
-> https://www.jb51.net/article/58017.htm
->
-> https://cloud.tencent.com/developer/article/1051427
